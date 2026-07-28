@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Long Fall Studio — Interior mood boards</title>
+  <meta name="description" content="Pick a mood, get the full room: paint colors, what to thrift, DIY, and where to splurge." />
+
+  <!-- Fonts (client-side; fine on GitHub Pages). Swap or self-host later if you like. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/main.css?v=2" />
+</head>
+<body>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav">
+    <a class="nav__brand" href="index.html">Long&nbsp;Fall&nbsp;Studio</a>
+    <nav class="nav__links">
+      <a class="pill" href="#boards">Mood boards</a>
+      <a class="pill" href="#about">About</a>
+    </nav>
+  </header>
+
+  <!-- ============ HERO / INTRO ============ -->
+  <section class="hero wrap" id="about">
+    <p class="eyebrow reveal">Interior design, decoded</p>
+    <h1 class="reveal">Pick a mood.<br />Get the whole room.</h1>
+    <p class="hero__intro reveal">
+      Five design styles, fully worked out. Choose the one that pulls at you and
+      scroll a complete plan — how to describe the look, the exact paint colors,
+      what to thrift, what to DIY, and where it's worth the splurge.
+    </p>
+    <div class="hero__meta reveal">
+      <span>01 — Choose a mood</span>
+      <span>02 — Scroll the plan</span>
+      <span>03 — Shop the pieces</span>
+    </div>
+  </section>
+
+  <!-- ============ MOOD-BOARD GALLERY ============ -->
+  <!-- Each .board links to the shared style template (style.html). Duplicate
+       the file per style later, or pass a ?style= param. -->
+  <section class="boards wrap" id="boards">
+
+    <a class="board reveal" href="style.html">
+      <span class="board__index">01</span>
+      <div class="board__frame"><img src="assets/img/moodboard-1.svg" alt="Cozy Scandinavian mood board" /></div>
+      <div class="board__caption">
+        <span class="board__title">Cozy Scandinavian</span>
+        <span class="board__tags">Warm · Colorful · Calm</span>
+      </div>
+      <span class="board__cta">Enter the style <span>→</span></span>
+    </a>
+
+    <a class="board reveal" href="style.html">
+      <span class="board__index">02</span>
+      <div class="board__frame"><img src="assets/img/moodboard-2.svg" alt="Warm Minimalist mood board" /></div>
+      <div class="board__caption">
+        <span class="board__title">Warm Minimalist</span>
+        <span class="board__tags">Quiet · Textural · Airy</span>
+      </div>
+      <span class="board__cta">Enter the style <span>→</span></span>
+    </a>
+
+    <a class="board reveal" href="style.html">
+      <span class="board__index">03</span>
+      <div class="board__frame"><img src="assets/img/moodboard-3.svg" alt="Vintage Eclectic mood board" /></div>
+      <div class="board__caption">
+        <span class="board__title">Vintage Eclectic</span>
+        <span class="board__tags">Layered · Collected · Bold</span>
+      </div>
+      <span class="board__cta">Enter the style <span>→</span></span>
+    </a>
+
+    <a class="board reveal" href="style.html">
+      <span class="board__index">04</span>
+      <div class="board__frame"><img src="assets/img/moodboard-4.svg" alt="Coastal Craftsman mood board" /></div>
+      <div class="board__caption">
+        <span class="board__title">Coastal Craftsman</span>
+        <span class="board__tags">Natural · Handmade · Soft</span>
+      </div>
+      <span class="board__cta">Enter the style <span>→</span></span>
+    </a>
+
+    <a class="board reveal" href="style.html">
+      <span class="board__index">05</span>
+      <div class="board__frame"><img src="assets/img/moodboard-5.svg" alt="Moody Maximalist mood board" /></div>
+      <div class="board__caption">
+        <span class="board__title">Moody Maximalist</span>
+        <span class="board__tags">Rich · Dramatic · Deep</span>
+      </div>
+      <span class="board__cta">Enter the style <span>→</span></span>
+    </a>
+
+  </section>
+
+  <!-- ============ MARQUEE ============ -->
+  <div class="marquee">
+    <div class="marquee__track">
+      <span>Thrift it</span><span>Paint it</span><span>DIY it</span><span>Splurge on it</span><span>Make it yours</span>
+    </div>
+  </div>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer wrap">
+    <p class="eyebrow">The fine print</p>
+    <h2>Made alongside my YouTube channel.</h2>
+    <p class="footer__note">Some links are affiliate links via ShopMy — I may earn a small commission at no cost to you.</p>
+  </footer>
+
+  <script src="assets/js/main.js?v=2"></script>
+</body>
+</html>
