@@ -372,9 +372,9 @@ body.home::before{ opacity:.015; }  /* barely-there grain over white */
   font-family:"Playfair Display",Georgia,serif; font-style:italic; font-weight:700;
   font-size:clamp(4rem,13.5vw,11.5rem); line-height:.86; color:var(--ink);
 }
-.masthead__accent::before{ /* yellow highlighter swipe */
+.masthead__accent::before{ /* highlighter swipe */
   content:""; position:absolute; left:-4%; right:-4%; top:26%; bottom:14%;
-  background:#ffe94a; transform:rotate(-1.6deg) skewX(-4deg); z-index:-1; border-radius:3px;
+  background:#80A4ED; transform:rotate(-1.6deg) skewX(-4deg); z-index:-1; border-radius:3px;
 }
 .masthead__sub{
   margin-top:1.5rem; font-size:clamp(1rem,1.4vw,1.15rem); color:var(--ink); line-height:1.5;
