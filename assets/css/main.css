@@ -355,11 +355,11 @@ body.home::before{ opacity:.015; }  /* barely-there grain over white */
 .nav--home .pill:hover{ background:var(--ink); color:#fff; }
 
 /* ---- The scattered stage ---- */
-.stage{ position:relative; min-height:142vh; }
+.stage{ position:relative; min-height:148vh; }
 
 /* ---- Centerpiece headline ---- */
 .masthead{
-  position:absolute; left:50%; top:12vh; transform:translateX(-50%);
+  position:absolute; left:50%; top:16vh; transform:translateX(-50%);
   width:min(82vw,600px); text-align:center; z-index:3; pointer-events:none;
 }
 .masthead__inner{ display:inline-block; }
@@ -389,12 +389,12 @@ body.home::before{ opacity:.015; }  /* barely-there grain over white */
 /* ---- Photo clusters ---- */
 .cluster{
   position:absolute; display:block; text-decoration:none; color:inherit;
-  width:min(33vw,275px); z-index:2;
+  width:min(35vw,302px); z-index:2;
 }
-.cluster__stack{ position:relative; height:min(33vw,258px); }
-.cluster--4 .cluster__stack{ height:min(40vw,318px); }
-.cluster--5{ width:min(46vw,392px); }
-.cluster--5 .cluster__stack{ height:min(42vw,338px); }
+.cluster__stack{ position:relative; height:min(35vw,284px); }
+.cluster--4 .cluster__stack{ height:min(42vw,346px); }
+.cluster--5{ width:min(48vw,422px); }
+.cluster--5 .cluster__stack{ height:min(44vw,368px); }
 .photo{
   position:absolute; background:#fff; padding:7px 7px 7px;
   box-shadow:0 10px 24px rgba(24,24,30,.15);
