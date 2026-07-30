@@ -23,12 +23,16 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").match
     else io.observe(el);
   });
 
-  // Safety net: nothing should ever stay invisible if JS/observer hiccups.
-  window.addEventListener("load", () => {
-    setTimeout(() => items.forEach((el) => {
-      if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add("in");
-    }), 400);
+  const revealInView = () => items.forEach((el) => {
+    if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add("in");
   });
+
+  // Safety net: nothing should ever stay invisible if JS/observer hiccups.
+  window.addEventListener("load", () => setTimeout(revealInView, 400));
+
+  // Layout can shift across breakpoints (resize / orientation) — re-check then.
+  let rt;
+  window.addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(revealInView, 150); });
 })();
 
 /* ---- 2. Tilt on hover: image leans toward the cursor ---- */
