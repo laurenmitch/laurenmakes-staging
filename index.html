@@ -51,13 +51,14 @@
     /* ---- Hero ---- */
     main{ flex:1; display:grid; place-items:center; padding:clamp(2rem,6vh,5rem) clamp(1.25rem,5vw,3rem); }
     .hero{ max-width:760px; text-align:center; }
+    .hero__logo{ display:block; height:clamp(96px,16vw,168px); width:auto; margin:0 auto; }
     .hero__eyebrow{
       font-family:var(--font-mono); font-size:.72rem; letter-spacing:.22em; text-transform:uppercase;
-      color:var(--blue-ink); margin-bottom:1.5rem;
+      color:var(--blue-ink); margin:1rem 0 0;
     }
     .hero__title{
-      font-family:var(--font-display); font-weight:800; line-height:.92;
-      font-size:clamp(3.2rem,9vw,6.5rem); letter-spacing:-.03em; margin:0;
+      font-family:var(--font-display); font-weight:500; line-height:1;
+      font-size:clamp(1.5rem,3vw,2.15rem); letter-spacing:-.005em; margin:1.1rem 0 0;
     }
     .hero__title .hl{
       position:relative; display:inline-block; z-index:0;
@@ -107,8 +108,9 @@
 
   <main>
     <section class="hero">
-      <p class="hero__eyebrow">interiors · crafts · real homes</p>
+      <img class="hero__logo" src="assets/img/lm-logo.svg" alt="Lauren Makes — LM monogram" />
       <h1 class="hero__title">Lauren <span class="hl">Makes</span></h1>
+      <p class="hero__eyebrow">interiors · crafts · real homes</p>
       <div class="hero__cta">
         <a class="btn" href="design-guides/">explore free design guides <span>→</span></a>
       </div>
