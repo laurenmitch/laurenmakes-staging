@@ -187,16 +187,29 @@ body::before {
    ========================================================= */
 .style-hero {
   min-height: 82vh;
-  display: grid; align-content: center;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;   /* text · north-star image */
+  align-items: center;
+  gap: clamp(2rem, 5vw, 5rem);
   padding: 6rem 0 4rem;
 }
-.style-hero h1 { font-size: clamp(3rem, 9vw, 8rem); max-width: 12ch; }
+.style-hero h1 { font-size: clamp(2.75rem, 6vw, 6rem); max-width: 12ch; }
 .style-hero__lead { max-width: 46ch; margin-top: 1.5rem; font-size: 1.2rem; color: var(--ink-soft); }
 .style-hero__scroll {
   margin-top: 3.5rem;
   font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
   color: var(--ink-soft);
 }
+/* North-star image — the one shot that captures this whole style */
+.style-hero__star {
+  margin: 0;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 4px;
+  background: var(--paper-2);
+  box-shadow: 0 22px 55px rgba(24,24,30,.16);
+}
+.style-hero__star img { width: 100%; height: 100%; object-fit: cover; }
 
 /* Generic section shell */
 .section { padding: clamp(4rem, 11vh, 9rem) 0; border-top: 1px solid var(--line); }
@@ -319,6 +332,8 @@ body::before {
 /* ---- Responsive ---- */
 @media (max-width: 860px) {
   .board, .board:nth-child(n) { grid-column: 1 / -1 !important; margin-top: 0 !important; }
+  .style-hero { grid-template-columns: 1fr; min-height: 0; gap: 2.5rem; }
+  .style-hero__star { aspect-ratio: 4 / 3; }
   .isnt { grid-template-columns: 1fr; }
   .collage { grid-auto-rows: 26vw; grid-template-columns: repeat(2, 1fr); }
   .tile--a,.tile--b,.tile--c,.tile--d,.tile--e { grid-column: span 1; grid-row: span 1; }
