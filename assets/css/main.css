@@ -356,7 +356,7 @@ body.home::before{ opacity:.015; }  /* barely-there grain over white */
 .nav--home .pill:hover{ background:var(--ink); color:#fff; }
 
 /* ---- The scattered stage ---- */
-.stage{ position:relative; min-height:148vh; }
+.stage{ position:relative; min-height:120vh; }
 
 /* ---- Centerpiece headline ---- */
 .masthead{
