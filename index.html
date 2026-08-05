@@ -8,7 +8,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Playfair+Display:ital,wght@1,600;1,700&family=Gabarito:wght@400;500;700;800&family=Inter:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Gabarito:wght@400;500;700;800&family=Inter:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
   <style>
     *,*::before,*::after{ box-sizing:border-box; }
@@ -55,13 +55,12 @@
     }
     .hero__title{
       font-family:var(--font-display); font-weight:800; line-height:.92;
-      font-size:clamp(2.9rem,8vw,5.5rem); letter-spacing:-.03em; margin:0;
+      font-size:clamp(3.2rem,9vw,6.5rem); letter-spacing:-.03em; margin:0;
     }
-    .hero__title .accent{
-      font-family:"Playfair Display",Georgia,serif; font-style:italic; font-weight:700;
+    .hero__title .hl{
       position:relative; display:inline-block; z-index:0;
     }
-    .hero__title .accent::before{
+    .hero__title .hl::before{
       content:""; position:absolute; left:-5%; right:-5%; top:24%; bottom:12%;
       background:var(--blue); transform:rotate(-1.6deg) skewX(-4deg); z-index:-1; border-radius:3px;
     }
@@ -108,11 +107,8 @@
   <main>
     <section class="hero">
       <p class="hero__eyebrow">interiors · crafts · real homes</p>
-      <h1 class="hero__title">design help that<br />actually feels <span class="accent">like you</span></h1>
-      <p class="hero__lead">
-        Hi, I'm Lauren. I make things — and I help real people design real homes on real budgets.
-        No showroom perfection, no pressure. Just honest ideas, thrifted finds, and a few strong opinions about paint.
-      </p>
+      <h1 class="hero__title">Lauren <span class="hl">Makes</span></h1>
+      <p class="hero__lead">Hey there! I'm Lauren, thanks for stopping by &lt;3</p>
       <div class="hero__cta">
         <a class="btn" href="design-guides/">explore free design guides <span>→</span></a>
         <span class="hero__note">personalized · free · no sign-up</span>
