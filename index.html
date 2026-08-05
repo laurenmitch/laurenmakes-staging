@@ -3,132 +3,126 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>laurenmakes — design guides</title>
-  <meta name="description" content="Free home decor guides for when you just need some guidance. A personalized interior style for each of my people." />
+  <title>laurenmakes — interiors & crafts</title>
+  <meta name="description" content="Interiors, crafts, and honest design help for real homes on real budgets. Free design guides, made alongside my YouTube channel @lauren_makes." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Playfair+Display:ital,wght@1,600;1,700&family=Gabarito:wght@400;500;700;800&family=Inter:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="assets/css/main.css?v=20" />
+  <style>
+    *,*::before,*::after{ box-sizing:border-box; }
+    :root{
+      --ink:#1a1712; --ink-soft:#5e564a; --blue:#80A4ED; --blue-ink:#3a5bbf;
+      --font-display:"Gabarito","Space Grotesk",system-ui,sans-serif;
+      --font-body:"Inter",system-ui,-apple-system,sans-serif;
+      --font-mono:"Space Mono",ui-monospace,monospace;
+      --ease:cubic-bezier(0.22,1,0.36,1);
+    }
+    html{ -webkit-font-smoothing:antialiased; }
+    body{
+      margin:0; min-height:100vh; color:var(--ink);
+      font-family:var(--font-body); line-height:1.6;
+      background:#fdfdfc;
+      background-image:
+        linear-gradient(to right, rgba(20,20,26,.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(20,20,26,.05) 1px, transparent 1px);
+      background-size:46px 46px;
+      display:flex; flex-direction:column;
+    }
+    a{ color:inherit; text-decoration:none; }
+
+    /* ---- Nav ---- */
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:1.25rem clamp(1.25rem,4vw,3rem);
+    }
+    .nav__brand{ font-family:var(--font-display); font-weight:800; font-size:1.25rem; letter-spacing:-.02em; }
+    .nav__brand b{ color:var(--blue-ink); font-weight:800; }
+    .nav__yt{
+      font-family:var(--font-mono); font-size:.72rem; letter-spacing:.12em; text-transform:uppercase;
+      color:var(--ink-soft); border-bottom:2px solid var(--blue); padding-bottom:2px;
+      transition:color .3s var(--ease);
+    }
+    .nav__yt:hover{ color:var(--blue-ink); }
+
+    /* ---- Hero ---- */
+    main{ flex:1; display:grid; place-items:center; padding:clamp(2rem,6vh,5rem) clamp(1.25rem,5vw,3rem); }
+    .hero{ max-width:760px; text-align:center; }
+    .hero__eyebrow{
+      font-family:var(--font-mono); font-size:.72rem; letter-spacing:.22em; text-transform:uppercase;
+      color:var(--blue-ink); margin-bottom:1.5rem;
+    }
+    .hero__title{
+      font-family:var(--font-display); font-weight:800; line-height:.92;
+      font-size:clamp(2.9rem,8vw,5.5rem); letter-spacing:-.03em; margin:0;
+    }
+    .hero__title .accent{
+      font-family:"Playfair Display",Georgia,serif; font-style:italic; font-weight:700;
+      position:relative; display:inline-block; z-index:0;
+    }
+    .hero__title .accent::before{
+      content:""; position:absolute; left:-5%; right:-5%; top:24%; bottom:12%;
+      background:var(--blue); transform:rotate(-1.6deg) skewX(-4deg); z-index:-1; border-radius:3px;
+    }
+    .hero__lead{
+      margin:1.75rem auto 0; max-width:48ch;
+      font-size:clamp(1.05rem,1.6vw,1.2rem); color:var(--ink-soft);
+    }
+
+    /* ---- CTA ---- */
+    .hero__cta{ margin-top:2.5rem; display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; align-items:center; }
+    .btn{
+      display:inline-flex; align-items:center; gap:.6em;
+      font-family:var(--font-display); font-weight:700; font-size:1.05rem; letter-spacing:-.01em;
+      padding:.9em 1.6em; border-radius:999px;
+      background:var(--ink); color:#fff;
+      transition:transform .3s var(--ease), background .3s var(--ease);
+    }
+    .btn:hover{ background:var(--blue-ink); transform:translateY(-2px); }
+    .btn span{ transition:transform .3s var(--ease); }
+    .btn:hover span{ transform:translateX(5px); }
+    .hero__note{
+      font-family:var(--font-mono); font-size:.68rem; letter-spacing:.1em; text-transform:uppercase;
+      color:var(--ink-soft);
+    }
+
+    /* ---- Footer ---- */
+    footer{
+      padding:2rem clamp(1.25rem,4vw,3rem);
+      font-family:var(--font-mono); font-size:.68rem; letter-spacing:.08em; text-transform:uppercase;
+      color:var(--ink-soft); text-align:center;
+    }
+    footer a{ border-bottom:1px solid var(--blue); }
+
+    @media (prefers-reduced-motion:reduce){ *{ transition-duration:.001ms !important; } }
+  </style>
 </head>
-<body class="home">
+<body>
 
-  <!-- Sky backdrop -->
-  <div class="sky" aria-hidden="true"></div>
-
-  <!-- ============ NAV ============ -->
-  <header class="nav nav--home">
-    <a class="nav__brand" href="index.html"><img class="nav__logo" src="assets/img/logo.png" alt="laurenmakes" /></a>
-    <nav class="nav__links">
-      <a class="pill" href="style.html">cottagecore</a>
-      <a class="pill" href="style.html">scandi</a>
-      <a class="pill" href="style.html">elevated country</a>
-      <a class="pill" href="style.html">moody eclectic</a>
-      <a class="pill" href="style.html">warm minimal</a>
-    </nav>
+  <header class="nav">
+    <a class="nav__brand" href="index.html">lauren<b>makes</b></a>
+    <a class="nav__yt" href="https://www.youtube.com/@lauren_makes" target="_blank" rel="noopener">@lauren_makes ↗</a>
   </header>
 
-  <!-- ============ THE STAGE (scattered collage) ============ -->
   <main>
-  <section class="stage">
-
-    <!-- Centerpiece headline -->
-    <div class="masthead">
-      <div class="masthead__inner reveal">
-        <span class="masthead__word">design</span>
-        <span class="masthead__accent">guides</span>
-        <p class="masthead__sub">
-          free home decor guides for <span class="annot-wave">when</span>
-          you just need some <span class="annot-underline">guidance</span>
-        </p>
+    <section class="hero">
+      <p class="hero__eyebrow">interiors · crafts · real homes</p>
+      <h1 class="hero__title">design help that<br />actually feels <span class="accent">like you</span></h1>
+      <p class="hero__lead">
+        Hi, I'm Lauren. I make things — and I help real people design real homes on real budgets.
+        No showroom perfection, no pressure. Just honest ideas, thrifted finds, and a few strong opinions about paint.
+      </p>
+      <div class="hero__cta">
+        <a class="btn" href="design-guides/">explore free design guides <span>→</span></a>
+        <span class="hero__note">personalized · free · no sign-up</span>
       </div>
-    </div>
-
-    <!-- cursor flourish -->
-    <svg class="cursor" style="left:44%;top:31vh;" viewBox="0 0 20 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M1 1l0 20 5-5 3 7 3-1-3-7 7 0z" fill="#1a1712" stroke="#fff" stroke-width="1.2" stroke-linejoin="round"/>
-    </svg>
-
-    <!-- Cluster 1 -->
-    <a class="cluster cluster--4 reveal" href="style.html" style="left:3%;top:9vh;" aria-label="cottagecore — for victoria">
-      <div class="cluster__stack">
-        <figure class="photo photo--file" style="width:44%;left:2%;top:4%;--r:-5deg;"><img src="assets/img/inspo-1.svg" alt="" /><figcaption class="photo__file">Details.jpg</figcaption></figure>
-        <figure class="photo photo--polaroid" style="width:40%;left:52%;top:0;--r:4deg;"><img src="assets/img/moodboard-1.svg" alt="" /></figure>
-        <figure class="photo photo--insta" style="width:42%;left:6%;top:48%;--r:3deg;"><img src="assets/img/product-1.svg" alt="" /></figure>
-        <figure class="photo photo--polaroid" style="width:38%;left:54%;top:44%;--r:-3deg;"><img src="assets/img/inspo-3.svg" alt="" /></figure>
-      </div>
-      <div class="cluster__label">
-        <span class="cluster__style">cottagecore</span>
-        <span class="cluster__person">for victoria</span>
-      </div>
-    </a>
-
-    <!-- Cluster 2 -->
-    <a class="cluster reveal" href="style.html" style="left:76%;top:9vh;" aria-label="elevated country — for sofia">
-      <div class="cluster__stack">
-        <figure class="photo photo--insta" style="width:46%;left:2%;top:0;--r:3deg;"><img src="assets/img/inspo-4.svg" alt="" /></figure>
-        <figure class="photo photo--file" style="width:42%;left:52%;top:12%;--r:-4deg;"><img src="assets/img/product-2.svg" alt="" /><figcaption class="photo__file">Details.jpg</figcaption></figure>
-        <figure class="photo photo--polaroid" style="width:46%;left:22%;top:38%;--r:2deg;"><img src="assets/img/moodboard-3.svg" alt="" /></figure>
-      </div>
-      <div class="cluster__label">
-        <span class="cluster__style">elevated country</span>
-        <span class="cluster__person">for sofia</span>
-      </div>
-    </a>
-
-    <!-- Cluster 3 -->
-    <a class="cluster cluster--5 reveal" href="style.html" style="left:3%;top:67vh;" aria-label="scandi — for maya">
-      <div class="cluster__stack">
-        <figure class="photo photo--insta" style="width:32%;left:0;top:10%;--r:-6deg;"><img src="assets/img/moodboard-2.svg" alt="" /></figure>
-        <figure class="photo photo--file" style="width:30%;left:35%;top:0;--r:3deg;"><img src="assets/img/inspo-5.svg" alt="" /><figcaption class="photo__file">Details.jpg</figcaption></figure>
-        <figure class="photo photo--polaroid" style="width:30%;left:69%;top:10%;--r:-3deg;"><img src="assets/img/product-3.svg" alt="" /></figure>
-        <figure class="photo photo--insta" style="width:32%;left:14%;top:52%;--r:4deg;"><img src="assets/img/moodboard-4.svg" alt="" /></figure>
-        <figure class="photo photo--polaroid" style="width:30%;left:52%;top:54%;--r:-4deg;"><img src="assets/img/inspo-2.svg" alt="" /></figure>
-      </div>
-      <div class="cluster__label">
-        <span class="cluster__style">scandi</span>
-        <span class="cluster__person">for maya</span>
-      </div>
-    </a>
-
-    <!-- Cluster 4 -->
-    <a class="cluster cluster--4 reveal" href="style.html" style="left:76%;top:67vh;" aria-label="moody eclectic — for jess">
-      <div class="cluster__stack">
-        <figure class="photo photo--file" style="width:44%;left:0;top:4%;--r:4deg;"><img src="assets/img/moodboard-5.svg" alt="" /><figcaption class="photo__file">Mood.jpg</figcaption></figure>
-        <figure class="photo photo--polaroid" style="width:40%;left:52%;top:0;--r:-3deg;"><img src="assets/img/product-1.svg" alt="" /></figure>
-        <figure class="photo photo--insta" style="width:42%;left:8%;top:48%;--r:3deg;"><img src="assets/img/inspo-4.svg" alt="" /></figure>
-        <figure class="photo photo--insta" style="width:38%;left:54%;top:44%;--r:-2deg;"><img src="assets/img/moodboard-1.svg" alt="" /></figure>
-      </div>
-      <div class="cluster__label">
-        <span class="cluster__style">moody eclectic</span>
-        <span class="cluster__person">for jess</span>
-      </div>
-    </a>
-
-    <!-- Cluster 5 -->
-    <a class="cluster reveal" href="style.html" style="left:39%;top:90vh;" aria-label="warm minimal — for ren">
-      <div class="cluster__stack">
-        <figure class="photo photo--insta" style="width:46%;left:2%;top:2%;--r:-3deg;"><img src="assets/img/moodboard-4.svg" alt="" /></figure>
-        <figure class="photo photo--polaroid" style="width:42%;left:52%;top:14%;--r:4deg;"><img src="assets/img/inspo-2.svg" alt="" /></figure>
-        <figure class="photo photo--file" style="width:48%;left:24%;top:40%;--r:-2deg;"><img src="assets/img/product-2.svg" alt="" /><figcaption class="photo__file">Mood.jpg</figcaption></figure>
-      </div>
-      <div class="cluster__label">
-        <span class="cluster__style">warm minimal</span>
-        <span class="cluster__person">for ren</span>
-      </div>
-    </a>
-
-  </section>
+    </section>
   </main>
 
-  <!-- ============ FOOTER ============ -->
-  <footer class="footer wrap">
-    <p class="eyebrow">The fine print</p>
-    <h2>Made alongside my YouTube channel, <a class="footer__yt" href="https://www.youtube.com/@lauren_makes" target="_blank" rel="noopener">@lauren_makes</a>.</h2>
-    <p class="footer__note">Some links are affiliate links via ShopMy — I may earn a small commission at no cost to you.</p>
+  <footer>
+    Made alongside my YouTube channel, <a href="https://www.youtube.com/@lauren_makes" target="_blank" rel="noopener">@lauren_makes</a>.
   </footer>
 
-  <script src="assets/js/main.js?v=3"></script>
 </body>
 </html>
