@@ -12,14 +12,35 @@
 
   <link rel="stylesheet" href="../assets/css/main.css?v=20" />
 
-  <!-- PER-STYLE THEME — change these to reskin this whole page for each friend.
-       Set --paper to this style's FIRST palette color; the rest follow. -->
+  <!-- PER-STYLE THEME — base look matches the design-guides page: white grid + periwinkle blue.
+       These tokens re-skin the whole page; the paint swatches in the body are separate (real color recs). -->
   <style>
     :root {
-      --paper:   #efeae0;  /* Cozy Scandinavian · Warm Chalk (1st swatch) */
-      --paper-2: #e6e0d3;  /* cards — a slightly deeper tint of the bg     */
-      --clay:    #b3654a;  /* accent — pull one color from the palette     */
+      --paper:   #fdfdfc;  /* page background — near-white, like the guides page */
+      --paper-2: #eef1f8;  /* cards / panels — faint cool tint                   */
+      --clay:    #3a5bbf;  /* accent text (links, marks) — deep periwinkle       */
+      --sage:    #80A4ED;  /* secondary accent — the highlighter blue            */
+      --line:    #e3e4ec;  /* hairline borders on white                          */
     }
+
+    /* Grid background, fixed full-bleed — matches the design-guides page */
+    body {
+      background: #fdfdfc;
+      background-image:
+        linear-gradient(to right, rgba(20,20,26,.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(20,20,26,.05) 1px, transparent 1px);
+      background-size: 46px 46px;
+      background-attachment: fixed;
+    }
+    body::before { opacity: .015; }  /* barely-there grain over white */
+
+    /* Alternating section tints, re-keyed from clay/sage to the blue palette */
+    .section--thrift  { background: linear-gradient(180deg, transparent, rgba(128,164,237,.07)); }
+    .section--diy     { background: linear-gradient(180deg, transparent, rgba(58,91,191,.05)); }
+    .section--splurge { background: var(--paper-2); }
+
+    /* Collage hover note — cool white instead of warm cream */
+    .tile__note { background: rgba(253,253,252,.9); }
   </style>
 </head>
 <body>
