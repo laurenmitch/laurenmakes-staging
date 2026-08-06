@@ -309,6 +309,68 @@ body::before {
 }
 .pick__link:hover { border-color: var(--clay); }
 
+/* Detail pills — extra links/credits under a pick (DIY: tutorial, creator, supplies) */
+.pick__meta { margin-top: 0.7rem; display: flex; flex-wrap: wrap; gap: 0.45rem; align-items: center; }
+.pick__pill {
+  font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.06em; text-transform: uppercase;
+  display: inline-flex; align-items: center; gap: 0.4em;
+  padding: 0.5em 0.85em; border-radius: 999px;
+  border: 1px solid var(--line); background: var(--paper); color: var(--ink);
+  text-decoration: none; transition: border-color .3s var(--ease), background .3s var(--ease), color .3s var(--ease);
+}
+a.pick__pill:hover { border-color: var(--clay); color: var(--clay); }
+.pick__pill--shop { background: var(--ink); color: #fff; border-color: var(--ink); }
+a.pick__pill--shop:hover { background: var(--clay); border-color: var(--clay); color: #fff; }
+.pick__pill--credit { text-transform: none; letter-spacing: 0.01em; color: var(--ink-soft); }
+
+/* DIY pick = editorial card: title-led header, image + notes body, action footer.
+   Cards stack full-width (never tile) so notes keep a comfortable measure. */
+.picks:has(.pick--diy) { display: grid; grid-template-columns: 1fr; gap: clamp(1.5rem, 3vw, 2.5rem); }
+.pick--diy {
+  display: grid;
+  grid-template-columns: minmax(200px, 320px) 1fr;
+  grid-template-areas:
+    "head    head"
+    "frame   notes"
+    "actions actions";
+  column-gap: clamp(1.5rem, 3vw, 2.5rem);
+  row-gap: clamp(1rem, 2vw, 1.4rem);
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 12px 34px rgba(24, 24, 30, 0.05);
+}
+.pick--diy .pick__head { grid-area: head; display: flex; align-items: center; gap: 0.75rem; }
+.pick--diy .pick__head .pick__name { margin: 0; }
+.pick--diy .pick__frame { grid-area: frame; aspect-ratio: 4 / 3; }
+.pick--diy .pick__notes { grid-area: notes; }
+.pick--diy .pick__actions {
+  grid-area: actions; display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;
+  padding-top: clamp(1rem, 2vw, 1.4rem); border-top: 1px solid var(--line);
+}
+.pick__badge--inline { position: static; }
+/* Zigzag: flip the image to the right on every other card so a stack reads with rhythm */
+.pick--diy:nth-of-type(even) {
+  grid-template-columns: 1fr minmax(200px, 320px);
+  grid-template-areas:
+    "head    head"
+    "notes   frame"
+    "actions actions";
+}
+.pick__notes-label {
+  font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--clay); margin: 0 0 0.6rem;
+}
+.pick__notes p { margin: 0 0 0.85rem; color: var(--ink); font-size: 0.98rem; line-height: 1.65; max-width: 60ch; }
+.pick__notes p:last-child { margin-bottom: 0; }
+@media (max-width: 700px) {
+  .pick--diy, .pick--diy:nth-of-type(even) {
+    grid-template-columns: 1fr;
+    grid-template-areas: "head" "frame" "notes" "actions";
+  }
+}
+
 /* Alternate section tints so each reads differently as you scroll */
 .section--thrift  { background: linear-gradient(180deg, transparent, rgba(138,154,123,.06)); }
 .section--diy     { background: linear-gradient(180deg, transparent, rgba(179,101,74,.05)); }
@@ -399,7 +461,7 @@ body.home::before{ opacity:.015; }  /* barely-there grain over white */
 }
 .masthead__sub{
   margin-top:1.5rem; font-size:clamp(1rem,1.4vw,1.15rem); color:var(--ink); line-height:1.5;
-  max-width:34ch; margin-inline:auto;
+  max-width:42ch; margin-inline:auto;
 }
 .annot-underline{ border-bottom:2.5px dashed #e0563f; padding-bottom:1px; }
 .annot-wave{
@@ -430,8 +492,8 @@ body.home::before{ opacity:.015; }  /* barely-there grain over white */
 .photo--insta{ padding:0; border-radius:14px; }    /* rounded, borderless, like an IG post */
 .photo--insta img{ border-radius:14px; }
 .photo:hover{
-  transform:rotate(calc(var(--r,0deg) + 3deg)) scale(1.06) translateY(-6px);
-  box-shadow:0 22px 44px rgba(24,24,30,.24); z-index:20;
+  transform:rotate(calc(var(--r,0deg) + 3deg)) scale(1.4) translateY(-10px);
+  box-shadow:0 30px 60px rgba(24,24,30,.28); z-index:30;
 }
 .photo__file{
   position:absolute; left:6px; bottom:-13px; white-space:nowrap;

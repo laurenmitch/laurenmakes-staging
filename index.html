@@ -76,8 +76,8 @@
     .hero__cta{ margin-top:2.5rem; display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; align-items:center; }
     .btn{
       display:inline-flex; align-items:center; gap:.6em;
-      font-family:var(--font-display); font-weight:700; font-size:1.05rem; letter-spacing:-.01em;
-      padding:.9em 1.6em; border-radius:999px;
+      font-family:var(--font-mono); font-weight:700; font-size:.9rem; letter-spacing:.12em; text-transform:uppercase;
+      padding:.95em 1.7em; border-radius:999px;
       background:var(--ink); color:#fff;
       transition:transform .3s var(--ease), background .3s var(--ease);
     }
@@ -102,17 +102,12 @@
 </head>
 <body>
 
-  <header class="nav">
-    <a class="nav__brand" href="index.html"><img class="nav__logo" src="assets/img/lm-logo.svg" alt="laurenmakes" /></a>
-  </header>
-
   <main>
     <section class="hero">
       <img class="hero__logo" src="assets/img/lm-logo.svg" alt="Lauren Makes — LM monogram" />
-      <h1 class="hero__title">Lauren <span class="hl">Makes</span></h1>
       <p class="hero__eyebrow">interiors · crafts · real homes</p>
       <div class="hero__cta">
-        <a class="btn" href="design-guides/">explore free design guides <span>→</span></a>
+        <a class="btn" href="design-guides/">explore design guides <span>→</span></a>
       </div>
     </section>
   </main>
