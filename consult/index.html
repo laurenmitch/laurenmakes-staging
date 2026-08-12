@@ -151,7 +151,7 @@
         <div class="step reveal">
           <h3>Send me the essentials</h3>
           <p><strong>Required:</strong> a link to your Pinterest board, plus a few sentences on your space and what you're hoping changes.</p>
-          <p><strong>Optional:</strong> photos of the room as it looks now.</p>
+          <p>Once everything's confirmed, I'll email you to grab any photos of the room as it looks now.</p>
         </div>
         <div class="step reveal">
           <h3>I build your guide</h3>
@@ -220,7 +220,7 @@
       <div class="faq reveal">
         <details>
           <summary>What do I need to send you?</summary>
-          <p>Just a Pinterest board link and a little about your space — what room it is, what's not working, what you're hoping changes. Photos are optional but helpful.</p>
+          <p>Just a Pinterest board link and a little about your space — what room it is, what's not working, what you're hoping changes. Once we've confirmed everything, I'll email you for photos of the room as it looks now.</p>
         </details>
         <details>
           <summary>How long will it take?</summary>
@@ -242,8 +242,9 @@
         <h2>Tell me about your space</h2>
       </div>
 
-      <form class="cform reveal" action="https://formspree.io/laurenmakescontact@gmail.com" method="POST" enctype="multipart/form-data">
+      <form class="cform reveal" action="https://formsubmit.co/laurenmakescontact@gmail.com" method="POST">
         <input type="hidden" name="_subject" value="New design consult inquiry" />
+        <input type="hidden" name="_template" value="table" />
 
         <div class="cform__row">
           <div>
@@ -266,11 +267,7 @@
           <textarea id="details" name="details" placeholder="What room is this for? What's not working? What are you hoping changes?" required></textarea>
         </div>
 
-        <div>
-          <label for="photos">Photos of your space (optional)</label>
-          <input type="file" id="photos" name="photos" accept="image/*" multiple />
-          <p class="cform__hint">Not required — but helpful if you have them.</p>
-        </div>
+        <p class="cform__hint">No need to attach photos here — once we've confirmed everything, I'll follow up by email and you can send them over then.</p>
 
         <button type="submit">Send inquiry</button>
       </form>
@@ -284,7 +281,7 @@
     <div class="footer__links">
       <a class="pill" href="../design-guides/">← Back to design guides</a>
     </div>
-    <p class="footer__note">I'm not a licensed interior designer — this is friendly, personal advice, not architectural or professional design services.</p>
+    <p class="footer__note">I'm not a licensed interior designer, I provide personal interior decorating advice, not architectural or professional design services.</p>
   </footer>
 
   <script src="../assets/js/main.js?v=6"></script>
