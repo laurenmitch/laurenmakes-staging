@@ -73,17 +73,19 @@
     }
 
     /* ---- CTA ---- */
-    .hero__cta{ margin-top:2.5rem; display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; align-items:center; }
+    .hero__cta{ margin-top:2.5rem; display:flex; flex-direction:column; gap:1rem; justify-content:center; align-items:center; }
     .btn{
       display:inline-flex; align-items:center; gap:.6em;
       font-family:var(--font-mono); font-weight:700; font-size:.9rem; letter-spacing:.12em; text-transform:uppercase;
       padding:.95em 1.7em; border-radius:999px;
-      background:var(--ink); color:#fff;
-      transition:transform .3s var(--ease), background .3s var(--ease);
+      background:var(--ink); color:#fff; border:2px solid var(--ink);
+      transition:transform .3s var(--ease), background .3s var(--ease), color .3s var(--ease);
     }
-    .btn:hover{ background:var(--blue-ink); transform:translateY(-2px); }
+    .btn:hover{ background:var(--blue-ink); border-color:var(--blue-ink); transform:translateY(-2px); }
     .btn span{ transition:transform .3s var(--ease); }
     .btn:hover span{ transform:translateX(5px); }
+    .btn--outline{ background:transparent; color:var(--ink); }
+    .btn--outline:hover{ background:var(--ink); border-color:var(--ink); color:#fff; }
     .hero__note{
       font-family:var(--font-mono); font-size:.68rem; letter-spacing:.1em; text-transform:uppercase;
       color:var(--ink-soft);
@@ -96,7 +98,6 @@
       color:var(--ink-soft); text-align:center;
     }
     footer a{ border-bottom:1px solid var(--blue); }
-    footer .footer__cta{ display:block; margin-top:.6rem; }
 
     @media (prefers-reduced-motion:reduce){ *{ transition-duration:.001ms !important; } }
   </style>
@@ -108,14 +109,14 @@
       <img class="hero__logo" src="assets/img/lm-logo.svg" alt="Lauren Makes — LM monogram" />
       <p class="hero__eyebrow">interiors · crafts · real homes</p>
       <div class="hero__cta">
-        <a class="btn" href="design-guides/">explore design guides <span>→</span></a>
+        <a class="btn" href="design-guides/">explore free design guides <span>→</span></a>
+        <a class="btn btn--outline" href="consult/">get your custom guide <span>→</span></a>
       </div>
     </section>
   </main>
 
   <footer>
     Made alongside my YouTube channel, <a href="https://www.youtube.com/@lauren_makes" target="_blank" rel="noopener">@lauren_makes</a>.
-    <span class="footer__cta">Want a guide like this, just for you? <a href="consult/">Hire me for a design consult →</a></span>
   </footer>
 
 </body>

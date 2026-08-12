@@ -280,14 +280,16 @@ body::before {
 .collage--masonry .tile img { width: 100%; height: auto; object-fit: fill; display: block; }
 
 /* 2 · Paint colors */
-.swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.25rem; }
+.swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); gap: 0.85rem; }
 .swatch { }
 .swatch__chip {
+  display: block; width: 100%;
   aspect-ratio: 4/3; border-radius: 2px; border: 1px solid rgba(0,0,0,.06);
+  object-fit: cover; background-size: cover; background-position: center;
   transition: transform .4s var(--ease);
 }
 .swatch:hover .swatch__chip { transform: translateY(-6px); }
-.swatch__name { margin-top: 0.75rem; font-family: var(--font-display); font-size: 1.15rem; }
+.swatch__name { margin-top: 0.6rem; font-family: var(--font-display); font-size: 0.95rem; }
 .swatch__meta { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.06em; color: var(--ink-soft); text-transform: uppercase; }
 
 /* 3–6 · Product rows (thrift / diy / splurge / buy) */
