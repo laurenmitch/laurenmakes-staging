@@ -65,6 +65,58 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").match
   });
 })();
 
+/* ---- 3b. Masonry: balance .collage--masonry tiles into the shortest column ---- */
+(() => {
+  const grids = document.querySelectorAll(".collage--masonry");
+  if (!grids.length) return;
+
+  grids.forEach((grid) => {
+    const tiles = Array.from(grid.querySelectorAll(".tile"));
+    if (!tiles.length) return;
+    const colCount = () => (grid.clientWidth < 520 ? 1 : grid.clientWidth < 900 ? 2 : 3);
+    let currentN = 0;
+
+    const build = () => {
+      const n = colCount();
+      const frag = document.createDocumentFragment();
+      const cols = [];
+      for (let i = 0; i < n; i++) {
+        const c = document.createElement("div");
+        c.className = "collage__col";
+        frag.appendChild(c);
+        cols.push({ el: c, h: 0 });
+      }
+      // Drop each photo into the currently shortest column. Predicted height is
+      // 1/aspect-ratio (all columns share a width), so no measuring pass is needed.
+      // Longest-first (LPT): place the tallest photos first, each into the shortest
+      // column. Predicted height is 1/aspect-ratio since every column shares a width.
+      tiles
+        .map((t) => {
+          const img = t.querySelector("img");
+          const ar = img && img.naturalWidth && img.naturalHeight ? img.naturalWidth / img.naturalHeight : 1;
+          return { t, ph: 1 / ar };
+        })
+        .sort((a, b) => b.ph - a.ph)
+        .forEach(({ t, ph }) => {
+          let short = cols[0];
+          for (const c of cols) if (c.h < short.h) short = c;
+          short.el.appendChild(t);
+          short.h += ph;
+        });
+      grid.replaceChildren(frag);
+      currentN = n;
+    };
+
+    build();
+    window.addEventListener("load", build); // re-balance once images report real sizes
+    let rt;
+    window.addEventListener("resize", () => {
+      clearTimeout(rt);
+      rt = setTimeout(() => { if (colCount() !== currentN) build(); }, 150);
+    });
+  });
+})();
+
 /* ---- 3. Marquee: duplicate the track so the loop is seamless ---- */
 (() => {
   const track = document.querySelector(".marquee__track");
