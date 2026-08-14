@@ -233,22 +233,30 @@ body::before {
 .isnt--is h3::after  { content: " ✓"; color: var(--sage); }
 .isnt--isnt { color: var(--ink-soft); }
 
-/* 1b · Through-lines — the recurring elements, connected in a line */
-.throughlines { display: flex; flex-wrap: wrap; align-items: center; row-gap: 1rem; }
-.throughline__item {
-  display: flex; align-items: center;
-  font-family: var(--font-display); font-size: 1rem; font-weight: 500;
-  color: var(--ink); white-space: nowrap;
+/* 1b · Through-lines — a little graphic: beaded line, labels zigzag above/below */
+.throughline { position: relative; padding: 2.5rem 0 .5rem; }
+.throughline__track {
+  position: absolute; left: 0; right: 0; top: 50%; height: 1px; transform: translateY(-.5px);
+  background-image: linear-gradient(to right, var(--clay) 45%, transparent 0%);
+  background-size: 9px 1px; background-repeat: repeat-x; opacity: .55;
 }
-.throughline__dot { width: 7px; height: 7px; border-radius: 50%; background: var(--clay); margin-right: .6rem; flex: 0 0 auto; }
-.throughline__item:not(:first-child)::before {
-  content: ""; display: inline-block; width: 2.75rem; height: 1px; margin: 0 .9rem;
-  background-image: linear-gradient(to right, var(--clay) 40%, transparent 0%);
-  background-size: 7px 1px; background-repeat: repeat-x;
+.throughline__nodes { position: relative; display: flex; justify-content: space-between; gap: clamp(1rem, 3vw, 2rem); }
+.throughline__node { display: flex; flex-direction: column-reverse; align-items: center; flex: 1 1 0; min-width: 0; }
+.throughline__node:nth-child(even) { flex-direction: column; }
+.throughline__bead {
+  width: 11px; height: 11px; border-radius: 50%; background: var(--clay);
+  border: 3px solid var(--paper); box-shadow: 0 0 0 1px var(--clay); flex: 0 0 auto;
 }
-@media (max-width: 640px) {
-  .throughlines { flex-direction: column; align-items: flex-start; row-gap: .85rem; }
-  .throughline__item:not(:first-child)::before { display: none; }
+.throughline__label {
+  margin: .7rem 0; max-width: 15ch; text-align: center; line-height: 1.3;
+  font-family: var(--font-display); font-weight: 500; font-size: .92rem; color: var(--ink);
+}
+@media (max-width: 760px) {
+  .throughline { padding: 0; }
+  .throughline__track { display: none; }
+  .throughline__nodes { flex-direction: column; align-items: flex-start; gap: 1.1rem; }
+  .throughline__node, .throughline__node:nth-child(even) { flex-direction: row; align-items: center; }
+  .throughline__label { max-width: none; text-align: left; margin: 0 0 0 .7rem; }
 }
 
 /* Inspiration collage — tilt-on-hover tiles */
