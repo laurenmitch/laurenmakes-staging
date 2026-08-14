@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Design consult — laurenmakes</title>
   <link rel="icon" type="image/svg+xml" href="../assets/img/lm-logo.svg" />
-  <meta name="description" content="A custom, practical decorating guide for your space — built from your Pinterest board. $200 flat, intro pricing." />
+  <meta name="description" content="Join the waitlist for a custom, practical decorating guide for your space." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -66,40 +66,17 @@
     .step p { color: var(--ink-soft); margin: 0; }
     .step p + p { margin-top: .6rem; }
 
-    /* ---- Pricing ---- */
-    .price-card {
-      text-align: center; padding: 1.75rem 2rem;
-      max-width: 380px; margin-inline: auto;
-      border: 1px solid var(--line); border-radius: 16px; background: rgba(255,255,255,.6);
-    }
-    .price-card__amount { font-family: var(--font-display); font-weight: 700; font-size: 2.5rem; line-height: 1; }
-    .price-card__amount sup { font-size: .4em; vertical-align: .6em; }
-    .price-card__note { margin-top: .6rem; font-family: var(--font-mono); font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); }
-    .price-card .btn { margin-top: 1.25rem; padding: .75em 1.4em; font-size: .82rem; }
-
-    /* ---- FAQ ---- */
-    .faq { max-width: 68ch; }
-    .faq details { border-bottom: 1px solid var(--line); padding: 1.25rem 0; }
-    .faq summary {
-      cursor: pointer; list-style: none; font-family: var(--font-display); font-size: 1.15rem;
-      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-    }
-    .faq summary::-webkit-details-marker { display: none; }
-    .faq summary::after { content: "+"; font-family: var(--font-mono); color: var(--clay); font-size: 1.3rem; flex-shrink: 0; }
-    .faq details[open] summary::after { content: "–"; }
-    .faq p { color: var(--ink-soft); margin: .9rem 0 0; max-width: 58ch; }
+    /* ---- Waitlist note ---- */
+    .waitlist-note { max-width: 58ch; color: var(--ink-soft); font-size: 1.05rem; margin-bottom: 2rem; }
 
     /* ---- Form ---- */
-    .cform { max-width: 640px; display: grid; gap: 1.25rem; }
-    .cform__row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .cform { max-width: 480px; display: grid; gap: 1.25rem; }
     .cform label { display: block; font-family: var(--font-mono); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: .5rem; }
-    .cform input[type="text"], .cform input[type="email"], .cform input[type="url"], .cform textarea, .cform input[type="file"] {
+    .cform input[type="email"] {
       width: 100%; font-family: var(--font-body); font-size: 1rem; color: var(--ink);
       background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: .8em 1em;
     }
-    .cform textarea { resize: vertical; min-height: 120px; }
-    .cform input:focus, .cform textarea:focus { outline: 2px solid var(--sage); outline-offset: 1px; }
-    .cform__hint { font-family: var(--font-body); font-size: .82rem; color: var(--ink-soft); margin-top: .4rem; }
+    .cform input:focus { outline: 2px solid var(--sage); outline-offset: 1px; }
     .cform button {
       justify-self: start; border: none; cursor: pointer;
       font-family: var(--font-mono); font-weight: 700; font-size: .9rem; letter-spacing: .12em; text-transform: uppercase;
@@ -107,7 +84,6 @@
       transition: background .3s var(--ease), transform .3s var(--ease);
     }
     .cform button:hover { background: var(--clay); transform: translateY(-2px); }
-    @media (max-width: 640px) { .cform__row { grid-template-columns: 1fr; } }
 
     .footer__links { display: flex; flex-wrap: wrap; gap: .75rem; }
   </style>
@@ -196,81 +172,26 @@
     </div>
   </section>
 
-  <!-- ============ PRICING ============ -->
-  <section class="section" id="pricing">
-    <div class="wrap">
-      <div class="section__head reveal">
-        <span class="section__num">03 / Pricing</span>
-        <h2>One flat rate</h2>
-      </div>
-      <div class="price-card reveal">
-        <p class="price-card__amount"><sup>$</sup>200</p>
-        <p class="price-card__note">Intro pricing while I build up my portfolio — delivered within 2 weeks</p>
-        <a class="btn" href="#start"><span>Get started</span> →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ FAQ ============ -->
-  <section class="section section--diy" id="faq">
-    <div class="wrap">
-      <div class="section__head reveal">
-        <span class="section__num">04 / Questions</span>
-        <h2>Good to know</h2>
-      </div>
-      <div class="faq reveal">
-        <details>
-          <summary>What do I need to send you?</summary>
-          <p>Just a Pinterest board link and a little about your space — what room it is, what's not working, what you're hoping changes. Once we've confirmed everything, I'll email you for photos of the room as it looks now.</p>
-        </details>
-        <details>
-          <summary>How long will it take?</summary>
-          <p>About 2 weeks from when I have everything I need from you.</p>
-        </details>
-        <details>
-          <summary>Is this the same as hiring an interior designer?</summary>
-          <p>No — I'm not a licensed interior designer. I provide personal interior decorating advice, not architectural or professional design services.</p>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ FORM ============ -->
+  <!-- ============ WAITLIST ============ -->
   <section class="section section--splurge" id="start">
     <div class="wrap">
       <div class="section__head reveal">
-        <span class="section__num">05 / Get started</span>
-        <h2>Tell me about your space</h2>
+        <span class="section__num">03 / Get on the list</span>
+        <h2>Join the waitlist</h2>
       </div>
 
+      <p class="waitlist-note reveal">I'm putting together my offer right now — I'll reach out to the waitlist first. Drop your email below if you're interested in working together on a room and getting a guide like the ones I've made for friends.</p>
+
       <form class="cform reveal" action="https://formsubmit.co/laurenmakescontact@gmail.com" method="POST">
-        <input type="hidden" name="_subject" value="New design consult inquiry" />
+        <input type="hidden" name="_subject" value="New design consult waitlist signup" />
         <input type="hidden" name="_template" value="table" />
 
-        <div class="cform__row">
-          <div>
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" required />
-          </div>
-          <div>
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required />
-          </div>
-        </div>
-
         <div>
-          <label for="pinterest">Pinterest board link</label>
-          <input type="url" id="pinterest" name="pinterest_board" placeholder="https://pinterest.com/..." required />
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
         </div>
 
-        <div>
-          <label for="details">Tell me about your space</label>
-          <textarea id="details" name="details" placeholder="What room is this for? What's not working? What are you hoping changes?" required></textarea>
-        </div>
-
-        <p class="cform__hint">No need to attach photos here — once we've confirmed everything, I'll follow up by email and you can send them over then.</p>
-
-        <button type="submit">Send inquiry</button>
+        <button type="submit">Join the waitlist</button>
       </form>
     </div>
   </section>
