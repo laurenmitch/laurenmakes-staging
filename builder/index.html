@@ -575,10 +575,10 @@ function buildGuideHTML(g){
       </div>`;
   const throughlines = throughLines.length ? `
       <div class="throughline reveal">
-        <div class="throughline__nodes" style="grid-template-columns:repeat(${throughLines.length},1fr)">
+        <div class="throughline__nodes" style="grid-template-columns:repeat(${throughLines.length},1fr);--tl-count:${throughLines.length}">
           <div class="throughline__track"></div>
-          ${throughLines.map(()=>`<span class="throughline__bead"></span>`).join('')}
-          ${throughLines.map(x=>`<span class="throughline__label">${esc(x)}</span>`).join('')}
+          ${throughLines.map((x,i)=>`<span class="throughline__bead" style="grid-column:${i+1}"></span>`).join('')}
+          ${throughLines.map((x,i)=>`<span class="throughline__label" style="grid-column:${i+1};grid-row:${i%2===0?3:1}">${esc(x)}</span>`).join('')}
         </div>
       </div>` : '';
   const collage = inspo.length ? `
