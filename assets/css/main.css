@@ -391,6 +391,7 @@ a.pick__pill--shop:hover { background: var(--clay); border-color: var(--clay); c
   display: grid; gap: 2rem;
 }
 .footer h2 { max-width: 16ch; }
+.footer__notes { display: grid; gap: 0.5rem; }
 .footer__note { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; color: var(--ink-soft); text-transform: uppercase; }
 .footer__yt { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; text-decoration-color: var(--clay); transition: color .3s var(--ease); }
 .footer__yt:hover { color: var(--clay); }
