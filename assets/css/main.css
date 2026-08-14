@@ -460,7 +460,7 @@ body.home::before{ opacity:.015; }  /* barely-there grain over white */
 }
 .masthead__accent{
   display:inline-block; position:relative; margin-top:.18em;
-  font-family:"Playfair Display",Georgia,serif; font-style:italic; font-weight:700;
+  font-family:"Space Grotesk","Inter",system-ui,sans-serif; font-weight:700;
   font-size:clamp(4rem,13.5vw,11.5rem); line-height:.86; color:var(--ink);
 }
 .masthead__accent::before{ /* highlighter swipe */
