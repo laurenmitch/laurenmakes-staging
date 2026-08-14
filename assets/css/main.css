@@ -233,6 +233,24 @@ body::before {
 .isnt--is h3::after  { content: " ✓"; color: var(--sage); }
 .isnt--isnt { color: var(--ink-soft); }
 
+/* 1b · Through-lines — the recurring elements, connected in a line */
+.throughlines { display: flex; flex-wrap: wrap; align-items: center; row-gap: 1rem; }
+.throughline__item {
+  display: flex; align-items: center;
+  font-family: var(--font-display); font-size: 1rem; font-weight: 500;
+  color: var(--ink); white-space: nowrap;
+}
+.throughline__dot { width: 7px; height: 7px; border-radius: 50%; background: var(--clay); margin-right: .6rem; flex: 0 0 auto; }
+.throughline__item:not(:first-child)::before {
+  content: ""; display: inline-block; width: 2.75rem; height: 1px; margin: 0 .9rem;
+  background-image: linear-gradient(to right, var(--clay) 40%, transparent 0%);
+  background-size: 7px 1px; background-repeat: repeat-x;
+}
+@media (max-width: 640px) {
+  .throughlines { flex-direction: column; align-items: flex-start; row-gap: .85rem; }
+  .throughline__item:not(:first-child)::before { display: none; }
+}
+
 /* Inspiration collage — tilt-on-hover tiles */
 .collage {
   display: grid;
