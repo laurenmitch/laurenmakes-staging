@@ -658,7 +658,7 @@ function buildGuideHTML(g){
   <section class="section" id="the-style">
     <div class="wrap">
       <div class="section__head reveal">
-        <span class="section__num">${N()} / The style</span>
+        <span class="section__num">${N()} / Your style</span>
         <h2>How I'd describe it</h2>
       </div>${isnt}${collage}
     </div>
@@ -667,7 +667,7 @@ function buildGuideHTML(g){
   <section class="section" id="throughlines">
     <div class="wrap">
       <div class="section__head reveal">
-        <span class="section__num">${N()} / The signature</span>
+        <span class="section__num">${N()} / What I am noticing</span>
         <h2>Through-lines</h2>
       </div>${throughlines}
     </div>
@@ -681,10 +681,10 @@ function buildGuideHTML(g){
       </div>${swatches}
     </div>
   </section>` : '';
-  const secThrift  = pickSection('Hunt for it', 'What to thrift', 'thrift', 'Thrift', 'section--thrift');
+  const secThrift  = pickSection('You can find it', 'What to thrift', 'thrift', 'Thrift', 'section--thrift');
   const secDiy     = pickSection('Make it', 'What to DIY', 'diy', 'DIY', 'section--diy');
   const secSplurge = pickSection('Worth it', 'What to splurge on', 'splurge', 'Splurge', 'section--splurge');
-  const secBuy     = pickSection('The list', 'What to buy', 'buy', 'Buy', '');
+  const secBuy     = pickSection('Items to consider', 'What to buy', 'buy', 'Buy', '');
 
   return `<!DOCTYPE html>
 <html lang="en">
