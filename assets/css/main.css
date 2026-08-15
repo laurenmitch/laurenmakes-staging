@@ -473,7 +473,7 @@ body.home::before{ opacity:.015; }  /* barely-there grain over white */
 .nav--home .pill:hover{ background:var(--ink); color:#fff; }
 
 /* ---- The scattered stage ---- */
-.stage{ position:relative; min-height:250vh; }
+.stage{ position:relative; min-height:170vh; }
 
 /* ---- Centerpiece headline ---- */
 .masthead{
@@ -505,14 +505,14 @@ body.home::before{ opacity:.015; }  /* barely-there grain over white */
 }
 
 /* ---- Photo clusters ---- */
-/* Every cluster is a hero photo (bigger, centered, on top) plus two
-   smaller satellites peeking from behind it — same shape everywhere,
-   so one size fits all instead of the old --4/--5 count-based variants. */
 .cluster{
   position:absolute; display:block; text-decoration:none; color:inherit;
-  width:min(46vw,420px); z-index:2;
+  width:min(35vw,302px); z-index:2;
 }
-.cluster__stack{ position:relative; height:min(50vw,440px); }
+.cluster__stack{ position:relative; height:min(35vw,284px); }
+.cluster--4 .cluster__stack{ height:min(42vw,346px); }
+.cluster--5{ width:min(48vw,422px); }
+.cluster--5 .cluster__stack{ height:min(44vw,368px); }
 .photo{
   position:absolute; background:#fff; padding:7px 7px 7px;
   box-shadow:0 10px 24px rgba(24,24,30,.15);
@@ -520,21 +520,15 @@ body.home::before{ opacity:.015; }  /* barely-there grain over white */
   transition:transform .35s var(--ease), box-shadow .35s var(--ease);
   will-change:transform;
 }
-.photo img{ display:block; width:100%; height:auto; aspect-ratio:4/5; object-fit:cover; }
+.photo img{ display:block; width:100%; height:auto; }
 
 /* Frame variants (default .photo = "file" frame, paired with a .photo__file tag) */
 .photo--polaroid{ padding:8px 8px 26px; }          /* classic polaroid: thick blank bottom, no filename */
 .photo--insta{ padding:0; border-radius:14px; }    /* rounded, borderless, like an IG post */
 .photo--insta img{ border-radius:14px; }
 .photo:hover{
-  transform:rotate(calc(var(--r,0deg) + 3deg)) scale(1.8) translateY(-10px);
+  transform:rotate(calc(var(--r,0deg) + 3deg)) scale(1.4) translateY(-10px);
   box-shadow:0 30px 60px rgba(24,24,30,.28); z-index:30;
-}
-/* Hero: bigger box-shadow to read as the focal photo. Hover scales less
-   than satellites since it's already the biggest photo in the cluster. */
-.photo--hero{ box-shadow:0 18px 38px rgba(24,24,30,.24); }
-.photo--hero:hover{
-  transform:rotate(calc(var(--r,0deg) + 2deg)) scale(1.2) translateY(-8px);
 }
 .photo__file{
   position:absolute; left:6px; bottom:-13px; white-space:nowrap;
