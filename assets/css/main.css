@@ -82,7 +82,9 @@ body::before {
   display: flex; align-items: center; justify-content: space-between;
   padding: 1rem var(--gutter);
   mix-blend-mode: multiply;
+  transition: transform .35s var(--ease);
 }
+.nav.nav--hidden { transform: translateY(-100%); }
 .nav__brand { font-family: var(--font-display); font-size: 1.25rem; letter-spacing: -0.01em; display: inline-flex; align-items: center; }
 .nav__logo { height: 34px; width: auto; display: block; }
 .nav__links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0.5rem; }
@@ -437,10 +439,10 @@ a.pick__pill--shop:hover { background: var(--clay); border-color: var(--clay); c
 .footer {
   border-top: 1px solid var(--line);
   padding: clamp(3rem, 8vh, 6rem) 0;
-  display: grid; gap: 2rem;
+  display: grid; gap: clamp(2rem, 6vh, 3.5rem);
 }
 .footer h2 { max-width: 16ch; }
-.footer__notes { display: grid; gap: 0.5rem; }
+.footer__notes { display: grid; gap: 0.85rem; }
 .footer__note { margin: 0; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; color: var(--ink-soft); text-transform: uppercase; }
 .footer__yt { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; text-decoration-color: var(--clay); transition: color .3s var(--ease); }
 .footer__yt:hover { color: var(--clay); }
