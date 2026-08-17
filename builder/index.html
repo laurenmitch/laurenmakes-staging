@@ -582,7 +582,7 @@ function buildGuideHTML(g){
         </div>
       </div>` : '';
   const collage = inspo.length ? `
-      <div class="collage">
+      <div class="collage collage--masonry">
         ${inspo.map((it,i)=>`<figure class="tile ${tileClasses[i%5]}"><img src="${esc(imgPath(it.image,inspoDefaults[i%5]))}" alt="" /><figcaption class="tile__note">${esc(it.note||'')}</figcaption></figure>`).join('\n        ')}
       </div>` : '';
   const swatches = palette.length ? `
