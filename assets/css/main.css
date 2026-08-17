@@ -100,7 +100,7 @@ body::before {
    below the sticky nav so it scrolls away once you leave the top of
    the page instead of crowding the header the whole time you read. */
 .guide-switcher {
-  display: flex; flex-wrap: wrap; justify-content: flex-start;
+  display: flex; flex-wrap: wrap; justify-content: flex-end;
   gap: 0.5rem; padding: 0 var(--gutter) 1.5rem;
 }
 .pill--light {
