@@ -250,13 +250,14 @@ body::before {
 .throughline { position: relative; padding: .5rem 0; }
 .throughline__nodes {
   position: relative; display: grid;
-  grid-template-rows: auto 11px auto; row-gap: .75rem; column-gap: 0;
+  grid-template-rows: auto 18px auto; row-gap: .75rem; column-gap: 0;
 }
 .throughline__track {
   grid-column: 1 / -1; grid-row: 2; align-self: center;
-  height: 1px; margin-inline: calc(50% / var(--tl-count, 1));
-  background-image: linear-gradient(to right, var(--ink) 45%, transparent 0%);
-  background-size: 9px 1px; background-repeat: repeat-x; opacity: .5;
+  height: 18px; margin-inline: calc(50% / var(--tl-count, 1));
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='18'%3E%3Cpath d='M0 9 Q7 1 14 9 T28 9' fill='none' stroke='%231a1712' stroke-width='1.4' stroke-dasharray='2.5 4' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-size: 28px 18px; background-repeat: repeat-x; background-position: center;
+  opacity: .5;
 }
 .throughline__bead {
   grid-row: 2; align-self: center; justify-self: center; position: relative; z-index: 1;
@@ -271,6 +272,12 @@ body::before {
 .throughline__label img {
   width: 128px; height: 128px; object-fit: cover; border-radius: 50%;
   box-shadow: 0 4px 12px rgba(24,24,30,.15);
+  transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+}
+.throughline__label:hover img {
+  transform: scale(1.18);
+  box-shadow: 0 10px 24px rgba(24,24,30,.28);
+  position: relative; z-index: 2;
 }
 @media (max-width: 760px) {
   .throughline__nodes { grid-template-columns: 1fr !important; grid-template-rows: none; row-gap: 1.1rem; }
