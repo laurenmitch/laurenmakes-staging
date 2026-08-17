@@ -96,13 +96,6 @@ body::before {
 }
 .pill:hover { background: var(--ink); color: var(--paper); }
 
-/* Guide-switcher: non-sticky row of links to sibling guides, sits just
-   below the sticky nav so it scrolls away once you leave the top of
-   the page instead of crowding the header the whole time you read. */
-.guide-switcher {
-  display: flex; flex-wrap: wrap; justify-content: flex-end;
-  gap: 0.5rem; padding: 0 var(--gutter) 1.5rem;
-}
 .pill--light {
   background: #fff; border-color: rgba(20,20,26,.4);
   color: var(--ink); text-transform: lowercase; letter-spacing: 0.02em;
