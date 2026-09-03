@@ -512,7 +512,7 @@ body.home::before{ opacity:.015; }  /* barely-there grain over white */
 
 /* ---- Centerpiece headline ---- */
 .masthead{
-  position:absolute; left:50%; top:26vh; transform:translateX(-50%);
+  position:absolute; left:50%; top:34vh; transform:translateX(-50%);
   width:min(86vw,660px); text-align:center; z-index:3; pointer-events:none;
 }
 .masthead__inner{ display:inline-block; }
