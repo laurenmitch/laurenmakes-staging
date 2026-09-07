@@ -74,6 +74,7 @@
 
     /* ---- Form ---- */
     .cform { max-width: 520px; display: grid; gap: 1.5rem; }
+    .cform[hidden] { display: none; }
     .cform label { display: block; font-family: var(--font-mono); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: .5rem; }
     .cform .opt { color: var(--sage); letter-spacing: .1em; }
     .cform .hint { display: block; font-family: var(--font-body); font-size: .9rem; letter-spacing: 0; text-transform: none; color: var(--ink-soft); margin-top: -.3rem; margin-bottom: .5rem; }
@@ -95,8 +96,7 @@
     .cform button[disabled] { opacity: .6; cursor: default; transform: none; }
 
     .cform__thanks { max-width: 520px; }
-    .cform__thanks h3 { font-family: var(--font-display); font-size: 1.6rem; margin: 0 0 .5rem; }
-    .cform__thanks p { color: var(--ink-soft); line-height: 1.6; margin: 0; }
+    .cform__thanks h3 { font-family: var(--font-display); font-size: 1.6rem; margin: 0; }
 
     .footer__links { display: flex; flex-wrap: wrap; gap: .75rem; }
 
@@ -189,7 +189,6 @@
 
       <div class="cform__thanks reveal" id="interest-thanks" hidden>
         <h3>Got it, thank you!</h3>
-        <p>I'll be in touch soon. If you think of more inspo later, just reply to my email and send it over.</p>
       </div>
     </div>
   </section>
