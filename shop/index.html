@@ -56,7 +56,18 @@
     @keyframes slide{ to{ transform:translateX(-50%); } }
 
     /* ---- Hero ---- */
-    .hero{ padding:clamp(2.5rem,7vh,5rem) 0 clamp(1.5rem,4vh,2.5rem); }
+    .hero{ padding:clamp(2rem,6vh,4rem) 0 clamp(1.5rem,4vh,2.5rem); display:grid; grid-template-columns:1fr clamp(220px,28vw,340px); grid-template-areas:"title photo" "lead lead" "guide guide"; column-gap:clamp(1.5rem,4vw,3.5rem); align-items:end; }
+    .hero__title{ grid-area:title; }
+    .hero__lead{ grid-area:lead; }
+    .guide-link{ grid-area:guide; justify-self:start; }
+    .hero__photo{ grid-area:photo; margin:0; aspect-ratio:1; border-radius:22px; overflow:hidden; border:1.5px solid var(--ink); box-shadow:6px 6px 0 var(--blue); background:#d8d1c5; position:relative; }
+    .hero__photo img{ width:100%; height:100%; object-fit:cover; object-position:50% 38%; display:block; }
+    .hero__photo .ph{ display:none; position:absolute; inset:0; place-items:center; text-align:center; }
+    .hero__photo.is-missing img{ display:none; }
+    .hero__photo.is-missing .ph{ display:grid; }
+    .hero__photo .ph svg{ width:70%; overflow:visible; }
+    .hero__photo .ph small{ position:absolute; bottom:.8rem; left:0; right:0; font-family:var(--font-mono); font-size:.6rem; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft); }
+    @media (max-width:640px){ .hero{ grid-template-columns:1fr; grid-template-areas:"title" "photo" "lead" "guide"; } .hero__photo{ margin-top:1.4rem; width:min(100%,360px); } }
     .guide-link{ margin-top:1.4rem; display:inline-flex; align-items:center; gap:.85rem; padding:.75rem 1.1rem .75rem .85rem; background:#fff; border:1.5px solid var(--ink); border-radius:14px; box-shadow:4px 4px 0 var(--blue); transition:transform .3s var(--ease), box-shadow .3s var(--ease); }
     .guide-link:hover{ transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--blue); }
     .guide-link .icon-star{ width:2rem; height:2rem; transition:transform .6s var(--ease); }
@@ -67,7 +78,7 @@
     .guide-link:hover i{ transform:translateX(4px); }
     .hero__eyebrow{ color:var(--blue-ink); margin:0 0 1rem; display:flex; align-items:center; gap:.6em; }
     .icon-star{ width:1.4em; height:1.4em; display:inline-block; vertical-align:-.3em; }
-    .hero h1{ font-family:var(--font-display); font-weight:500; font-size:clamp(2.6rem,7vw,5.6rem); line-height:.95; letter-spacing:-.035em; margin:0; }
+    .hero h1{ font-family:var(--font-display); font-weight:500; font-size:clamp(2.4rem,6vw,4.8rem); line-height:.98; letter-spacing:-.035em; margin:0; }
     .hero h1 em{ font-family:var(--font-accent); font-style:italic; font-weight:600; letter-spacing:-.02em; }
     .hl{ position:relative; display:inline-block; z-index:0; }
     .hl::before{ content:""; position:absolute; left:-4%; right:-4%; top:30%; bottom:6%; background:var(--blue); transform:rotate(-1.6deg) skewX(-4deg); z-index:-1; border-radius:3px; }
@@ -120,10 +131,10 @@
     .is-reserved .piece__hint{ display:none; }
 
     /* Sold: stays visible, whole card goes gray */
-    .is-sold .piece__media, .is-sold .piece__body{ filter:grayscale(1); }
+    .is-sold .piece__img--off{ filter:grayscale(1); opacity:.55; }
     .is-sold .piece__media{ background:#ecebe8; }
-    .is-sold .piece__img{ opacity:.6; }
-    .is-sold .piece__media:hover .piece__img--on{ opacity:.7; }
+    .is-sold .piece__media:hover{ background:#d8d1c5; }
+    .is-sold .piece__price, .is-sold .badge{ filter:grayscale(1); }
     .is-sold .piece__no, .is-sold .piece__name, .is-sold .piece__spec{ color:var(--sold); }
 
     .piece__body{ display:grid; grid-template-columns:1fr auto; column-gap:1rem; padding:.85rem .15rem 0; }
@@ -246,7 +257,17 @@
 
   <main class="wrap">
     <section class="hero">
-      <h1>star-shaped <span class="hl">sconce</span> <em>drop</em></h1>
+      <div class="hero__title">
+        <p class="hero__eyebrow mono"><img class="icon-star" src="../assets/img/star.svg" alt="" />laurenmakes pottery shop</p>
+        <h1>star-shaped plug-in wall <span class="hl">sconce</span> <em>drop</em></h1>
+      </div>
+      <figure class="hero__photo">
+        <img src="../assets/img/shop/hero-bedroom.jpg" alt="A lit blue star sconce on a bedroom wall beside the bed, casting rays of light" onerror="this.parentNode.classList.add('is-missing')" />
+        <div class="ph" aria-hidden="true">
+          <svg viewBox="0 0 100 100"><defs><radialGradient id="hg" cx="50" cy="50" r="62" gradientUnits="userSpaceOnUse"><stop offset=".4" stop-color="#fff1c4"/><stop offset="1" stop-color="#fff1c4" stop-opacity="0"/></radialGradient></defs><circle cx="50" cy="50" r="62" fill="url(#hg)"/><path transform="translate(20 20) scale(.6)" d="M50.0 2.0 Q62.1 20.7 83.9 16.1 Q79.3 37.9 98.0 50.0 Q79.3 62.1 83.9 83.9 Q62.1 79.3 50.0 98.0 Q37.9 79.3 16.1 83.9 Q20.7 62.1 2.0 50.0 Q20.7 37.9 16.1 16.1 Q37.9 20.7 50.0 2.0 Z" fill="#3d5a63"/></svg>
+          <small>bedroom photo goes here</small>
+        </div>
+      </figure>
       <p class="hero__lead">Every sconce here is one-of-one, thrown, glazed, and fired by me, Lauren. Shipping to the US and Canada.</p>
       <a class="guide-link" href="guide/"><img class="icon-star" src="../assets/img/star.svg" alt="" /><span><b>How to hang &amp; light your star</b>What's in the box, how it works, and getting it on your wall</span><i aria-hidden="true">→</i></a>
     </section>
@@ -302,7 +323,8 @@
           <dt>Glaze</dt><dd id="d-glaze"></dd>
           <dt>Clay</dt><dd id="d-clay"></dd>
           <dt>Size</dt><dd id="d-size"></dd>
-          <dt>Fitting</dt><dd><span class="todo">cord / socket / bulb</span></dd>
+          <dt>Hanging</dt><dd>Two screws hold it on the wall, and it plugs into a regular outlet. No electrician, no wiring.</dd>
+          <dt>Bulb</dt><dd><span class="todo">bulb type / included?</span></dd>
           <dt>Shipping</dt><dd id="d-ship"></dd>
         </dl>
         <button class="buy" id="d-buy" type="button"></button>
