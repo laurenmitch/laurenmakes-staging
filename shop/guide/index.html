@@ -6,7 +6,7 @@
   <meta name="robots" content="noindex" />
   <title>how to hang &amp; light your star · laurenmakes</title>
   <link rel="icon" type="image/svg+xml" href="../../assets/img/lm-logo.svg" />
-  <meta name="description" content="What comes with your star sconce, how it works, and how to hang and light it." />
+  <meta name="description" content="What comes with your star sconce, what you need, and how to hang it." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -40,8 +40,12 @@
     .glow{ aspect-ratio:1; border-radius:50%; background:var(--wall); display:grid; place-items:center; overflow:hidden; }
     .glow svg{ width:100%; height:100%; overflow:visible; }
 
-    .toc{ display:flex; flex-wrap:wrap; gap:.5rem; margin:1.5rem 0 1rem; padding:0; list-style:none; }
-    .toc a{ text-decoration:none; }
+    .picks{ display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1rem 0; }
+    .pick{ background:#fff; border:1.5px solid var(--ink); border-radius:12px; padding:.8rem 1rem; box-shadow:4px 4px 0 var(--blue); }
+    .pick p{ margin:0; }
+    .pick .mono{ color:var(--blue-ink); margin-bottom:.3rem; }
+    section li b{ color:var(--ink); font-weight:600; }
+    @media (max-width:640px){ .picks{ grid-template-columns:1fr; } }
 
     section{ border-top:1.5px solid var(--ink); padding:1.8rem 0 .6rem; display:grid; grid-template-columns:3rem 1fr; gap:0 1rem; }
     .num{ font-family:var(--font-display); font-weight:800; font-size:2rem; line-height:1; color:var(--blue-ink); }
@@ -71,7 +75,7 @@
       <div>
         <p class="hero__eyebrow mono">the pottery shop · care &amp; setup</p>
         <h1>how to hang &amp; <em>light</em> your star</h1>
-        <p class="lead">Everything you need to get your sconce out of the box and glowing on your wall.</p>
+        <p class="lead">It's simple: two screws, a pendant cord and a bulb.</p>
       </div>
       <div class="glow" aria-hidden="true">
         <svg viewBox="0 0 200 200">
@@ -89,66 +93,52 @@
       </div>
     </div>
 
-    <ul class="toc">
-      <li><a class="pill" href="#box">in the box</a></li>
-      <li><a class="pill" href="#works">how it works</a></li>
-      <li><a class="pill" href="#hang">hang it</a></li>
-      <li><a class="pill" href="#light">light it up</a></li>
-      <li><a class="pill" href="#care">care</a></li>
-    </ul>
-
     <section id="box">
       <span class="num">01</span>
       <div>
         <h2>What's in the box</h2>
         <ul>
-          <li>Your star sconce, one of one</li>
-          <li><span class="todo">Cord: length, color (the twisted cloth cord in the photo?), inline switch?</span></li>
-          <li><span class="todo">Bulb: included or not, and which kind</span></li>
-          <li><span class="todo">Mounting hardware: screws, anchors, a hanging cleat?</span></li>
-          <li><span class="todo">Anything else, like a little card from you</span></li>
+          <li>Your star sconce</li>
+          <li>A paper hanging guide that shows exactly where to drill your two screws</li>
         </ul>
       </div>
     </section>
 
-    <section id="works">
+    <section id="need">
       <span class="num">02</span>
       <div>
-        <h2>How it works</h2>
-        <p>The bulb sits behind the star, so you never see it directly. Light spills out around the edges and fans across the wall in rays between the points.</p>
-        <p><span class="todo">How the bulb attaches to the back, and the standoff that keeps the star off the wall.</span></p>
+        <h2>What you'll need</h2>
+        <ul>
+          <li><b>Two screws</b> (plus wall anchors if you're going into drywall), or any hanging method you like</li>
+          <li><b>A plug-in pendant cord</b> with a socket and an on/off switch</li>
+          <li><b>A light bulb</b></li>
+        </ul>
+        <div class="picks">
+          <div class="pick">
+            <p class="mono">cord I recommend</p>
+            <p><span class="todo">Cord pick + link (e.g. a UL-listed cloth plug-in pendant cord from Color Cord Co.)</span></p>
+          </div>
+          <div class="pick">
+            <p class="mono">bulb I recommend</p>
+            <p><span class="todo">Bulb pick + link. A warm white (2700K) LED stays cool behind the ceramic. Note the max size that fits.</span></p>
+          </div>
+        </div>
       </div>
     </section>
 
     <section id="hang">
       <span class="num">03</span>
       <div>
-        <h2>Hang it</h2>
+        <h2>How to hang it</h2>
+        <p>The bulb sits behind the star, so you never see it directly. The light spills out around the points and fans across the wall.</p>
         <ol>
-          <li><span class="todo">Pick a spot within reach of an outlet. Suggested height?</span></li>
-          <li><span class="todo">Mark and drill / screw in the hardware (wall anchors for drywall).</span></li>
-          <li><span class="todo">Hang the star and check it's level.</span></li>
-          <li><span class="todo">Run the cord down to the outlet. Cord cover or clips optional.</span></li>
+          <li>Tape the paper hanging guide to the wall where you want your star, and drill where it shows.</li>
+          <li>Put in your two screws, leaving them sticking out a little.</li>
+          <li>Screw the bulb into your pendant cord and set it in place behind the star.</li>
+          <li>Hang the sconce on the screws. It sits flush against the wall.</li>
+          <li>Plug it in and switch it on.</li>
         </ol>
-        <div class="tip"><b>Lauren's tip</b><span class="todo">e.g. hang it a little higher than you think, so the rays have room to spread.</span></div>
-      </div>
-    </section>
-
-    <section id="light">
-      <span class="num">04</span>
-      <div>
-        <h2>Light it up</h2>
-        <p><span class="todo">Bulb type and max wattage, warm vs. cool, whether it works with dimmers or smart plugs.</span></p>
-        <div class="tip"><b>Lauren's tip</b><span class="todo">e.g. a warm 2700K bulb gives the softest glow.</span></div>
-      </div>
-    </section>
-
-    <section id="care">
-      <span class="num">05</span>
-      <div>
-        <h2>Care</h2>
-        <p><span class="todo">Dusting, changing the bulb, anything to avoid.</span></p>
-        <p>Every star is handmade, so small speckles, glaze pools and slight unevenness are part of what makes yours one of one.</p>
+        <p>To change the bulb, just lift the star off the screws.</p>
       </div>
     </section>
 
