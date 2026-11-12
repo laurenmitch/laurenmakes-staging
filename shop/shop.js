@@ -100,7 +100,10 @@
     </article>`;
   }
   function render() {
-    grid.innerHTML = pieces.map(card).join("");
+    // Available first, then held, then sold; keep piece-number order within each group.
+    const rank = { available: 0, reserved: 1, sold: 2 };
+    const sorted = pieces.slice().sort((a, b) => rank[status(a)] - rank[status(b)] || a.no.localeCompare(b.no));
+    grid.innerHTML = sorted.map(card).join("");
     const open = pieces.filter(p => status(p) === "available").length;
     $("#count").textContent = open === 0 ? "Sold out · thank you!" : `${open} of ${pieces.length} still available`;
   }
