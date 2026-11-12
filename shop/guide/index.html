@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>how to hang &amp; light your star · laurenmakes</title>
+  <link rel="icon" type="image/svg+xml" href="../../assets/img/lm-logo.svg" />
+  <meta name="description" content="What comes with your star sconce, how it works, and how to hang and light it." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;700;800&family=Inter:wght@400;500&family=Playfair+Display:ital,wght@1,600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    *,*::before,*::after{ box-sizing:border-box; }
+    :root{
+      --ink:#1a1712; --ink-soft:#5e564a; --paper:#fdfdfc; --blue:#80A4ED; --blue-ink:#3a5bbf; --wall:#d8d1c5; --line:#e3ddd2;
+      --font-display:"Gabarito",system-ui,sans-serif; --font-body:"Inter",system-ui,-apple-system,sans-serif;
+      --font-mono:"Space Mono",ui-monospace,monospace; --font-accent:"Playfair Display",Georgia,serif;
+      --ease:cubic-bezier(0.22,1,0.36,1); --gutter:clamp(16px,4vw,3rem);
+    }
+    html{ -webkit-font-smoothing:antialiased; }
+    body{ margin:0; color:var(--ink); font-family:var(--font-body); line-height:1.65; background:var(--paper);
+      background-image:linear-gradient(to right, rgba(20,20,26,.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(20,20,26,.05) 1px, transparent 1px);
+      background-size:46px 46px; }
+    a{ color:inherit; }
+    .mono{ font-family:var(--font-mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; }
+    .nav{ display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1.1rem var(--gutter); }
+    .nav img{ height:32px; display:block; }
+    .pill{ font-family:var(--font-mono); font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; padding:.5em 1em; border:1px solid var(--ink); border-radius:999px; background:#fff; text-decoration:none; }
+    .pill:hover{ background:var(--ink); color:#fff; }
+    .wrap{ max-width:820px; margin:0 auto; padding:0 var(--gutter) 4rem; }
+
+    .hero{ display:grid; grid-template-columns:1fr 220px; gap:2rem; align-items:center; padding:clamp(2rem,6vh,4rem) 0 1rem; }
+    .hero__eyebrow{ color:var(--blue-ink); margin:0 0 .8rem; }
+    h1{ font-family:var(--font-display); font-weight:500; font-size:clamp(2.4rem,6vw,4.2rem); line-height:.95; letter-spacing:-.035em; margin:0; }
+    h1 em{ font-family:var(--font-accent); font-weight:600; }
+    .lead{ margin:1.2rem 0 0; color:var(--ink-soft); font-size:1.08rem; max-width:46ch; }
+    .glow{ aspect-ratio:1; border-radius:50%; background:var(--wall); display:grid; place-items:center; overflow:hidden; }
+    .glow svg{ width:100%; height:100%; overflow:visible; }
+
+    .toc{ display:flex; flex-wrap:wrap; gap:.5rem; margin:1.5rem 0 1rem; padding:0; list-style:none; }
+    .toc a{ text-decoration:none; }
+
+    section{ border-top:1.5px solid var(--ink); padding:1.8rem 0 .6rem; display:grid; grid-template-columns:3rem 1fr; gap:0 1rem; }
+    .num{ font-family:var(--font-display); font-weight:800; font-size:2rem; line-height:1; color:var(--blue-ink); }
+    h2{ font-family:var(--font-display); font-weight:600; font-size:1.6rem; letter-spacing:-.02em; margin:0 0 .6rem; line-height:1.1; }
+    section p, section li{ color:var(--ink-soft); }
+    section ul, section ol{ padding-left:1.2rem; margin:.4rem 0 1rem; }
+    section li{ margin:.3rem 0; }
+    .todo{ background:#fff4c9; border-radius:3px; padding:0 .25em; color:#6b5300; }
+    .tip{ background:#fff; border:1.5px solid var(--ink); border-radius:12px; padding:.8rem 1rem; box-shadow:4px 4px 0 var(--blue); margin:1rem 0; font-size:.95rem; }
+    .tip b{ font-family:var(--font-mono); font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; display:block; color:var(--blue-ink); }
+
+    .back{ display:inline-flex; gap:.6em; align-items:center; margin-top:2rem; font-family:var(--font-mono); font-weight:700; font-size:.85rem; letter-spacing:.12em; text-transform:uppercase; padding:.95em 1.6em; border-radius:999px; background:var(--ink); color:#fff; text-decoration:none; }
+    .back:hover{ background:var(--blue-ink); }
+    footer{ text-align:center; color:var(--ink-soft); padding:0 var(--gutter) 2.5rem; }
+
+    @media (max-width:640px){ .hero{ grid-template-columns:1fr; } .glow{ width:160px; } section{ grid-template-columns:1fr; } .num{ margin-bottom:.4rem; } }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <a href="../../"><img src="../../assets/img/lm-logo.svg" alt="laurenmakes home" /></a>
+    <a class="pill" href="../">← back to the shop</a>
+  </header>
+
+  <main class="wrap">
+    <div class="hero">
+      <div>
+        <p class="hero__eyebrow mono">the pottery shop · care &amp; setup</p>
+        <h1>how to hang &amp; <em>light</em> your star</h1>
+        <p class="lead">Everything you need to get your sconce out of the box and glowing on your wall.</p>
+      </div>
+      <div class="glow" aria-hidden="true">
+        <svg viewBox="0 0 200 200">
+          <defs>
+            <radialGradient id="g" cx="100" cy="100" r="120" gradientUnits="userSpaceOnUse"><stop offset=".35" stop-color="#fff1c4" stop-opacity=".95"/><stop offset="1" stop-color="#fff1c4" stop-opacity="0"/></radialGradient>
+            <filter id="b" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5"/></filter>
+          </defs>
+          <g filter="url(#b)" fill="url(#g)">
+            <path d="M100 100 L135 -10 L170 15 Z"/><path d="M100 100 L210 65 L210 135 Z"/><path d="M100 100 L170 185 L135 210 Z"/><path d="M100 100 L65 210 L30 185 Z"/>
+            <path d="M100 100 L-10 135 L-10 65 Z"/><path d="M100 100 L30 15 L65 -10 Z"/><path d="M100 100 L185 30 L210 65 Z"/><path d="M100 100 L15 170 L-10 135 Z"/>
+            <circle cx="100" cy="100" r="80"/>
+          </g>
+          <path transform="translate(40 40) scale(1.2)" d="M50.0 2.0 Q62.1 20.7 83.9 16.1 Q79.3 37.9 98.0 50.0 Q79.3 62.1 83.9 83.9 Q62.1 79.3 50.0 98.0 Q37.9 79.3 16.1 83.9 Q20.7 62.1 2.0 50.0 Q20.7 37.9 16.1 16.1 Q37.9 20.7 50.0 2.0 Z" fill="#2c3f6b" stroke="#ffe7a8" stroke-width="1.5"/>
+        </svg>
+      </div>
+    </div>
+
+    <ul class="toc">
+      <li><a class="pill" href="#box">in the box</a></li>
+      <li><a class="pill" href="#works">how it works</a></li>
+      <li><a class="pill" href="#hang">hang it</a></li>
+      <li><a class="pill" href="#light">light it up</a></li>
+      <li><a class="pill" href="#care">care</a></li>
+    </ul>
+
+    <section id="box">
+      <span class="num">01</span>
+      <div>
+        <h2>What's in the box</h2>
+        <ul>
+          <li>Your star sconce, one of one</li>
+          <li><span class="todo">Cord: length, color (the twisted cloth cord in the photo?), inline switch?</span></li>
+          <li><span class="todo">Bulb: included or not, and which kind</span></li>
+          <li><span class="todo">Mounting hardware: screws, anchors, a hanging cleat?</span></li>
+          <li><span class="todo">Anything else, like a little card from you</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="works">
+      <span class="num">02</span>
+      <div>
+        <h2>How it works</h2>
+        <p>The bulb sits behind the star, so you never see it directly. Light spills out around the edges and fans across the wall in rays between the points.</p>
+        <p><span class="todo">How the bulb attaches to the back, and the standoff that keeps the star off the wall.</span></p>
+      </div>
+    </section>
+
+    <section id="hang">
+      <span class="num">03</span>
+      <div>
+        <h2>Hang it</h2>
+        <ol>
+          <li><span class="todo">Pick a spot within reach of an outlet. Suggested height?</span></li>
+          <li><span class="todo">Mark and drill / screw in the hardware (wall anchors for drywall).</span></li>
+          <li><span class="todo">Hang the star and check it's level.</span></li>
+          <li><span class="todo">Run the cord down to the outlet. Cord cover or clips optional.</span></li>
+        </ol>
+        <div class="tip"><b>Lauren's tip</b><span class="todo">e.g. hang it a little higher than you think, so the rays have room to spread.</span></div>
+      </div>
+    </section>
+
+    <section id="light">
+      <span class="num">04</span>
+      <div>
+        <h2>Light it up</h2>
+        <p><span class="todo">Bulb type and max wattage, warm vs. cool, whether it works with dimmers or smart plugs.</span></p>
+        <div class="tip"><b>Lauren's tip</b><span class="todo">e.g. a warm 2700K bulb gives the softest glow.</span></div>
+      </div>
+    </section>
+
+    <section id="care">
+      <span class="num">05</span>
+      <div>
+        <h2>Care</h2>
+        <p><span class="todo">Dusting, changing the bulb, anything to avoid.</span></p>
+        <p>Every star is handmade, so small speckles, glaze pools and slight unevenness are part of what makes yours one of one.</p>
+      </div>
+    </section>
+
+    <a class="back" href="../">back to the shop <span>→</span></a>
+  </main>
+
+  <footer class="mono"><p>Questions? <span class="todo">your email</span></p></footer>
+</body>
+</html>

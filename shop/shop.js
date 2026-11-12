@@ -17,50 +17,53 @@
   let myHold = null; // piece number the current visitor is holding
   pieces.forEach(p => { if (p.status === "reserved") holds[p.no] = { until: Date.now() + (p.heldSeconds || HOLD) * 1000, mine: false }; });
 
-  const status = p => (holds[p.no] ? "reserved" : p.status);
+  // A hold that has ended (or a "reserved" piece with no live hold) is available again.
+  const status = p => (holds[p.no] ? "reserved" : p.status === "sold" ? "sold" : "available");
   const left = no => (holds[no].until - Date.now()) / 1000;
 
   /* ---------- Placeholder sconce illustrations (swap for photos) ---------- */
   function rng(seed) { let s = seed * 9301 + 49297; return () => ((s = (s * 9301 + 49297) % 233280) / 233280); }
-  const SHAPES = {
-    arch:  { d: "M58 216 V100 a42 42 0 0 1 84 0 V216 Z", cup: 196, glazeTo: 168 },
-    tall:  { d: "M70 226 V68 a30 30 0 0 1 60 0 V226 Z", cup: 204, glazeTo: 176 },
-    moon:  { d: "M100 52 a70 70 0 1 1 -0.1 0 Z",          cup: 170, glazeTo: 150 },
-    shell: { d: "M36 178 Q36 64 100 50 Q164 64 164 178 Z", cup: 168, glazeTo: 140 }
-  };
+  // Lauren's star: eight points joined by scooped (concave) edges.
+  // Shared with the site-wide star icon (assets/img/star.svg).
+  function starPath(cx, cy, R, scoop) {
+    const P = k => { const a = -Math.PI / 2 + k * Math.PI / 4; return [cx + Math.cos(a) * R, cy + Math.sin(a) * R]; };
+    const C = k => { const a = -Math.PI / 2 + (k + 0.5) * Math.PI / 4; return [cx + Math.cos(a) * R * scoop, cy + Math.sin(a) * R * scoop]; };
+    const f = v => v[0].toFixed(1) + " " + v[1].toFixed(1);
+    let d = "M" + f(P(0));
+    for (let k = 0; k < 8; k++) d += " Q" + f(C(k)) + " " + f(P(k + 1));
+    return d + " Z";
+  }
+  const CX = 100, CY = 125, R = 82;
+  const STAR = starPath(CX, CY, R, 0.66);
   let uid = 0;
   function sconce(p, lit) {
-    const S = SHAPES[p.shape] || SHAPES.arch, r = rng(parseInt(p.no, 10) * 7 + 3), id = "s" + (uid++);
-    let drips = "";
-    for (let i = 0; i < 7; i++) {
-      const x = 40 + r() * 120, len = 8 + r() * 26, w = 5 + r() * 7;
-      drips += `<rect x="${x.toFixed(1)}" y="${S.glazeTo - 6}" width="${w.toFixed(1)}" height="${(len + 6).toFixed(1)}" rx="${(w / 2).toFixed(1)}" fill="${p.glaze}"/>`;
-    }
+    const r = rng(parseInt(p.no, 10) * 7 + 3), id = "s" + (uid++);
     let specks = "";
-    for (let i = 0; i < 46; i++) specks += `<circle cx="${(30 + r() * 140).toFixed(1)}" cy="${(40 + r() * 190).toFixed(1)}" r="${(0.5 + r() * 1.1).toFixed(2)}" fill="#3b2b1c" opacity="${(0.18 + r() * 0.3).toFixed(2)}"/>`;
-    let ribs = "";
-    if (p.shape === "shell") for (let i = 0; i < 7; i++) { const a = Math.PI * (0.12 + i * 0.127); ribs += `<line x1="100" y1="${S.cup}" x2="${(100 - Math.cos(a) * 80).toFixed(1)}" y2="${(S.cup - Math.sin(a) * 120).toFixed(1)}" stroke="${p.drip}" stroke-width="2" opacity=".35"/>`; }
-    const c = S.cup;
-    return `<svg viewBox="0 0 200 250" role="img" aria-label="No. ${p.no}, ${p.name}${lit ? ", lit" : ""}" xmlns="http://www.w3.org/2000/svg">
+    for (let i = 0; i < 55; i++) specks += `<circle cx="${(25 + r() * 150).toFixed(1)}" cy="${(45 + r() * 160).toFixed(1)}" r="${(0.5 + r() * 1.3).toFixed(2)}" fill="${p.drip}" opacity="${(0.25 + r() * 0.4).toFixed(2)}"/>`;
+    // Light escaping through the scooped notches, fanning out on the wall.
+    let rays = "";
+    if (lit) for (let k = 0; k < 8; k++) {
+      const a = -Math.PI / 2 + (k + 0.5) * Math.PI / 4, w = 0.2, L = 230;
+      const x1 = CX + Math.cos(a - w) * L, y1 = CY + Math.sin(a - w) * L, x2 = CX + Math.cos(a + w) * L, y2 = CY + Math.sin(a + w) * L;
+      rays += `<path d="M${CX} ${CY} L${x1.toFixed(1)} ${y1.toFixed(1)} L${x2.toFixed(1)} ${y2.toFixed(1)} Z" fill="url(#${id}r)"/>`;
+    }
+    return `<svg viewBox="0 0 200 250" overflow="visible" role="img" aria-label="No. ${p.no}, ${p.name}${lit ? ", lit" : ""}" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <clipPath id="${id}c"><path d="${S.d}"/></clipPath>
-        <radialGradient id="${id}g" cx="50%" cy="${(c - 16) / 2.5}%" r="62%"><stop offset="0" stop-color="#ffd98a" stop-opacity=".95"/><stop offset=".35" stop-color="#ffc56b" stop-opacity=".45"/><stop offset="1" stop-color="#ffc56b" stop-opacity="0"/></radialGradient>
-        <linearGradient id="${id}w" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#fff3d1" stop-opacity=".75"/><stop offset=".7" stop-color="#fff3d1" stop-opacity="0"/></linearGradient>
-        <filter id="${id}s" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="3" dy="6" stdDeviation="5" flood-color="#2a2016" flood-opacity="${lit ? 0.18 : 0.28}"/></filter>
+        <clipPath id="${id}c"><path d="${STAR}"/></clipPath>
+        <radialGradient id="${id}g" cx="${CX}" cy="${CY}" r="${R * 1.45}" gradientUnits="userSpaceOnUse"><stop offset=".55" stop-color="#fff4cf" stop-opacity=".95"/><stop offset="1" stop-color="#fff4cf" stop-opacity="0"/></radialGradient>
+        <radialGradient id="${id}r" cx="${CX}" cy="${CY}" r="230" gradientUnits="userSpaceOnUse"><stop offset=".3" stop-color="#fff1c4" stop-opacity=".9"/><stop offset="1" stop-color="#fff1c4" stop-opacity="0"/></radialGradient>
+        <radialGradient id="${id}b" cx="45%" cy="40%" r="65%"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".7" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".12"/></radialGradient>
+        <filter id="${id}f" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="5"/></filter>
+        <filter id="${id}s" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="3" dy="6" stdDeviation="5" flood-color="#2a2016" flood-opacity=".28"/></filter>
       </defs>
-      ${lit ? `<rect width="200" height="250" fill="url(#${id}g)"/>` : ""}
-      <g filter="url(#${id}s)"><path d="${S.d}" fill="${p.clay}"/></g>
+      ${lit ? `<g filter="url(#${id}f)">${rays}<circle cx="${CX}" cy="${CY}" r="${R * 1.45}" fill="url(#${id}g)"/></g>` : ""}
+      <g ${lit ? "" : `filter="url(#${id}s)"`}><path d="${STAR}" fill="${p.glaze}"/></g>
       <g clip-path="url(#${id}c)">
-        <rect x="0" y="0" width="200" height="${S.glazeTo}" fill="${p.glaze}"/>
-        ${drips}
-        <rect x="0" y="${S.glazeTo - 3}" width="200" height="3" fill="${p.drip}" opacity=".35"/>
-        ${ribs}${specks}
-        ${lit ? `<rect width="200" height="250" fill="url(#${id}w)"/>` : ""}
+        ${specks}
+        <rect width="200" height="250" fill="url(#${id}b)"/>
+        ${lit ? `<rect width="200" height="250" fill="#18202c" opacity=".45"/>` : ""}
       </g>
-      <rect x="93" y="${c - 22}" width="14" height="12" rx="2" fill="#2a2420"/>
-      <circle cx="100" cy="${c - 30}" r="13" fill="${lit ? "#fff7dc" : "#f1ede6"}" stroke="${lit ? "#ffd27a" : "#cfc8bc"}" stroke-width="${lit ? 3 : 1.2}" ${lit ? "" : 'opacity=".9"'}/>
-      <path d="M62 ${c - 12} Q100 ${c + 30} 138 ${c - 12} Z" fill="${p.glaze}" stroke="${p.drip}" stroke-width="1.5"/>
-      <path d="M64 ${c - 12} H136" stroke="${p.drip}" stroke-width="3" stroke-linecap="round"/>
+      <path d="${STAR}" fill="none" stroke="${lit ? "#ffe7a8" : p.drip}" stroke-width="${lit ? 1.6 : 2.4}" stroke-linejoin="round" opacity="${lit ? 0.8 : 0.75}"/>
     </svg>`;
   }
 
@@ -79,8 +82,7 @@
         <span class="piece__img piece__img--off">${sconce(p, false)}</span>
         <span class="piece__img piece__img--on">${sconce(p, true)}</span>
         ${badge(p)}
-        ${st === "reserved" ? `<span class="piece__hold"><b data-timer="${p.no}">${fmt(left(p.no))}</b>${holds[p.no].mine ? "held for you" : "someone's checking out"}</span>` : ""}
-        ${st === "sold" ? `<span class="stamp">found<br/>a home</span>` : ""}
+        ${st === "reserved" ? `<span class="piece__hold">${holds[p.no].mine ? "you're checking out" : "someone's checking out"}<span>held for the next <b data-timer="${p.no}">${fmt(left(p.no))}</b></span></span>` : ""}
         <span class="piece__hint" aria-hidden="true">hover to light it</span>
       </button>
       <div class="piece__body">
@@ -110,6 +112,7 @@
     $("#d-no").textContent = "No. " + p.no;
     $("#d-name").textContent = p.name;
     $("#d-price").textContent = money(p.price);
+    $("#d-note").textContent = p.note || "";
     $("#d-glaze").textContent = p.glazeName;
     $("#d-clay").textContent = p.clayName;
     $("#d-size").textContent = `${inch(p.h)} tall × ${inch(p.w)} wide`;
@@ -119,7 +122,7 @@
     btn.innerHTML = st === "available" ? `Hold it &amp; check out <span>→</span>` : st === "sold" ? "Sold" : "Held right now";
     note.textContent = st === "available"
       ? `Clicking holds it for you for ${drop.holdMinutes} minutes while you check out.`
-      : st === "sold" ? "This one found a home. It stays here so you can see what the drop held."
+      : st === "sold" ? "This one's sold. It stays here so you can see what the drop held."
       : holds[p.no].mine ? "You're holding this one. Your checkout is still open." : "Someone's checking out with this one. If they don't finish, it comes back.";
     if (!detail.open) detail.showModal();
   }

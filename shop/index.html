@@ -6,7 +6,7 @@
   <meta name="robots" content="noindex" />
   <title>the pottery shop · laurenmakes</title>
   <link rel="icon" type="image/svg+xml" href="../assets/img/lm-logo.svg" />
-  <meta name="description" content="One-of-one handmade pottery sconces, released in small drops." />
+  <meta name="description" content="Star-shaped plug-in wall sconces, each one of one, thrown, glazed and fired by Lauren." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -51,29 +51,32 @@
     .ribbon{ background:var(--ink); color:#fff; overflow:hidden; white-space:nowrap; }
     .ribbon__track{ display:inline-flex; gap:2.5rem; padding:.6rem 0; animation:slide 38s linear infinite; }
     .ribbon__track span{ display:inline-flex; align-items:center; gap:2.5rem; }
-    .ribbon__track span::after{ content:"✺"; color:var(--blue); }
+    .ribbon__track span::after{ content:""; width:1.05em; height:1.05em; background:url(../assets/img/star.svg) center/contain no-repeat; }
     .ribbon b{ color:var(--blue); font-weight:700; }
     @keyframes slide{ to{ transform:translateX(-50%); } }
 
     /* ---- Hero ---- */
-    .hero{ display:grid; grid-template-columns:1.25fr 1fr; gap:clamp(1.5rem,4vw,4rem); align-items:end; padding:clamp(2.5rem,7vh,5rem) 0 clamp(1.5rem,4vh,2.5rem); }
-    .hero__eyebrow{ color:var(--blue-ink); margin:0 0 1rem; }
+    .hero{ padding:clamp(2.5rem,7vh,5rem) 0 clamp(1.5rem,4vh,2.5rem); max-width:860px; }
+    .guide-link{ margin-top:1.4rem; display:inline-flex; align-items:center; gap:.85rem; padding:.75rem 1.1rem .75rem .85rem; background:#fff; border:1.5px solid var(--ink); border-radius:14px; box-shadow:4px 4px 0 var(--blue); transition:transform .3s var(--ease), box-shadow .3s var(--ease); }
+    .guide-link:hover{ transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--blue); }
+    .guide-link .icon-star{ width:2rem; height:2rem; transition:transform .6s var(--ease); }
+    .guide-link:hover .icon-star{ transform:rotate(45deg); }
+    .guide-link span{ display:flex; flex-direction:column; font-size:.88rem; color:var(--ink-soft); line-height:1.35; }
+    .guide-link b{ font-family:var(--font-display); font-size:1.05rem; color:var(--ink); }
+    .guide-link i{ font-style:normal; font-family:var(--font-mono); transition:transform .3s var(--ease); }
+    .guide-link:hover i{ transform:translateX(4px); }
+    .hero__eyebrow{ color:var(--blue-ink); margin:0 0 1rem; display:flex; align-items:center; gap:.6em; }
+    .icon-star{ width:1.4em; height:1.4em; display:inline-block; vertical-align:-.3em; }
     .hero h1{ font-family:var(--font-display); font-weight:500; font-size:clamp(2.6rem,7vw,5.6rem); line-height:.95; letter-spacing:-.035em; margin:0; }
     .hero h1 em{ font-family:var(--font-accent); font-style:italic; font-weight:600; letter-spacing:-.02em; }
     .hl{ position:relative; display:inline-block; z-index:0; }
     .hl::before{ content:""; position:absolute; left:-4%; right:-4%; top:30%; bottom:6%; background:var(--blue); transform:rotate(-1.6deg) skewX(-4deg); z-index:-1; border-radius:3px; }
     .hero__lead{ margin:1.5rem 0 0; max-width:46ch; font-size:clamp(1.02rem,1.5vw,1.15rem); color:var(--ink-soft); }
 
-    .how{ background:#fff; border:1.5px solid var(--ink); border-radius:14px; padding:1.25rem 1.4rem; box-shadow:6px 6px 0 var(--blue); }
-    .how h2{ margin:0 0 .85rem; font-family:var(--font-display); font-weight:700; font-size:1.05rem; letter-spacing:-.01em; }
-    .how ol{ list-style:none; margin:0; padding:0; display:grid; gap:.7rem; counter-reset:step; }
-    .how li{ counter-increment:step; display:grid; grid-template-columns:2rem 1fr; gap:.6rem; align-items:start; font-size:.95rem; }
-    .how li::before{ content:counter(step); display:grid; place-items:center; width:1.7rem; height:1.7rem; border-radius:50%; background:var(--ink); color:#fff; font-family:var(--font-mono); font-size:.75rem; font-weight:700; }
-    .how b{ font-weight:600; }
 
     /* ---- Legend ---- */
     .legend{ display:flex; flex-wrap:wrap; gap:.6rem 1.4rem; align-items:center; padding:.9rem 0 1.4rem; border-top:1.5px solid var(--ink); margin-top:1rem; }
-    .legend__count{ margin-right:auto; color:var(--ink); font-weight:700; }
+    .legend__count{ color:var(--ink); font-weight:700; }
     .legend i{ display:inline-block; width:.7rem; height:.7rem; border-radius:50%; margin-right:.45rem; vertical-align:-1px; }
 
     /* ---- Grid ---- */
@@ -89,7 +92,7 @@
     .piece__img{ position:absolute; inset:6% 10% 4%; display:block; transition:opacity .6s var(--ease); }
     .piece__img svg{ width:100%; height:100%; display:block; }
     .piece__img--on{ opacity:0; }
-    .piece__media:hover{ background:#e7dccb; }
+    .piece__media:hover{ background:#d8d1c5; }
     .piece__media:hover .piece__img--on, .piece__media:focus-visible .piece__img--on{ opacity:1; }
     .piece__media:hover .piece__img--off, .piece__media:focus-visible .piece__img--off{ opacity:0; }
     .piece__hint{ position:absolute; right:.7rem; bottom:.6rem; font-family:var(--font-mono); font-size:.6rem; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft); opacity:.7; transition:opacity .3s; }
@@ -112,18 +115,16 @@
       background:#fff; border:1.5px solid var(--ink); border-radius:10px; padding:.45rem .9rem;
       font-family:var(--font-mono); font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; white-space:nowrap;
     }
-    .piece__hold b{ font-size:1.15rem; letter-spacing:.02em; }
+    .piece__hold > span{ letter-spacing:.06em; }
+    .piece__hold b{ font-size:1.05rem; letter-spacing:.02em; }
     .is-reserved .piece__hint{ display:none; }
 
-    /* Sold: stays visible, stamped */
-    .is-sold .piece__img{ filter:saturate(.55); opacity:.75; }
-    .is-sold .piece__media:hover .piece__img--on{ opacity:.85; }
-    .stamp{
-      position:absolute; right:8%; top:30%; z-index:2; transform:rotate(-12deg);
-      font-family:var(--font-mono); font-weight:700; font-size:.8rem; line-height:1.15; letter-spacing:.14em; text-transform:uppercase; text-align:center;
-      color:var(--clay); border:2.5px solid var(--clay); border-radius:8px; padding:.45rem .7rem; background:rgba(253,253,252,.75);
-    }
-    .is-sold .piece__name, .is-sold .piece__spec{ color:var(--ink-soft); }
+    /* Sold: stays visible, whole card goes gray */
+    .is-sold .piece__media, .is-sold .piece__body{ filter:grayscale(1); }
+    .is-sold .piece__media{ background:#ecebe8; }
+    .is-sold .piece__img{ opacity:.6; }
+    .is-sold .piece__media:hover .piece__img--on{ opacity:.7; }
+    .is-sold .piece__no, .is-sold .piece__name, .is-sold .piece__spec{ color:var(--sold); }
 
     .piece__body{ display:grid; grid-template-columns:1fr auto; column-gap:1rem; padding:.85rem .15rem 0; }
     .piece__no{ grid-column:1/-1; margin:0; font-family:var(--font-mono); font-size:.68rem; letter-spacing:.16em; color:var(--blue-ink); }
@@ -153,7 +154,7 @@
 
     .detail{ display:grid; grid-template-columns:1.1fr 1fr; }
     .detail__media{ position:relative; background:var(--wall); min-height:420px; transition:background .6s var(--ease); }
-    .is-lit .detail__media{ background:#e3d5bf; }
+    .is-lit .detail__media{ background:#d8d1c5; }
     .detail__media .piece__img{ inset:7% 14% 12%; }
     .is-lit .detail__media .piece__img--on{ opacity:1; }
     .is-lit .detail__media .piece__img--off{ opacity:0; }
@@ -163,7 +164,7 @@
     .detail__no{ margin:0; color:var(--blue-ink); }
     .detail__name{ margin:.25rem 0 0; font-family:var(--font-display); font-weight:600; font-size:2rem; letter-spacing:-.02em; line-height:1.05; }
     .detail__price{ margin:.35rem 0 0; font-family:var(--font-display); font-weight:700; font-size:1.4rem; }
-    .detail__one{ margin:1rem 0 0; font-family:var(--font-accent); font-style:italic; font-size:1.05rem; }
+    .detail__note{ margin:1rem 0 0; font-size:1rem; line-height:1.6; color:var(--ink); }
     .specs{ margin:1.1rem 0 0; display:grid; grid-template-columns:auto 1fr; border-top:1px solid var(--line); }
     .specs dt, .specs dd{ margin:0; padding:.5rem 0; border-bottom:1px solid var(--line); font-size:.9rem; }
     .specs dt{ font-family:var(--font-mono); font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft); padding-right:1.2rem; padding-top:.65rem; }
@@ -190,7 +191,7 @@
     .is-urgent .co__time{ color:var(--clay); }
     .co__title{ margin:0; font-family:var(--font-display); font-weight:700; font-size:1.25rem; letter-spacing:-.01em; padding-right:2.5rem; }
     .co__item{ display:grid; grid-template-columns:64px 1fr auto; gap:.9rem; align-items:center; padding:.8rem 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
-    .co__thumb{ width:64px; height:80px; background:#e3d5bf; border-radius:6px; padding:4px; }
+    .co__thumb{ width:64px; height:80px; background:#d8d1c5; overflow:hidden; border-radius:6px; padding:4px; }
     .co__thumb svg{ width:100%; height:100%; display:block; }
     .co__row{ display:flex; justify-content:space-between; gap:1rem; padding:.45rem 0; font-size:.92rem; }
     .co__row select{ font:inherit; padding:.3rem .5rem; border:1.5px solid var(--ink); border-radius:8px; background:#fff; }
@@ -208,7 +209,6 @@
 
     /* ---- Small screens ---- */
     @media (max-width:820px){
-      .hero{ grid-template-columns:1fr; align-items:start; }
       .fine{ grid-template-columns:1fr; gap:1rem; }
       .detail{ grid-template-columns:1fr; }
       .detail__media{ min-height:300px; }
@@ -222,7 +222,6 @@
       .badge{ font-size:.55rem; left:.45rem; top:.45rem; }
       .piece__hold{ padding:.35rem .55rem; font-size:.5rem; }
       .piece__hold b{ font-size:.95rem; }
-      .stamp{ font-size:.62rem; }
       .nav__links .pill:first-child{ display:none; }
     }
     @media (prefers-reduced-motion:reduce){ *{ transition-duration:.001ms !important; animation:none !important; } }
@@ -234,39 +233,27 @@
     <a href="../"><img class="nav__logo" src="../assets/img/lm-logo.svg" alt="laurenmakes home" /></a>
     <nav class="nav__links">
       <a class="pill" href="../decorating-guides/">decorating guides</a>
-      <a class="pill" href="./" aria-current="page">the pottery shop</a>
+      <a class="pill" href="./" aria-current="page"><img class="icon-star" src="../assets/img/star.svg" alt="" /> the pottery shop</a>
     </nav>
   </header>
 
   <div class="ribbon mono" aria-hidden="true">
     <div class="ribbon__track">
-      <span>Drop <b>01</b> · first firing</span><span>Ten sconces, each one of one</span><span>Ships US &amp; Canada</span><span>Held for you <b>10 min</b> at checkout</span><span>Staging preview · sample pieces</span>
-      <span>Drop <b>01</b> · first firing</span><span>Ten sconces, each one of one</span><span>Ships US &amp; Canada</span><span>Held for you <b>10 min</b> at checkout</span><span>Staging preview · sample pieces</span>
+      <span>Star sconce drop <b>01</b></span><span>Each one is one of one</span><span>Ships US &amp; Canada</span><span>Held for you <b>10 min</b> at checkout</span><span>Staging preview · sample pieces</span>
+      <span>Star sconce drop <b>01</b></span><span>Each one is one of one</span><span>Ships US &amp; Canada</span><span>Held for you <b>10 min</b> at checkout</span><span>Staging preview · sample pieces</span>
     </div>
   </div>
 
   <main class="wrap">
     <section class="hero">
-      <div>
-        <p class="hero__eyebrow mono">the pottery shop · drop 01</p>
-        <h1>one-of-one <span class="hl">sconces</span>, <em>made by hand</em></h1>
-        <p class="hero__lead">Every sconce here is the only one. Thrown, glazed and fired in my studio, then numbered. When one's gone, it's gone.</p>
-      </div>
-      <aside class="how" aria-labelledby="how-title">
-        <h2 id="how-title">How buying works</h2>
-        <ol>
-          <li><span><b>Pick your piece.</b> Hover to see it lit.</span></li>
-          <li><span><b>It's held for you for 10 minutes</b> while you check out. Nobody else can buy it.</span></li>
-          <li><span><b>It's yours.</b> Packed with care, shipped to the US or Canada.</span></li>
-        </ol>
-      </aside>
+      <p class="hero__eyebrow mono"><img class="icon-star" src="../assets/img/star.svg" alt="" />the pottery shop · drop 01</p>
+      <h1>star-shaped <span class="hl">sconce</span> <em>drop</em></h1>
+      <p class="hero__lead">Every sconce here is one of one, thrown, glazed, and fired by me, Lauren. Shipping to the US or Canada.</p>
+      <a class="guide-link" href="guide/"><img class="icon-star" src="../assets/img/star.svg" alt="" /><span><b>How to hang &amp; light your star</b>What's in the box, how it works, and getting it on your wall</span><i aria-hidden="true">→</i></a>
     </section>
 
     <div class="legend mono">
       <span class="legend__count" id="count" aria-live="polite"></span>
-      <span><i style="background:#3f9b5d"></i>Available</span>
-      <span><i style="background:var(--held)"></i>Held · someone's checking out</span>
-      <span><i style="background:var(--ink)"></i>Sold</span>
     </div>
 
     <section class="grid" id="grid" aria-label="Sconces in this drop"></section>
@@ -311,7 +298,7 @@
         <p class="detail__no mono" id="d-no"></p>
         <h2 class="detail__name" id="d-name"></h2>
         <p class="detail__price" id="d-price"></p>
-        <p class="detail__one">The only one. Once it's gone, it's gone.</p>
+        <p class="detail__note" id="d-note"></p>
         <dl class="specs">
           <dt>Glaze</dt><dd id="d-glaze"></dd>
           <dt>Clay</dt><dd id="d-clay"></dd>
@@ -338,7 +325,7 @@
         <div class="co__barwrap"><div class="co__bar" id="c-bar"></div></div>
         <div class="co__item">
           <div class="co__thumb" id="c-thumb"></div>
-          <div><strong id="c-name"></strong><div class="mono" style="color:var(--ink-soft)">one of one</div></div>
+          <div><strong id="c-name"></strong><div class="mono" style="color:var(--ink-soft)">made by Lauren</div></div>
           <strong id="c-price"></strong>
         </div>
         <div class="co__row"><label for="c-country">Ship to</label>
