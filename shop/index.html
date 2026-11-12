@@ -229,6 +229,37 @@
     .is-expired .co__end, .is-done .co__end{ display:block; margin-top:1rem; }
     .co__end p{ color:var(--ink-soft); margin:.2rem 0 1rem; }
 
+    /* ---- Waitlist + sold-out ---- */
+    .sr{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }
+    .wl-form{ display:flex; gap:.5rem; max-width:460px; }
+    .wl-form input{ flex:1; min-width:0; font:inherit; font-size:1rem; padding:.8rem 1.1rem; border:1.5px solid var(--ink); border-radius:999px; background:#fff; outline:none; }
+    .wl-form input:focus{ box-shadow:0 0 0 3px var(--blue); }
+    .wl-form button{ font-family:var(--font-mono); font-weight:700; font-size:.78rem; letter-spacing:.12em; text-transform:uppercase; padding:.8rem 1.2rem; border-radius:999px; border:2px solid var(--ink); background:var(--ink); color:#fff; cursor:pointer; white-space:nowrap; transition:background .3s var(--ease); }
+    .wl-form button:hover{ background:var(--blue-ink); border-color:var(--blue-ink); }
+    .wl-form[hidden]{ display:none; }
+    .wl-form.is-error input{ border-color:var(--clay); box-shadow:0 0 0 3px rgba(179,101,74,.25); }
+    .wl-thanks{ margin:.2rem 0 0; font-family:var(--font-display); font-weight:600; font-size:1.1rem; }
+    .wl-thanks::before{ content:"✓ "; color:var(--blue-ink); }
+    .waitlist{ margin:0 0 3rem; padding:2rem clamp(1.2rem,4vw,2.5rem); background:#fff; border:1.5px solid var(--ink); border-radius:18px; box-shadow:8px 8px 0 var(--blue); display:grid; grid-template-columns:auto 1fr; column-gap:1.2rem; align-items:center; }
+    .waitlist .icon-star{ width:3rem; height:3rem; grid-row:span 2; }
+    .waitlist h2{ margin:0; font-family:var(--font-display); font-weight:600; font-size:clamp(1.5rem,3vw,2.1rem); letter-spacing:-.02em; line-height:1.05; }
+    .waitlist p{ margin:.35rem 0 0; color:var(--ink-soft); }
+    .waitlist .wl-wrap{ grid-column:1/-1; margin-top:1.2rem; }
+    .soldout{ margin:.5rem 0 2.2rem; padding:clamp(2rem,5vw,3.5rem) clamp(1.2rem,4vw,3rem); text-align:center; background:var(--ink); color:#fff; border-radius:22px; box-shadow:10px 10px 0 var(--blue); position:relative; overflow:hidden; }
+    .soldout__star{ width:72px; height:72px; margin:0 auto 1rem; display:block; filter:drop-shadow(0 0 22px rgba(255,214,120,.7)); }
+    .soldout h2{ margin:0; font-family:var(--font-display); font-weight:600; font-size:clamp(2rem,5vw,3.4rem); letter-spacing:-.03em; line-height:1; }
+    .soldout h2 em{ font-family:var(--font-accent); color:var(--blue); }
+    .soldout p{ margin:1rem auto 0; max-width:46ch; color:#d9d3c8; font-size:1.05rem; }
+    .soldout .wl-wrap{ margin:1.6rem auto 0; max-width:460px; }
+    .soldout .wl-form button{ background:var(--blue); border-color:var(--blue); color:var(--ink); }
+    .soldout .wl-form button:hover{ background:#fff; border-color:#fff; }
+    .soldout .wl-form input{ border-color:#fff; }
+    .soldout .wl-thanks{ color:#fff; }
+    .soldout .wl-thanks::before{ color:var(--blue); }
+    .archive-title{ margin:0 0 1rem; color:var(--ink-soft); }
+    .is-soldout .legend{ display:none; }
+    @media (max-width:520px){ .wl-form{ flex-direction:column; } .waitlist{ grid-template-columns:1fr; } .waitlist .icon-star{ grid-row:auto; } }
+
     /* ---- Small screens ---- */
     @media (max-width:820px){
       .fine{ grid-template-columns:1fr; gap:1rem; }
@@ -288,15 +319,26 @@
       <span class="legend__count" id="count" aria-live="polite"></span>
     </div>
 
+    <section class="soldout" id="soldout" aria-labelledby="so-title" hidden>
+      <img class="soldout__star" src="../assets/img/star.svg" alt="" />
+      <h2 id="so-title">This drop sold out. <em>Thank you!</em></h2>
+      <p>Every star found a home. Join the waitlist and I'll email you before the next drop goes up.</p>
+      <div class="wl-wrap">
+        <form class="wl-form" novalidate>
+          <label class="sr" for="so-email">Email</label>
+          <input id="so-email" type="email" name="email" placeholder="your@email.com" autocomplete="email" required />
+          <button type="submit">Join the waitlist <span>→</span></button>
+        </form>
+        <p class="wl-thanks" hidden>You're on the list! I'll email you before the next drop.</p>
+      </div>
+    </section>
+    <h3 class="archive-title mono" id="archive-title" hidden>What this drop held</h3>
+
     <section class="grid" id="grid" aria-label="Sconces in this drop"></section>
 
     <section class="fine">
       <h2>the fine print</h2>
       <div>
-        <details open>
-          <summary>How does the 10-minute hold work?</summary>
-          <p>When you click "Hold it &amp; check out," that sconce is reserved just for you and a timer starts. Anyone else sees it as held. If you finish paying, it's yours. If the timer runs out, it goes back in the shop for the next person. Nobody can ever be charged for a piece someone else is holding.</p>
-        </details>
         <details>
           <summary>Where do you ship, and how much is it?</summary>
           <p>The US and Canada for now: <span class="todo">$18 US · $38 Canada (sample rates)</span>. Every sconce is double-boxed. Any import fees into Canada are paid by the buyer on delivery.</p>
@@ -307,8 +349,26 @@
         </details>
         <details>
           <summary>The one I wanted sold. Can you make another?</summary>
-          <p>No two come out the same, but I'm happy to hear what you loved about it. Sign up for drop news and you'll hear about the next firing first. <span class="todo">Newsletter link</span></p>
+          <p>Yes! <a href="#waitlist">Join the waitlist</a> and I'll let you know ahead of time before the next drop.</p>
         </details>
+        <details>
+          <summary>How does the 10-minute hold work?</summary>
+          <p>When you click "Hold it &amp; check out," that sconce is reserved just for you and a timer starts. Anyone else sees it as held. If you finish paying, it's yours. If the timer runs out, it goes back in the shop for the next person. Nobody can ever be charged for a piece someone else is holding.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="waitlist" id="waitlist" aria-labelledby="wl-title">
+      <img class="icon-star" src="../assets/img/star.svg" alt="" />
+      <h2 id="wl-title">hear about the next drop first</h2>
+      <p>I'll email you before new stars go up. Just drops, nothing else.</p>
+      <div class="wl-wrap">
+        <form class="wl-form" novalidate>
+          <label class="sr" for="wl-email">Email</label>
+          <input id="wl-email" type="email" name="email" placeholder="your@email.com" autocomplete="email" required />
+          <button type="submit">Join the waitlist <span>→</span></button>
+        </form>
+        <p class="wl-thanks" hidden>You're on the list! I'll email you before the next drop.</p>
       </div>
     </section>
   </main>

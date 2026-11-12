@@ -72,6 +72,9 @@
   const art = (p, lit) => (p.pair ? `<span class="duo">${sconce(p, lit)}${sconce(p, lit, true)}</span>` : sconce(p, lit));
   const priceLine = p => (p.pair ? `${money(total(p))} <small>for the pair</small>` : money(p.price));
 
+  // Preview the sold-out look on staging: add ?soldout to the URL.
+  if (/[?&]soldout\b/.test(location.search)) { pieces.forEach(p => { p.status = "sold"; delete holds[p.no]; }); }
+
   /* ---------- Grid ---------- */
   const grid = $("#grid");
   function badge(p) {
@@ -104,6 +107,11 @@
     const sorted = pieces.slice().sort((a, b) => rank[status(a)] - rank[status(b)] || a.no.localeCompare(b.no));
     grid.innerHTML = sorted.map(card).join("");
     const open = pieces.filter(p => status(p) === "available").length;
+    // Sold-out state: every piece sold (none available or held).
+    const soldOut = pieces.every(p => status(p) === "sold");
+    document.body.classList.toggle("is-soldout", soldOut);
+    $("#soldout").hidden = !soldOut;
+    $("#archive-title").hidden = !soldOut;
     $("#count").textContent = open === 0 ? "Sold out · thank you!" : `${open} of ${pieces.length} still available`;
   }
 
@@ -214,6 +222,23 @@
   $("#d-buy").addEventListener("click", () => current && startHold(current.no));
   $("#d-close").addEventListener("click", () => detail.close());
   [detail, co].forEach(d => d.addEventListener("click", e => { if (e.target === d && !(d === co && myHold)) d.close(); }));
+
+  /* ---------- Waitlist forms ---------- */
+  document.querySelectorAll(".wl-form").forEach(form => {
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+      const input = form.querySelector("input");
+      if (!input.value || !input.checkValidity()) { form.classList.add("is-error"); input.focus(); return; }
+      form.classList.remove("is-error");
+      const btn = form.querySelector("button"); btn.disabled = true; btn.textContent = "Adding you…";
+      const wl = drop.waitlist || {};
+      const done = () => { form.hidden = true; form.nextElementSibling.hidden = false; };
+      if (wl.action && wl.emailField) {
+        const data = new FormData(); data.append(wl.emailField, input.value);
+        fetch(wl.action, { method: "POST", mode: "no-cors", body: data }).catch(() => {}).then(done);
+      } else done();
+    });
+  });
 
   render();
 })();

@@ -15,6 +15,10 @@ window.SHOP = {
     note: "Ten plug-in star sconces.",
     shipsTo: "US & Canada",
     holdMinutes: 10,
+    // Waitlist: a Google Form with one email question. Paste its
+    // "formResponse" URL and the email field's entry id here.
+    // Until then the form shows the thank-you message but saves nothing.
+    waitlist: { action: "", emailField: "" },
     shipping: [
       { country: "United States", code: "US", price: 18 },
       { country: "Canada", code: "CA", price: 38 }
