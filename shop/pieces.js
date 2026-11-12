@@ -13,7 +13,7 @@ window.SHOP = {
     number: "01",
     name: "Star-shaped sconce drop",
     note: "Ten plug-in star sconces.",
-    shipsTo: "US & Canada",
+    shipsTo: "US, Canada and international",
     holdMinutes: 10,
     // Waitlist: a Google Form with one email question. Paste its
     // "formResponse" URL and the email field's entry id here.
@@ -23,8 +23,9 @@ window.SHOP = {
       emailField: "entry.942875737"
     },
     shipping: [
-      { country: "United States", code: "US", price: 18 },
-      { country: "Canada", code: "CA", price: 38 }
+      { country: "United States", code: "US", price: 25 },
+      { country: "Canada", code: "CA", price: 40 },
+      { country: "Another country", code: "INTL", price: 60 }
     ]
   },
 

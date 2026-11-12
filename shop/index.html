@@ -117,7 +117,7 @@
     .badge--sold{ background:var(--ink); color:#fff; }
     .badge.badge--pair{ top:auto; bottom:.7rem; left:.7rem; right:auto; background:var(--blue); }
     #d-pair{ top:.9rem; bottom:auto; left:.9rem; }
-    .specs a{ border-bottom:1.5px solid var(--blue); }
+    .specs a, details a{ border-bottom:1.5px solid var(--blue); }
     .specs a:hover{ color:var(--blue-ink); }
     .badge[hidden]{ display:none; }
     .duo{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; gap:6%; }
@@ -293,8 +293,8 @@
 
   <div class="ribbon mono" aria-hidden="true">
     <div class="ribbon__track">
-      <span>Plug-in wall sconces</span><span>Handmade sconces</span><span>Shipped to the US and Canada</span><span>Held for you for <b>10 minutes</b> at checkout</span><span>Sample pieces</span>
-      <span>Plug-in wall sconces</span><span>Handmade sconces</span><span>Shipped to the US and Canada</span><span>Held for you for <b>10 minutes</b> at checkout</span><span>Sample pieces</span>
+      <span>Plug-in wall sconces</span><span>Handmade sconces</span><span>Shipping to the US, Canada and beyond</span><span>Held for you for <b>10 minutes</b> at checkout</span><span>Sample pieces</span>
+      <span>Plug-in wall sconces</span><span>Handmade sconces</span><span>Shipping to the US, Canada and beyond</span><span>Held for you for <b>10 minutes</b> at checkout</span><span>Sample pieces</span>
     </div>
   </div>
 
@@ -311,7 +311,7 @@
           <small>bedroom photo goes here</small>
         </div>
       </figure>
-      <p class="hero__lead">Every sconce here is one-of-one, thrown, glazed, and fired by me, Lauren, in sunny California. Shipping to the US and Canada.</p>
+      <p class="hero__lead">Every sconce here is one-of-one, hand-built, glazed, and fired in California by me, Lauren.</p>
       <a class="guide-link" href="guide/"><img class="icon-star" src="../assets/img/star.svg" alt="" /><span><b>How to hang &amp; light your star</b>What's in the box, how it works, and getting it on your wall</span><i aria-hidden="true">→</i></a>
     </section>
 
@@ -322,12 +322,12 @@
     <section class="soldout" id="soldout" aria-labelledby="so-title" hidden>
       <img class="soldout__star" src="../assets/img/star.svg" alt="" />
       <h2 id="so-title">This drop sold out. <em>Thank you!</em></h2>
-      <p>Every star found a home. Join the waitlist and I'll email you before the next drop goes up.</p>
+      <p>Every star found a home. Join the newsletter and I'll email you before the next drop goes up.</p>
       <div class="wl-wrap">
         <form class="wl-form" novalidate>
           <label class="sr" for="so-email">Email</label>
           <input id="so-email" type="email" name="email" placeholder="your@email.com" autocomplete="email" required />
-          <button type="submit">Join the waitlist <span>→</span></button>
+          <button type="submit">Join the newsletter <span>→</span></button>
         </form>
         <p class="wl-thanks" hidden>You're on the list! I'll email you before the next drop.</p>
       </div>
@@ -341,7 +341,7 @@
       <div>
         <details>
           <summary>Where do you ship, and how much is it?</summary>
-          <p>The US and Canada for now: <span class="todo">$18 US · $38 Canada (sample rates)</span>. Every sconce is double-boxed. Any import fees into Canada are paid by the buyer on delivery.</p>
+          <p>Currently shipping to the US for $25, Canada for $40, and other international countries for $60. International shipping is a pretty penny, but I didn't want to exclude international folks, since I know that's so often the case.</p>
         </details>
         <details>
           <summary>Does it come with a cord and bulb?</summary>
@@ -349,7 +349,11 @@
         </details>
         <details>
           <summary>The one I wanted sold. Can you make another?</summary>
-          <p>Yes! <a href="#waitlist">Join the waitlist</a> and I'll let you know ahead of time before the next drop.</p>
+          <p>Yes! <a href="#waitlist">Join the newsletter</a> and I'll let you know ahead of time before the next drop.</p>
+        </details>
+        <details>
+          <summary>How can I hear about the next drop?</summary>
+          <p><a href="#waitlist">Join the newsletter</a> and I'll email you before the next drop goes up. I won't spam you.</p>
         </details>
         <details>
           <summary>How does the 10-minute hold work?</summary>
@@ -361,12 +365,12 @@
     <section class="waitlist" id="waitlist" aria-labelledby="wl-title">
       <img class="icon-star" src="../assets/img/star.svg" alt="" />
       <h2 id="wl-title">hear about the next drop first</h2>
-      <p>I'll email you before new stars go up. Just drops, nothing else.</p>
+      <p>I'll email you before the next drop goes up. I won't spam you.</p>
       <div class="wl-wrap">
         <form class="wl-form" novalidate>
           <label class="sr" for="wl-email">Email</label>
           <input id="wl-email" type="email" name="email" placeholder="your@email.com" autocomplete="email" required />
-          <button type="submit">Join the waitlist <span>→</span></button>
+          <button type="submit">Join the newsletter <span>→</span></button>
         </form>
         <p class="wl-thanks" hidden>You're on the list! I'll email you before the next drop.</p>
       </div>
@@ -422,7 +426,7 @@
           <strong id="c-price"></strong>
         </div>
         <div class="co__row"><label for="c-country">Ship to</label>
-          <select id="c-country"><option value="US">United States</option><option value="CA">Canada</option></select>
+          <select id="c-country"><option value="US">United States</option><option value="CA">Canada</option><option value="INTL">Another country</option></select>
         </div>
         <div class="co__row"><span>Shipping</span><span id="c-shipping"></span></div>
         <div class="co__row co__total"><span>Total</span><span id="c-total"></span></div>
