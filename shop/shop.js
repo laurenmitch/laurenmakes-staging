@@ -9,8 +9,7 @@
   const HOLD = drop.holdMinutes * 60;
   const $ = (s, el = document) => el.querySelector(s);
   const money = n => "$" + n.toLocaleString("en-US");
-  const FRAC = { 0.25: "¼", 0.5: "½", 0.75: "¾" };
-  const inch = n => { const w = Math.floor(n), f = FRAC[+(n - w).toFixed(2)]; return (f ? (w || "") + f : String(n)) + "″"; };
+  const inch = n => n + "″";
   const fmt = s => { s = Math.max(0, Math.ceil(s)); return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0"); };
 
   // Seconds remaining on each hold, keyed by piece number.
