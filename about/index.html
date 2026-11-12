@@ -31,16 +31,14 @@
     .pill{ font-family:var(--font-mono); font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; padding:.5em 1em; border:1px solid var(--ink); border-radius:999px; background:#fff; transition:background .3s var(--ease), color .3s var(--ease); }
     .pill:hover, .pill[aria-current]{ background:var(--ink); color:#fff; }
 
-    main{ flex:1; width:100%; max-width:720px; margin:0 auto; padding:clamp(2rem,7vh,4.5rem) var(--gutter) 4rem; }
-    .eyebrow{ display:flex; align-items:center; gap:.6em; font-family:var(--font-mono); font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; color:var(--blue-ink); margin:0 0 1rem; }
-    .eyebrow img{ width:1.4em; height:1.4em; }
-    h1{ font-family:var(--font-display); font-weight:500; font-size:clamp(2.6rem,7vw,4.4rem); line-height:.98; letter-spacing:-.035em; margin:0 0 1.6rem; }
-    .hl{ position:relative; display:inline-block; z-index:0; }
-    .hl::before{ content:""; position:absolute; left:-4%; right:-4%; top:30%; bottom:6%; background:var(--blue); transform:rotate(-1.6deg) skewX(-4deg); z-index:-1; border-radius:3px; }
-    p{ font-size:clamp(1.05rem,1.6vw,1.15rem); color:var(--ink-soft); margin:0 0 1.2rem; }
-    p.thanks{ font-family:var(--font-accent); font-style:italic; font-weight:600; font-size:clamp(1.3rem,2.4vw,1.6rem); color:var(--ink); margin:2rem 0 1rem; }
-
-    .socials{ display:flex; gap:.8rem; flex-wrap:wrap; margin-top:1.4rem; }
+    main{ flex:1; width:100%; max-width:900px; margin:0 auto; padding:clamp(2rem,6vh,4rem) var(--gutter) 4rem; display:grid; grid-template-columns:minmax(220px,320px) 1fr; gap:clamp(1.5rem,4vw,3rem); align-items:start; }
+    .photo{ margin:0; border:1.5px solid var(--ink); border-radius:20px; overflow:hidden; box-shadow:6px 6px 0 var(--blue); aspect-ratio:4/5; }
+    .photo img{ width:100%; height:100%; object-fit:cover; object-position:50% 30%; display:block; }
+    .bio h1, .bio p{ font-family:var(--font-body); }
+    h1{ font-weight:600; font-size:1.35rem; letter-spacing:-.01em; line-height:1.3; margin:0 0 .9rem; color:var(--ink); }
+    p{ font-size:1rem; line-height:1.7; color:var(--ink-soft); margin:0 0 .9rem; }
+    @media (max-width:640px){ main{ grid-template-columns:1fr; } .photo{ max-width:340px; } }
+    .socials{ display:flex; gap:.7rem; flex-wrap:wrap; margin-top:1.2rem; }
     .social{ display:inline-flex; align-items:center; gap:.6rem; padding:.7rem 1.2rem .7rem .9rem; background:#fff; border:1.5px solid var(--ink); border-radius:999px; box-shadow:4px 4px 0 var(--blue);
       font-family:var(--font-mono); font-weight:700; font-size:.78rem; letter-spacing:.12em; text-transform:uppercase; transition:transform .3s var(--ease), box-shadow .3s var(--ease); }
     .social:hover{ transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--blue); }
@@ -62,28 +60,27 @@
   </header>
 
   <main>
-    <p class="eyebrow"><img src="../assets/img/star.svg" alt="" />about me</p>
-    <h1>hey, my name's <span class="hl">Lauren</span></h1>
+    <figure class="photo"><img src="../assets/img/about-lauren.jpg" alt="Lauren smiling in a sunny garden" /></figure>
+    <div class="bio">
+      <h1>hey, I'm Lauren</h1>
+      <p>I'm a creative person from Northern California, and I'm in love with all my creative hobbies.</p>
+      <p>I've been sewing, making pottery and doing other creative things my whole life, not because I was particularly amazing at them, but because they brought me joy and helped me get into a state of flow that felt amazing.</p>
+      <p>I decided to start sharing my creative process on YouTube in August 2024, and it's catapulted me on this amazing journey of exploring my creativity and connecting with others.</p>
+      <p>I'm so grateful you're here. I hope something I've made has been helpful to you.</p>
+      <p>If you want to stay in touch, find me on Instagram and YouTube.</p>
 
-    <p>I'm a maker and creative living in Northern California, and I love all things creative hobbies.</p>
-    <p>I've been sewing, making pottery and doing other creative things my whole life, not because I was particularly amazing at them, but because they brought me joy and helped me get into a state of flow that felt amazing.</p>
-    <p>I decided to start sharing my creative process on YouTube in August of 2024, and it's catapulted me on this amazing journey of exploring and sharing my creativity.</p>
-
-    <p class="thanks">I'm so grateful you're here. I hope something I've made has been helpful to you.</p>
-    <p>If you want to stay in touch, you can find me on Instagram and YouTube.</p>
-
-    <div class="socials">
-      <a class="social" href="#" aria-label="Lauren on Instagram">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" fill="none" stroke="#1a1712" stroke-width="2"/><circle cx="12" cy="12" r="4.3" fill="none" stroke="#1a1712" stroke-width="2"/><circle cx="17.6" cy="6.4" r="1.3" fill="#1a1712"/></svg>
-        Instagram <span class="todo">add link</span>
-      </a>
-      <a class="social" href="https://www.youtube.com/@lauren_makes" target="_blank" rel="noopener" aria-label="Lauren on YouTube">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1.5" y="4.5" width="21" height="15" rx="4.5" fill="#1a1712"/><path d="M10 8.8v6.4l5.6-3.2z" fill="#80A4ED"/></svg>
-        YouTube
-      </a>
+      <div class="socials">
+        <a class="social" href="#" aria-label="Lauren on Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" fill="none" stroke="#1a1712" stroke-width="2"/><circle cx="12" cy="12" r="4.3" fill="none" stroke="#1a1712" stroke-width="2"/><circle cx="17.6" cy="6.4" r="1.3" fill="#1a1712"/></svg>
+          Instagram <span class="todo">add link</span>
+        </a>
+        <a class="social" href="https://www.youtube.com/@lauren_makes" target="_blank" rel="noopener" aria-label="Lauren on YouTube">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1.5" y="4.5" width="21" height="15" rx="4.5" fill="#1a1712"/><path d="M10 8.8v6.4l5.6-3.2z" fill="#80A4ED"/></svg>
+          YouTube
+        </a>
+      </div>
     </div>
   </main>
 
-  <footer><p>Made alongside my YouTube channel, @lauren_makes.</p></footer>
 </body>
 </html>
