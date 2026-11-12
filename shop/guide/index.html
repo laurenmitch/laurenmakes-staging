@@ -59,11 +59,7 @@
     .tip b{ font-family:var(--font-mono); font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; display:block; color:var(--blue-ink); }
 
     .side{ margin:1.4rem 0 0; }
-    .side img, .side__ph{ width:100%; max-width:520px; display:block; border:1.5px solid var(--ink); border-radius:16px; background:#efe9df; box-shadow:4px 4px 0 var(--blue); }
-    .side img{ aspect-ratio:4/3; object-fit:cover; }
-    .side__ph{ display:none; }
-    .side.is-missing img{ display:none; }
-    .side.is-missing .side__ph{ display:block; }
+    .side__art{ width:100%; max-width:520px; display:block; border:1.5px solid var(--ink); border-radius:16px; background:#efe9df; box-shadow:4px 4px 0 var(--blue); }
     .side figcaption{ margin-top:.7rem; color:var(--ink-soft); }
     .tip b{ margin-bottom:.15rem; }
     .back{ display:inline-flex; gap:.6em; align-items:center; margin-top:2rem; font-family:var(--font-mono); font-weight:700; font-size:.85rem; letter-spacing:.12em; text-transform:uppercase; padding:.95em 1.6em; border-radius:999px; background:var(--ink); color:#fff; text-decoration:none; }
@@ -149,15 +145,29 @@
         </ol>
         <p>To change the bulb, just lift the star off the screws.</p>
         <figure class="side">
-          <img src="../../assets/img/shop/side-view.jpg" alt="The star sconce from the side, sitting flush against the wall" onerror="this.parentNode.classList.add('is-missing')" />
-          <svg class="side__ph" viewBox="0 0 320 200" aria-hidden="true">
-            <defs><radialGradient id="sg" cx="96" cy="100" r="90" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fff1c4"/><stop offset="1" stop-color="#fff1c4" stop-opacity="0"/></radialGradient></defs>
-            <rect x="0" y="0" width="70" height="200" fill="#d8d1c5"/>
-            <ellipse cx="96" cy="100" rx="90" ry="95" fill="url(#sg)"/>
-            <rect x="70" y="18" width="16" height="164" rx="4" fill="#3d5a63"/>
-            <line x1="70" y1="18" x2="70" y2="182" stroke="#1a1712" stroke-width="2"/>
-            <text x="140" y="96" font-family="Space Mono, monospace" font-size="11" fill="#5e564a">2.5″ deep</text>
-            <text x="140" y="114" font-family="Space Mono, monospace" font-size="9" fill="#9a9081">side photo goes here</text>
+          <svg class="side__art" viewBox="0 0 360 270" role="img" aria-label="Side view: the star plate sits in front, a ceramic drum with rounded windows holds the bulb behind it, about 2.5 inches off the wall, and the cord comes out the bottom.">
+            <defs>
+              <radialGradient id="sw" cx="250" cy="128" r="120" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fff3cc"/><stop offset=".45" stop-color="#f6ecd6"/><stop offset="1" stop-color="#e4ded3"/></radialGradient>
+              <radialGradient id="sl" cx="0.5" cy="0.5" r="0.6"><stop offset="0" stop-color="#fffbe8"/><stop offset="1" stop-color="#ffd27a"/></radialGradient>
+              <linearGradient id="sd" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#4b605b"/><stop offset="1" stop-color="#6e807a"/></linearGradient>
+            </defs>
+            <rect x="250" y="0" width="110" height="270" fill="url(#sw)"/>
+            <path d="M250 128 L360 70 L360 100 Z M250 128 L360 156 L360 186 Z" fill="#fff6d8" opacity=".55"/>
+            <line x1="250" y1="0" x2="250" y2="270" stroke="#1a1712" stroke-width="2"/>
+            <rect x="170" y="66" width="80" height="130" rx="9" fill="url(#sd)" stroke="#1a1712" stroke-width="1.5"/>
+            <rect x="186" y="71" width="40" height="9" rx="4.5" fill="url(#sl)"/>
+            <rect x="184" y="88" width="44" height="40" rx="13" fill="url(#sl)"/>
+            <rect x="186" y="138" width="40" height="36" rx="12" fill="url(#sl)"/>
+            <rect x="188" y="182" width="36" height="9" rx="4.5" fill="url(#sl)"/>
+            <circle cx="206" cy="108" r="11" fill="#fffdf2" opacity=".9"/>
+            <path d="M166 22 L171 44 L172 218 L166 240 L160 220 L161 44 Z" fill="#3d5a63" stroke="#1a1712" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M212.0 196.0 L213.7 197.1 L214.9 198.2 L215.2 199.3 L214.6 200.4 L213.2 201.5 L211.5 202.6 L209.9 203.7 L209.0 204.8 L208.9 205.9 L209.7 207.0 L211.3 208.1 L213.0 209.2 L214.4 210.3 L215.2 211.4 L215.0 212.5 L213.9 213.6 L212.2 214.7 L210.5 215.8 L209.3 216.9 L208.8 218.0 L209.3 219.1 L210.6 220.2 L212.3 221.3 L213.9 222.4 L215.0 223.5 L215.2 224.6 L214.4 225.7 L213.0 226.8 L211.2 227.9 L209.7 229.0 L208.9 230.1 L209.0 231.2 L209.9 232.3 L211.5 233.4 L213.2 234.5 L214.6 235.6 L215.2 236.7 L214.8 237.8 L213.6 238.9 L212.0 240.0 L210.3 241.1 L209.1 242.2 L208.8 243.3 L209.4 244.4 L210.8 245.5 L212.5 246.6 L214.1 247.7 L215.1 248.8 L215.1 249.9 L214.2 251.0 L212.7 252.1 L211.0 253.2 L209.5 254.3 L208.8 255.4 L209.1 256.5 L210.2 257.6 L211.8 258.7 L213.5 259.8 L214.8 260.9 L215.2 262.0" stroke="#1a1712" stroke-width="2.6" fill="none" stroke-linecap="round"/><path d="M212.0 196.0 L210.3 197.1 L209.1 198.2 L208.8 199.3 L209.4 200.4 L210.8 201.5 L212.5 202.6 L214.1 203.7 L215.0 204.8 L215.1 205.9 L214.3 207.0 L212.7 208.1 L211.0 209.2 L209.6 210.3 L208.8 211.4 L209.0 212.5 L210.1 213.6 L211.8 214.7 L213.5 215.8 L214.7 216.9 L215.2 218.0 L214.7 219.1 L213.4 220.2 L211.7 221.3 L210.1 222.4 L209.0 223.5 L208.8 224.6 L209.6 225.7 L211.0 226.8 L212.8 227.9 L214.3 229.0 L215.1 230.1 L215.0 231.2 L214.1 232.3 L212.5 233.4 L210.8 234.5 L209.4 235.6 L208.8 236.7 L209.2 237.8 L210.4 238.9 L212.0 240.0 L213.7 241.1 L214.9 242.2 L215.2 243.3 L214.6 244.4 L213.2 245.5 L211.5 246.6 L209.9 247.7 L208.9 248.8 L208.9 249.9 L209.8 251.0 L211.3 252.1 L213.0 253.2 L214.5 254.3 L215.2 255.4 L214.9 256.5 L213.8 257.6 L212.2 258.7 L210.5 259.8 L209.2 260.9 L208.8 262.0" stroke="#3a3530" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+            <path d="M161 12 H250" stroke="#5e564a" stroke-width="1.2"/><path d="M161 7 V17 M250 7 V17" stroke="#5e564a" stroke-width="1.2"/>
+            <text x="205" y="8" text-anchor="middle" font-family="Space Mono, monospace" font-size="10" fill="#1a1712">2.5″</text>
+            <text x="300" y="250" text-anchor="middle" font-family="Space Mono, monospace" font-size="10" fill="#5e564a" letter-spacing="1.5">WALL</text>
+            <path d="M150 60 L120 60" stroke="#5e564a" stroke-width="1"/><text x="116" y="64" text-anchor="end" font-family="Space Mono, monospace" font-size="10" fill="#1a1712">the star</text>
+            <path d="M178 150 L120 176" stroke="#5e564a" stroke-width="1"/><text x="116" y="174" text-anchor="end" font-family="Space Mono, monospace" font-size="10" fill="#1a1712">bulb sits</text><text x="116" y="187" text-anchor="end" font-family="Space Mono, monospace" font-size="10" fill="#1a1712">in here</text>
+            <path d="M206 236 L120 236" stroke="#5e564a" stroke-width="1"/><text x="116" y="240" text-anchor="end" font-family="Space Mono, monospace" font-size="10" fill="#1a1712">cord</text>
           </svg>
           <figcaption class="mono">What your sconce looks like from the side</figcaption>
         </figure>
