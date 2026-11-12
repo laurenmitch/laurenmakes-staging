@@ -49,14 +49,14 @@
 
     /* ---- Drop ribbon ---- */
     .ribbon{ background:var(--ink); color:#fff; overflow:hidden; white-space:nowrap; }
-    .ribbon__track{ display:inline-flex; gap:2.5rem; padding:.6rem 0; animation:slide 38s linear infinite; }
-    .ribbon__track span{ display:inline-flex; align-items:center; gap:2.5rem; }
+    .ribbon__track{ display:inline-flex; gap:1.1rem; padding:.6rem 0; animation:slide 30s linear infinite; }
+    .ribbon__track span{ display:inline-flex; align-items:center; gap:1.1rem; }
     .ribbon__track span::after{ content:""; width:1.05em; height:1.05em; background:url(../assets/img/star.svg) center/contain no-repeat; }
     .ribbon b{ color:var(--blue); font-weight:700; }
     @keyframes slide{ to{ transform:translateX(-50%); } }
 
     /* ---- Hero ---- */
-    .hero{ padding:clamp(2.5rem,7vh,5rem) 0 clamp(1.5rem,4vh,2.5rem); max-width:860px; }
+    .hero{ padding:clamp(2.5rem,7vh,5rem) 0 clamp(1.5rem,4vh,2.5rem); }
     .guide-link{ margin-top:1.4rem; display:inline-flex; align-items:center; gap:.85rem; padding:.75rem 1.1rem .75rem .85rem; background:#fff; border:1.5px solid var(--ink); border-radius:14px; box-shadow:4px 4px 0 var(--blue); transition:transform .3s var(--ease), box-shadow .3s var(--ease); }
     .guide-link:hover{ transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--blue); }
     .guide-link .icon-star{ width:2rem; height:2rem; transition:transform .6s var(--ease); }
@@ -71,7 +71,7 @@
     .hero h1 em{ font-family:var(--font-accent); font-style:italic; font-weight:600; letter-spacing:-.02em; }
     .hl{ position:relative; display:inline-block; z-index:0; }
     .hl::before{ content:""; position:absolute; left:-4%; right:-4%; top:30%; bottom:6%; background:var(--blue); transform:rotate(-1.6deg) skewX(-4deg); z-index:-1; border-radius:3px; }
-    .hero__lead{ margin:1.5rem 0 0; max-width:46ch; font-size:clamp(1.02rem,1.5vw,1.15rem); color:var(--ink-soft); }
+    .hero__lead{ margin:1.6rem 0 0; font-family:var(--font-mono); font-size:clamp(.78rem,1.15vw,.95rem); letter-spacing:.14em; text-transform:uppercase; line-height:1.7; color:var(--ink); }
 
 
     /* ---- Legend ---- */
@@ -239,16 +239,15 @@
 
   <div class="ribbon mono" aria-hidden="true">
     <div class="ribbon__track">
-      <span>Star sconce drop <b>01</b></span><span>Each one is one of one</span><span>Ships US &amp; Canada</span><span>Held for you <b>10 min</b> at checkout</span><span>Staging preview · sample pieces</span>
-      <span>Star sconce drop <b>01</b></span><span>Each one is one of one</span><span>Ships US &amp; Canada</span><span>Held for you <b>10 min</b> at checkout</span><span>Staging preview · sample pieces</span>
+      <span>Plug-in wall sconces</span><span>Handmade sconces</span><span>Shipped to the US and Canada</span><span>Held for you for <b>10 minutes</b> at checkout</span><span>Sample pieces</span>
+      <span>Plug-in wall sconces</span><span>Handmade sconces</span><span>Shipped to the US and Canada</span><span>Held for you for <b>10 minutes</b> at checkout</span><span>Sample pieces</span>
     </div>
   </div>
 
   <main class="wrap">
     <section class="hero">
-      <p class="hero__eyebrow mono"><img class="icon-star" src="../assets/img/star.svg" alt="" />the pottery shop · drop 01</p>
       <h1>star-shaped <span class="hl">sconce</span> <em>drop</em></h1>
-      <p class="hero__lead">Every sconce here is one of one, thrown, glazed, and fired by me, Lauren. Shipping to the US or Canada.</p>
+      <p class="hero__lead">Every sconce here is one-of-one, thrown, glazed, and fired by me, Lauren. Shipping to the US and Canada.</p>
       <a class="guide-link" href="guide/"><img class="icon-star" src="../assets/img/star.svg" alt="" /><span><b>How to hang &amp; light your star</b>What's in the box, how it works, and getting it on your wall</span><i aria-hidden="true">→</i></a>
     </section>
 
