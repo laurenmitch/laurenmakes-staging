@@ -56,8 +56,8 @@
     @keyframes slide{ to{ transform:translateX(-50%); } }
 
     /* ---- Hero ---- */
-    .hero{ padding:clamp(2rem,6vh,4rem) 0 clamp(1.5rem,4vh,2.5rem); display:grid; grid-template-columns:1fr clamp(220px,28vw,340px); grid-template-areas:"title photo" "lead lead" "guide guide"; column-gap:clamp(1.5rem,4vw,3.5rem); align-items:end; }
-    .hero__title{ grid-area:title; }
+    .hero{ padding:clamp(2rem,6vh,4rem) 0 clamp(1.5rem,4vh,2.5rem); display:grid; grid-template-columns:1fr clamp(220px,28vw,340px); grid-template-areas:"title photo" "lead lead" "guide guide"; column-gap:clamp(1.5rem,4vw,3.5rem); align-items:center; }
+    .hero__title{ grid-area:title; padding-bottom:.5rem; }
     .hero__lead{ grid-area:lead; }
     .guide-link{ grid-area:guide; justify-self:start; }
     .hero__photo{ grid-area:photo; margin:0; aspect-ratio:1; border-radius:22px; overflow:hidden; border:1.5px solid var(--ink); box-shadow:6px 6px 0 var(--blue); background:#d8d1c5; position:relative; }
@@ -259,7 +259,7 @@
     <section class="hero">
       <div class="hero__title">
         <p class="hero__eyebrow mono"><img class="icon-star" src="../assets/img/star.svg" alt="" />laurenmakes pottery shop</p>
-        <h1>star-shaped plug-in wall <span class="hl">sconce</span> <em>drop</em></h1>
+        <h1>star-shaped plug-in wall <span class="hl">sconce</span></h1>
       </div>
       <figure class="hero__photo">
         <img src="../assets/img/shop/hero-bedroom.jpg" alt="A lit blue star sconce on a bedroom wall beside the bed, casting rays of light" onerror="this.parentNode.classList.add('is-missing')" />
