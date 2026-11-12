@@ -58,6 +58,14 @@
     .tip{ background:#fff; border:1.5px solid var(--ink); border-radius:12px; padding:.8rem 1rem; box-shadow:4px 4px 0 var(--blue); margin:1rem 0; font-size:.95rem; }
     .tip b{ font-family:var(--font-mono); font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; display:block; color:var(--blue-ink); }
 
+    .side{ margin:1.4rem 0 0; }
+    .side img, .side__ph{ width:100%; max-width:520px; display:block; border:1.5px solid var(--ink); border-radius:16px; background:#efe9df; box-shadow:4px 4px 0 var(--blue); }
+    .side img{ aspect-ratio:4/3; object-fit:cover; }
+    .side__ph{ display:none; }
+    .side.is-missing img{ display:none; }
+    .side.is-missing .side__ph{ display:block; }
+    .side figcaption{ margin-top:.7rem; color:var(--ink-soft); }
+    .tip b{ margin-bottom:.15rem; }
     .back{ display:inline-flex; gap:.6em; align-items:center; margin-top:2rem; font-family:var(--font-mono); font-weight:700; font-size:.85rem; letter-spacing:.12em; text-transform:uppercase; padding:.95em 1.6em; border-radius:999px; background:var(--ink); color:#fff; text-decoration:none; }
     .back:hover{ background:var(--blue-ink); }
     footer{ text-align:center; color:var(--ink-soft); padding:0 var(--gutter) 2.5rem; }
@@ -140,6 +148,20 @@
           <li>Plug it in and switch it on.</li>
         </ol>
         <p>To change the bulb, just lift the star off the screws.</p>
+        <figure class="side">
+          <img src="../../assets/img/shop/side-view.jpg" alt="The star sconce from the side, sitting flush against the wall" onerror="this.parentNode.classList.add('is-missing')" />
+          <svg class="side__ph" viewBox="0 0 320 200" aria-hidden="true">
+            <defs><radialGradient id="sg" cx="96" cy="100" r="90" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fff1c4"/><stop offset="1" stop-color="#fff1c4" stop-opacity="0"/></radialGradient></defs>
+            <rect x="0" y="0" width="70" height="200" fill="#d8d1c5"/>
+            <ellipse cx="96" cy="100" rx="90" ry="95" fill="url(#sg)"/>
+            <rect x="70" y="18" width="16" height="164" rx="4" fill="#3d5a63"/>
+            <line x1="70" y1="18" x2="70" y2="182" stroke="#1a1712" stroke-width="2"/>
+            <text x="140" y="96" font-family="Space Mono, monospace" font-size="11" fill="#5e564a">2.5″ deep</text>
+            <text x="140" y="114" font-family="Space Mono, monospace" font-size="9" fill="#9a9081">side photo goes here</text>
+          </svg>
+          <figcaption class="mono">What your sconce looks like from the side</figcaption>
+        </figure>
+        <div class="tip"><b>A little heads up</b>If you're standing right along the wall next to it, you might catch a peek of the bulb, so it can look a little bright from that angle. From the front, you only see the glow.</div>
       </div>
     </section>
 
