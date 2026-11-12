@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>the pottery shop · laurenmakes</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/img/lm-logo.svg" />
+  <meta name="description" content="One-of-one handmade pottery sconces, released in small drops." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;700;800&family=Inter:wght@400;500&family=Playfair+Display:ital,wght@1,600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    *,*::before,*::after{ box-sizing:border-box; }
+    :root{
+      --ink:#1a1712; --ink-soft:#5e564a; --paper:#fdfdfc;
+      --blue:#80A4ED; --blue-ink:#3a5bbf; --clay:#b3654a; --wall:#efe9df; --line:#e3ddd2;
+      --held:#e9a23b; --sold:#8d8677;
+      --font-display:"Gabarito",system-ui,sans-serif;
+      --font-body:"Inter",system-ui,-apple-system,sans-serif;
+      --font-mono:"Space Mono",ui-monospace,monospace;
+      --font-accent:"Playfair Display",Georgia,serif;
+      --ease:cubic-bezier(0.22,1,0.36,1);
+      --gutter:clamp(16px,4vw,3rem);
+    }
+    html{ -webkit-font-smoothing:antialiased; }
+    body{
+      margin:0; color:var(--ink); font-family:var(--font-body); line-height:1.6;
+      background:var(--paper);
+      background-image:
+        linear-gradient(to right, rgba(20,20,26,.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(20,20,26,.05) 1px, transparent 1px);
+      background-size:46px 46px;
+    }
+    a{ color:inherit; text-decoration:none; }
+    button{ font:inherit; color:inherit; }
+    .mono{ font-family:var(--font-mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; }
+    .wrap{ max-width:1240px; margin:0 auto; padding:0 var(--gutter); }
+
+    /* ---- Nav ---- */
+    .nav{ display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1.1rem var(--gutter); }
+    .nav__logo{ height:32px; width:auto; display:block; }
+    .nav__links{ display:flex; gap:.5rem; flex-wrap:wrap; justify-content:flex-end; }
+    .pill{ font-family:var(--font-mono); font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; padding:.5em 1em; border:1px solid var(--ink); border-radius:999px; background:#fff; transition:background .3s var(--ease), color .3s var(--ease); }
+    .pill:hover{ background:var(--ink); color:#fff; }
+    .pill[aria-current]{ background:var(--ink); color:#fff; }
+
+    /* ---- Drop ribbon ---- */
+    .ribbon{ background:var(--ink); color:#fff; overflow:hidden; white-space:nowrap; }
+    .ribbon__track{ display:inline-flex; gap:2.5rem; padding:.6rem 0; animation:slide 38s linear infinite; }
+    .ribbon__track span{ display:inline-flex; align-items:center; gap:2.5rem; }
+    .ribbon__track span::after{ content:"✺"; color:var(--blue); }
+    .ribbon b{ color:var(--blue); font-weight:700; }
+    @keyframes slide{ to{ transform:translateX(-50%); } }
+
+    /* ---- Hero ---- */
+    .hero{ display:grid; grid-template-columns:1.25fr 1fr; gap:clamp(1.5rem,4vw,4rem); align-items:end; padding:clamp(2.5rem,7vh,5rem) 0 clamp(1.5rem,4vh,2.5rem); }
+    .hero__eyebrow{ color:var(--blue-ink); margin:0 0 1rem; }
+    .hero h1{ font-family:var(--font-display); font-weight:500; font-size:clamp(2.6rem,7vw,5.6rem); line-height:.95; letter-spacing:-.035em; margin:0; }
+    .hero h1 em{ font-family:var(--font-accent); font-style:italic; font-weight:600; letter-spacing:-.02em; }
+    .hl{ position:relative; display:inline-block; z-index:0; }
+    .hl::before{ content:""; position:absolute; left:-4%; right:-4%; top:30%; bottom:6%; background:var(--blue); transform:rotate(-1.6deg) skewX(-4deg); z-index:-1; border-radius:3px; }
+    .hero__lead{ margin:1.5rem 0 0; max-width:46ch; font-size:clamp(1.02rem,1.5vw,1.15rem); color:var(--ink-soft); }
+
+    .how{ background:#fff; border:1.5px solid var(--ink); border-radius:14px; padding:1.25rem 1.4rem; box-shadow:6px 6px 0 var(--blue); }
+    .how h2{ margin:0 0 .85rem; font-family:var(--font-display); font-weight:700; font-size:1.05rem; letter-spacing:-.01em; }
+    .how ol{ list-style:none; margin:0; padding:0; display:grid; gap:.7rem; counter-reset:step; }
+    .how li{ counter-increment:step; display:grid; grid-template-columns:2rem 1fr; gap:.6rem; align-items:start; font-size:.95rem; }
+    .how li::before{ content:counter(step); display:grid; place-items:center; width:1.7rem; height:1.7rem; border-radius:50%; background:var(--ink); color:#fff; font-family:var(--font-mono); font-size:.75rem; font-weight:700; }
+    .how b{ font-weight:600; }
+
+    /* ---- Legend ---- */
+    .legend{ display:flex; flex-wrap:wrap; gap:.6rem 1.4rem; align-items:center; padding:.9rem 0 1.4rem; border-top:1.5px solid var(--ink); margin-top:1rem; }
+    .legend__count{ margin-right:auto; color:var(--ink); font-weight:700; }
+    .legend i{ display:inline-block; width:.7rem; height:.7rem; border-radius:50%; margin-right:.45rem; vertical-align:-1px; }
+
+    /* ---- Grid ---- */
+    .grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:clamp(1rem,2.4vw,2rem); padding-bottom:3rem; }
+    .piece__media{
+      position:relative; display:block; width:100%; aspect-ratio:4/5; padding:0; border:0; cursor:pointer;
+      background:var(--wall); border-radius:10px; overflow:hidden;
+      box-shadow:inset 0 0 0 1px rgba(26,23,18,.06);
+      transition:transform .4s var(--ease), box-shadow .4s var(--ease), background .5s var(--ease);
+    }
+    .piece__media:hover, .piece__media:focus-visible{ transform:translateY(-4px); box-shadow:0 14px 30px -14px rgba(26,23,18,.35); }
+    .piece__media:focus-visible{ outline:3px solid var(--blue-ink); outline-offset:3px; }
+    .piece__img{ position:absolute; inset:6% 10% 4%; display:block; transition:opacity .6s var(--ease); }
+    .piece__img svg{ width:100%; height:100%; display:block; }
+    .piece__img--on{ opacity:0; }
+    .piece__media:hover{ background:#e7dccb; }
+    .piece__media:hover .piece__img--on, .piece__media:focus-visible .piece__img--on{ opacity:1; }
+    .piece__media:hover .piece__img--off, .piece__media:focus-visible .piece__img--off{ opacity:0; }
+    .piece__hint{ position:absolute; right:.7rem; bottom:.6rem; font-family:var(--font-mono); font-size:.6rem; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft); opacity:.7; transition:opacity .3s; }
+    .piece__media:hover .piece__hint{ opacity:0; }
+    @media (hover:none){ .piece__hint{ display:none; } }
+
+    .badge{ position:absolute; left:.7rem; top:.7rem; z-index:2; font-family:var(--font-mono); font-size:.62rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; padding:.35em .75em; border-radius:999px; border:1.5px solid var(--ink); background:#fff; }
+    .badge--open::before{ content:""; display:inline-block; width:.5rem; height:.5rem; border-radius:50%; background:#3f9b5d; margin-right:.4rem; vertical-align:0; }
+    .badge--held{ background:var(--held); }
+    .badge--sold{ background:var(--ink); color:#fff; }
+
+    /* Held: hatched veil + live countdown */
+    .is-reserved .piece__media::after{
+      content:""; position:absolute; inset:0; z-index:1;
+      background:repeating-linear-gradient(-45deg, rgba(233,162,59,.16) 0 10px, transparent 10px 20px);
+    }
+    .piece__hold{
+      position:absolute; left:50%; bottom:.9rem; transform:translateX(-50%); z-index:2;
+      display:flex; flex-direction:column; align-items:center; gap:.1rem;
+      background:#fff; border:1.5px solid var(--ink); border-radius:10px; padding:.45rem .9rem;
+      font-family:var(--font-mono); font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; white-space:nowrap;
+    }
+    .piece__hold b{ font-size:1.15rem; letter-spacing:.02em; }
+    .is-reserved .piece__hint{ display:none; }
+
+    /* Sold: stays visible, stamped */
+    .is-sold .piece__img{ filter:saturate(.55); opacity:.75; }
+    .is-sold .piece__media:hover .piece__img--on{ opacity:.85; }
+    .stamp{
+      position:absolute; right:8%; top:30%; z-index:2; transform:rotate(-12deg);
+      font-family:var(--font-mono); font-weight:700; font-size:.8rem; line-height:1.15; letter-spacing:.14em; text-transform:uppercase; text-align:center;
+      color:var(--clay); border:2.5px solid var(--clay); border-radius:8px; padding:.45rem .7rem; background:rgba(253,253,252,.75);
+    }
+    .is-sold .piece__name, .is-sold .piece__spec{ color:var(--ink-soft); }
+
+    .piece__body{ display:grid; grid-template-columns:1fr auto; column-gap:1rem; padding:.85rem .15rem 0; }
+    .piece__no{ grid-column:1/-1; margin:0; font-family:var(--font-mono); font-size:.68rem; letter-spacing:.16em; color:var(--blue-ink); }
+    .piece__name{ margin:.1rem 0 0; font-family:var(--font-display); font-weight:600; font-size:1.2rem; letter-spacing:-.01em; line-height:1.2; }
+    .piece__price{ margin:.1rem 0 0; font-family:var(--font-display); font-weight:700; font-size:1.15rem; grid-row:2; grid-column:2; }
+    .piece__price s{ color:var(--sold); font-weight:500; }
+    .piece__spec{ margin:.15rem 0 0; color:var(--ink-soft); font-size:.88rem; }
+
+    /* ---- Fine print ---- */
+    .fine{ border-top:1.5px solid var(--ink); padding:2.5rem 0 3rem; display:grid; grid-template-columns:1fr 2fr; gap:2rem; }
+    .fine h2{ font-family:var(--font-display); font-weight:500; font-size:clamp(1.8rem,3.5vw,2.6rem); letter-spacing:-.03em; line-height:1; margin:0; }
+    details{ border-bottom:1px solid var(--line); padding:.9rem 0; }
+    summary{ cursor:pointer; font-family:var(--font-display); font-weight:600; font-size:1.08rem; list-style:none; display:flex; justify-content:space-between; gap:1rem; }
+    summary::-webkit-details-marker{ display:none; }
+    summary::after{ content:"+"; font-family:var(--font-mono); color:var(--blue-ink); }
+    details[open] summary::after{ content:"–"; }
+    details p{ margin:.6rem 0 0; color:var(--ink-soft); max-width:62ch; }
+    .todo{ background:#fff4c9; border-radius:3px; padding:0 .25em; color:#6b5300; }
+
+    footer{ padding:2rem var(--gutter) 2.5rem; text-align:center; color:var(--ink-soft); }
+    footer a{ border-bottom:1px solid var(--blue); }
+
+    /* ---- Dialogs ---- */
+    dialog{ border:1.5px solid var(--ink); border-radius:16px; padding:0; color:var(--ink); background:var(--paper); max-width:min(940px, calc(100vw - 32px)); width:100%; box-shadow:10px 10px 0 var(--blue); }
+    dialog::backdrop{ background:rgba(26,23,18,.45); backdrop-filter:blur(2px); }
+    .x{ position:absolute; right:.8rem; top:.7rem; z-index:3; width:2.2rem; height:2.2rem; border-radius:50%; border:1.5px solid var(--ink); background:#fff; cursor:pointer; font-size:1.1rem; line-height:1; }
+
+    .detail{ display:grid; grid-template-columns:1.1fr 1fr; }
+    .detail__media{ position:relative; background:var(--wall); min-height:420px; transition:background .6s var(--ease); }
+    .is-lit .detail__media{ background:#e3d5bf; }
+    .detail__media .piece__img{ inset:7% 14% 12%; }
+    .is-lit .detail__media .piece__img--on{ opacity:1; }
+    .is-lit .detail__media .piece__img--off{ opacity:0; }
+    .toggle{ position:absolute; left:50%; bottom:1rem; transform:translateX(-50%); z-index:2; font-family:var(--font-mono); font-size:.66rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; padding:.55em 1.1em; border-radius:999px; border:1.5px solid var(--ink); background:#fff; cursor:pointer; }
+    .toggle::before{ content:"◐ "; }
+    .detail__info{ padding:2rem 1.75rem 1.75rem; display:flex; flex-direction:column; }
+    .detail__no{ margin:0; color:var(--blue-ink); }
+    .detail__name{ margin:.25rem 0 0; font-family:var(--font-display); font-weight:600; font-size:2rem; letter-spacing:-.02em; line-height:1.05; }
+    .detail__price{ margin:.35rem 0 0; font-family:var(--font-display); font-weight:700; font-size:1.4rem; }
+    .detail__one{ margin:1rem 0 0; font-family:var(--font-accent); font-style:italic; font-size:1.05rem; }
+    .specs{ margin:1.1rem 0 0; display:grid; grid-template-columns:auto 1fr; border-top:1px solid var(--line); }
+    .specs dt, .specs dd{ margin:0; padding:.5rem 0; border-bottom:1px solid var(--line); font-size:.9rem; }
+    .specs dt{ font-family:var(--font-mono); font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft); padding-right:1.2rem; padding-top:.65rem; }
+    .buy{
+      margin-top:1.4rem; display:inline-flex; justify-content:center; align-items:center; gap:.6em; width:100%;
+      font-family:var(--font-mono); font-weight:700; font-size:.85rem; letter-spacing:.12em; text-transform:uppercase;
+      padding:1em 1.5em; border-radius:999px; background:var(--ink); color:#fff; border:2px solid var(--ink); cursor:pointer;
+      transition:transform .3s var(--ease), background .3s var(--ease);
+    }
+    .buy:hover:not(:disabled){ background:var(--blue-ink); border-color:var(--blue-ink); transform:translateY(-2px); }
+    .buy:disabled{ background:#d9d3c8; border-color:#d9d3c8; color:var(--ink-soft); cursor:not-allowed; }
+    .buy--ghost{ background:transparent; color:var(--ink); }
+    .buy--ghost:hover:not(:disabled){ color:#fff; }
+    .detail__state{ margin:.7rem 0 0; font-size:.86rem; color:var(--ink-soft); text-align:center; }
+
+    /* Checkout */
+    #checkout{ max-width:min(560px, calc(100vw - 32px)); }
+    .co{ padding:1.6rem 1.6rem 1.4rem; }
+    .co__clock{ display:flex; align-items:baseline; gap:.8rem; margin-top:.4rem; }
+    .co__time{ font-family:var(--font-display); font-weight:800; font-size:clamp(2.8rem,9vw,3.6rem); line-height:1; letter-spacing:-.02em; font-variant-numeric:tabular-nums; }
+    .co__barwrap{ height:6px; background:#ebe5da; border-radius:6px; overflow:hidden; margin:.8rem 0 1.2rem; }
+    .co__bar{ height:100%; background:var(--blue-ink); transform-origin:left; transition:transform 1s linear, background .3s; }
+    .is-urgent .co__bar{ background:var(--clay); }
+    .is-urgent .co__time{ color:var(--clay); }
+    .co__title{ margin:0; font-family:var(--font-display); font-weight:700; font-size:1.25rem; letter-spacing:-.01em; padding-right:2.5rem; }
+    .co__item{ display:grid; grid-template-columns:64px 1fr auto; gap:.9rem; align-items:center; padding:.8rem 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+    .co__thumb{ width:64px; height:80px; background:#e3d5bf; border-radius:6px; padding:4px; }
+    .co__thumb svg{ width:100%; height:100%; display:block; }
+    .co__row{ display:flex; justify-content:space-between; gap:1rem; padding:.45rem 0; font-size:.92rem; }
+    .co__row select{ font:inherit; padding:.3rem .5rem; border:1.5px solid var(--ink); border-radius:8px; background:#fff; }
+    .co__total{ font-weight:700; border-top:1.5px solid var(--ink); margin-top:.3rem; padding-top:.6rem; }
+    .stripe-slot{ margin-top:1rem; border:1.5px dashed #b9b1a3; border-radius:12px; padding:1.1rem; text-align:center; color:var(--ink-soft); font-size:.88rem; background:#fff; }
+    .stripe-slot b{ display:block; color:var(--ink); font-family:var(--font-display); font-size:1rem; margin-bottom:.2rem; }
+    .co__actions{ display:grid; grid-template-columns:1fr; gap:.5rem; margin-top:1rem; }
+    .co__actions .buy{ margin-top:0; }
+    .co__demo{ margin:.9rem 0 0; text-align:center; color:var(--ink-soft); }
+    .co__demo button{ background:none; border:0; padding:0; border-bottom:1px solid var(--blue); cursor:pointer; color:inherit; font:inherit; letter-spacing:inherit; text-transform:inherit; }
+    .co__end{ display:none; }
+    .is-expired .co__live, .is-done .co__live{ display:none; }
+    .is-expired .co__end, .is-done .co__end{ display:block; margin-top:1rem; }
+    .co__end p{ color:var(--ink-soft); margin:.2rem 0 1rem; }
+
+    /* ---- Small screens ---- */
+    @media (max-width:820px){
+      .hero{ grid-template-columns:1fr; align-items:start; }
+      .fine{ grid-template-columns:1fr; gap:1rem; }
+      .detail{ grid-template-columns:1fr; }
+      .detail__media{ min-height:300px; }
+    }
+    @media (max-width:520px){
+      .grid{ grid-template-columns:repeat(2,1fr); gap:.9rem; }
+      .piece__body{ grid-template-columns:1fr; }
+      .piece__price{ grid-row:auto; grid-column:auto; }
+      .piece__name{ font-size:1.02rem; }
+      .piece__spec{ font-size:.8rem; }
+      .badge{ font-size:.55rem; left:.45rem; top:.45rem; }
+      .piece__hold{ padding:.35rem .55rem; font-size:.5rem; }
+      .piece__hold b{ font-size:.95rem; }
+      .stamp{ font-size:.62rem; }
+      .nav__links .pill:first-child{ display:none; }
+    }
+    @media (prefers-reduced-motion:reduce){ *{ transition-duration:.001ms !important; animation:none !important; } }
+  </style>
+</head>
+<body>
+
+  <header class="nav">
+    <a href="../"><img class="nav__logo" src="../assets/img/lm-logo.svg" alt="laurenmakes home" /></a>
+    <nav class="nav__links">
+      <a class="pill" href="../decorating-guides/">decorating guides</a>
+      <a class="pill" href="./" aria-current="page">the pottery shop</a>
+    </nav>
+  </header>
+
+  <div class="ribbon mono" aria-hidden="true">
+    <div class="ribbon__track">
+      <span>Drop <b>01</b> · first firing</span><span>Ten sconces, each one of one</span><span>Ships US &amp; Canada</span><span>Held for you <b>10 min</b> at checkout</span><span>Staging preview · sample pieces</span>
+      <span>Drop <b>01</b> · first firing</span><span>Ten sconces, each one of one</span><span>Ships US &amp; Canada</span><span>Held for you <b>10 min</b> at checkout</span><span>Staging preview · sample pieces</span>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <section class="hero">
+      <div>
+        <p class="hero__eyebrow mono">the pottery shop · drop 01</p>
+        <h1>one-of-one <span class="hl">sconces</span>, <em>made by hand</em></h1>
+        <p class="hero__lead">Every sconce here is the only one. Thrown, glazed and fired in my studio, then numbered. When one's gone, it's gone.</p>
+      </div>
+      <aside class="how" aria-labelledby="how-title">
+        <h2 id="how-title">How buying works</h2>
+        <ol>
+          <li><span><b>Pick your piece.</b> Hover to see it lit.</span></li>
+          <li><span><b>It's held for you for 10 minutes</b> while you check out. Nobody else can buy it.</span></li>
+          <li><span><b>It's yours.</b> Packed with care, shipped to the US or Canada.</span></li>
+        </ol>
+      </aside>
+    </section>
+
+    <div class="legend mono">
+      <span class="legend__count" id="count" aria-live="polite"></span>
+      <span><i style="background:#3f9b5d"></i>Available</span>
+      <span><i style="background:var(--held)"></i>Held · someone's checking out</span>
+      <span><i style="background:var(--ink)"></i>Sold</span>
+    </div>
+
+    <section class="grid" id="grid" aria-label="Sconces in this drop"></section>
+
+    <section class="fine">
+      <h2>the fine print</h2>
+      <div>
+        <details open>
+          <summary>How does the 10-minute hold work?</summary>
+          <p>When you click "Hold it &amp; check out," that sconce is reserved just for you and a timer starts. Anyone else sees it as held. If you finish paying, it's yours. If the timer runs out, it goes back in the shop for the next person. Nobody can ever be charged for a piece someone else is holding.</p>
+        </details>
+        <details>
+          <summary>Where do you ship, and how much is it?</summary>
+          <p>The US and Canada for now: <span class="todo">$18 US · $38 Canada (sample rates)</span>. Every sconce is double-boxed. Any import fees into Canada are paid by the buyer on delivery.</p>
+        </details>
+        <details>
+          <summary>What bulb and fitting does it take?</summary>
+          <p><span class="todo">Fill in: plug-in cord or hardwired, socket size, cord length and recommended bulb.</span></p>
+        </details>
+        <details>
+          <summary>The one I wanted sold. Can you make another?</summary>
+          <p>No two come out the same, but I'm happy to hear what you loved about it. Sign up for drop news and you'll hear about the next firing first. <span class="todo">Newsletter link</span></p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="mono">
+    <p>Made alongside my YouTube channel, <a href="https://www.youtube.com/@lauren_makes" target="_blank" rel="noopener">@lauren_makes</a>.</p>
+  </footer>
+
+  <!-- Piece detail -->
+  <dialog id="detail" aria-labelledby="d-name">
+    <button class="x" id="d-close" type="button" aria-label="Close">×</button>
+    <div class="detail">
+      <div class="detail__media">
+        <span class="piece__img piece__img--off" id="d-off"></span>
+        <span class="piece__img piece__img--on" id="d-on"></span>
+        <button class="toggle" id="d-toggle" type="button" aria-pressed="false">Turn it on</button>
+      </div>
+      <div class="detail__info">
+        <p class="detail__no mono" id="d-no"></p>
+        <h2 class="detail__name" id="d-name"></h2>
+        <p class="detail__price" id="d-price"></p>
+        <p class="detail__one">The only one. Once it's gone, it's gone.</p>
+        <dl class="specs">
+          <dt>Glaze</dt><dd id="d-glaze"></dd>
+          <dt>Clay</dt><dd id="d-clay"></dd>
+          <dt>Size</dt><dd id="d-size"></dd>
+          <dt>Fitting</dt><dd><span class="todo">cord / socket / bulb</span></dd>
+          <dt>Shipping</dt><dd id="d-ship"></dd>
+        </dl>
+        <button class="buy" id="d-buy" type="button"></button>
+        <p class="detail__state" id="d-state"></p>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Checkout with hold timer (demo) -->
+  <dialog id="checkout" aria-labelledby="c-title">
+    <button class="x" id="c-close" type="button" aria-label="Close">×</button>
+    <div class="co">
+      <h2 class="co__title" id="c-title"></h2>
+      <div class="co__live">
+        <div class="co__clock">
+          <span class="co__time" id="c-clock" role="timer" aria-live="off">10:00</span>
+          <span class="mono">left to check out</span>
+        </div>
+        <div class="co__barwrap"><div class="co__bar" id="c-bar"></div></div>
+        <div class="co__item">
+          <div class="co__thumb" id="c-thumb"></div>
+          <div><strong id="c-name"></strong><div class="mono" style="color:var(--ink-soft)">one of one</div></div>
+          <strong id="c-price"></strong>
+        </div>
+        <div class="co__row"><label for="c-country">Ship to</label>
+          <select id="c-country"><option value="US">United States</option><option value="CA">Canada</option></select>
+        </div>
+        <div class="co__row"><span>Shipping</span><span id="c-shipping"></span></div>
+        <div class="co__row co__total"><span>Total</span><span id="c-total"></span></div>
+        <div class="stripe-slot"><b>Stripe's secure checkout goes here</b>Card, Apple Pay and Google Pay, plus shipping address.</div>
+        <div class="co__actions">
+          <button class="buy" id="c-pay" type="button">Pay (demo) <span>→</span></button>
+          <button class="buy buy--ghost" id="c-release" type="button">Never mind, release it</button>
+        </div>
+        <p class="co__demo mono">Staging preview, no payment is taken · <button id="c-skip" type="button">demo: jump to the last 12 seconds</button></p>
+      </div>
+      <div class="co__end">
+        <p>Thanks for looking. You can pick it again, or browse the rest of the drop.</p>
+        <button class="buy" id="c-again" type="button">Back to the shop</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="pieces.js"></script>
+  <script src="shop.js"></script>
+</body>
+</html>
