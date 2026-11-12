@@ -114,7 +114,10 @@
     .badge--open::before{ content:""; display:inline-block; width:.5rem; height:.5rem; border-radius:50%; background:#3f9b5d; margin-right:.4rem; vertical-align:0; }
     .badge--held{ background:var(--held); }
     .badge--sold{ background:var(--ink); color:#fff; }
-    .badge--pair{ left:auto; right:.7rem; background:var(--blue); }
+    .badge.badge--pair{ top:auto; bottom:.7rem; left:.7rem; right:auto; background:var(--blue); }
+    #d-pair{ top:.9rem; bottom:auto; left:.9rem; }
+    .specs a{ border-bottom:1.5px solid var(--blue); }
+    .specs a:hover{ color:var(--blue-ink); }
     .badge[hidden]{ display:none; }
     .duo{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; gap:6%; }
     .piece__img .duo svg{ width:44%; height:auto; }
@@ -142,14 +145,13 @@
     .is-sold .piece__media{ background:#ecebe8; }
     .is-sold .piece__media:hover{ background:#d8d1c5; }
     .is-sold .piece__price, .is-sold .badge{ filter:grayscale(1); }
-    .is-sold .piece__no, .is-sold .piece__name, .is-sold .piece__spec{ color:var(--sold); }
+    .is-sold .piece__name, .is-sold .piece__spec{ color:var(--sold); }
 
     .piece__body{ display:grid; grid-template-columns:1fr auto; column-gap:1rem; padding:.85rem .15rem 0; }
-    .piece__no{ grid-column:1/-1; margin:0; font-family:var(--font-mono); font-size:.68rem; letter-spacing:.16em; color:var(--blue-ink); }
     .piece__name{ margin:.1rem 0 0; font-family:var(--font-display); font-weight:600; font-size:1.2rem; letter-spacing:-.01em; line-height:1.2; }
-    .piece__price{ margin:.1rem 0 0; font-family:var(--font-display); font-weight:700; font-size:1.15rem; grid-row:2; grid-column:2; }
+    .piece__price{ margin:.1rem 0 0; font-family:var(--font-display); font-weight:700; font-size:1.15rem; grid-row:1; grid-column:2; text-align:right; }
     .piece__price s{ color:var(--sold); font-weight:500; }
-    .piece__spec{ margin:.15rem 0 0; color:var(--ink-soft); font-size:.88rem; }
+    .piece__spec{ grid-column:1; margin:.15rem 0 0; color:var(--ink-soft); font-size:.88rem; }
 
     /* ---- Fine print ---- */
     .fine{ border-top:1.5px solid var(--ink); padding:2.5rem 0 3rem; display:grid; grid-template-columns:1fr 2fr; gap:2rem; }
@@ -184,6 +186,7 @@
     .detail__price{ margin:.35rem 0 0; font-family:var(--font-display); font-weight:700; font-size:1.4rem; }
     .detail__note{ margin:1rem 0 0; font-size:1rem; line-height:1.6; color:var(--ink); }
     .specs{ margin:1.1rem 0 0; display:grid; grid-template-columns:auto 1fr; border-top:1px solid var(--line); }
+    .specs [hidden]{ display:none; }
     .specs dt, .specs dd{ margin:0; padding:.5rem 0; border-bottom:1px solid var(--line); font-size:.9rem; }
     .specs dt{ font-family:var(--font-mono); font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft); padding-right:1.2rem; padding-top:.65rem; }
     .buy{
@@ -238,6 +241,7 @@
       .piece__name{ font-size:1.02rem; }
       .piece__spec{ font-size:.8rem; }
       .badge{ font-size:.55rem; left:.45rem; top:.45rem; }
+      .badge.badge--pair{ top:auto; bottom:.45rem; left:.45rem; }
       .piece__hold{ padding:.35rem .55rem; font-size:.5rem; }
       .piece__hold b{ font-size:.95rem; }
       .nav__links .pill:first-child{ display:none; }
@@ -323,18 +327,16 @@
         <button class="toggle" id="d-toggle" type="button" aria-pressed="false">Turn it on</button>
       </div>
       <div class="detail__info">
-        <p class="detail__no mono" id="d-no"></p>
         <h2 class="detail__name" id="d-name"></h2>
         <p class="detail__price" id="d-price"></p>
         <p class="detail__note" id="d-note"></p>
         <dl class="specs">
-          <dt>You get</dt><dd id="d-qty"></dd>
+          <dt id="d-qty-row">You get</dt><dd id="d-qty"></dd>
           <dt>Glaze</dt><dd id="d-glaze"></dd>
-          <dt>Clay</dt><dd id="d-clay"></dd>
+          <dt>Clay body</dt><dd id="d-clay"></dd>
           <dt>Size</dt><dd id="d-size"></dd>
-          <dt>Hanging</dt><dd>Hangs flush on two screws. A paper hanging guide comes in the box.</dd>
-          <dt>Cord &amp; bulb</dt><dd>Not included. Any plug-in pendant cord and bulb works. <a href="guide/#need">See my picks</a>.</dd>
-          <dt>Shipping</dt><dd id="d-ship"></dd>
+          <dt>Hanging</dt><dd>Hangs on 2 screws in the wall. No hardwiring needed.</dd>
+          <dt>Cord &amp; bulb</dt><dd>Comes without the pendant cord and bulb, so you'll need to buy those separately. <a href="guide/#need">Here are my recommendations</a>.</dd>
         </dl>
         <button class="buy" id="d-buy" type="button"></button>
         <p class="detail__state" id="d-state"></p>

@@ -9,7 +9,8 @@
   const HOLD = drop.holdMinutes * 60;
   const $ = (s, el = document) => el.querySelector(s);
   const money = n => "$" + n.toLocaleString("en-US");
-  const inch = n => n + "″";
+  const FRAC = { 0.25: "¼", 0.5: "½", 0.75: "¾" };
+  const inch = n => { const w = Math.floor(n), f = FRAC[+(n - w).toFixed(2)]; return (f ? (w || "") + f : String(n)) + "″"; };
   const fmt = s => { s = Math.max(0, Math.ceil(s)); return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0"); };
 
   // Seconds remaining on each hold, keyed by piece number.
@@ -47,7 +48,7 @@
       const x1 = CX + Math.cos(a - w) * L, y1 = CY + Math.sin(a - w) * L, x2 = CX + Math.cos(a + w) * L, y2 = CY + Math.sin(a + w) * L;
       rays += `<path d="M${CX} ${CY} L${x1.toFixed(1)} ${y1.toFixed(1)} L${x2.toFixed(1)} ${y2.toFixed(1)} Z" fill="url(#${id}r)"/>`;
     }
-    return `<svg viewBox="0 0 200 250" overflow="visible" role="img" aria-label="No. ${p.no}, ${p.name}${lit ? ", lit" : ""}" xmlns="http://www.w3.org/2000/svg">
+    return `<svg viewBox="0 0 200 250" overflow="visible" role="img" aria-label="${p.name}${lit ? ", lit" : ""}" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <clipPath id="${id}c"><path d="${STAR}"/></clipPath>
         <radialGradient id="${id}g" cx="${CX}" cy="${CY}" r="${R * 1.45}" gradientUnits="userSpaceOnUse"><stop offset=".55" stop-color="#fff4cf" stop-opacity=".95"/><stop offset="1" stop-color="#fff4cf" stop-opacity="0"/></radialGradient>
@@ -83,7 +84,7 @@
   function card(p) {
     const st = status(p);
     return `<article class="piece is-${st}" data-no="${p.no}">
-      <button class="piece__media" type="button" data-open="${p.no}" aria-label="See No. ${p.no}, ${p.name}">
+      <button class="piece__media" type="button" data-open="${p.no}" aria-label="See ${p.name}">
         <span class="piece__img piece__img--off">${art(p, false)}</span>
         <span class="piece__img piece__img--on">${art(p, true)}</span>
         ${badge(p)}
@@ -92,9 +93,8 @@
         <span class="piece__hint" aria-hidden="true">hover to light it</span>
       </button>
       <div class="piece__body">
-        <p class="piece__no">No. ${p.no}</p>
         <h3 class="piece__name">${p.name}</h3>
-        <p class="piece__spec">${p.pair ? "Matching pair · " : ""}${p.glazeName} · ${inch(p.h)} × ${inch(p.w)}${p.pair ? " each" : ""}</p>
+        <p class="piece__spec">${p.pair ? "Matching pair · " : ""}${p.glazeName}</p>
         <p class="piece__price">${st === "sold" ? "<s>" + money(total(p)) + "</s>" : priceLine(p)}</p>
       </div>
     </article>`;
@@ -119,15 +119,14 @@
     $("#d-pair").hidden = !p.pair;
     detail.classList.remove("is-lit");
     $("#d-toggle").setAttribute("aria-pressed", "false");
-    $("#d-no").textContent = "No. " + p.no;
     $("#d-name").textContent = p.name;
     $("#d-price").innerHTML = p.pair ? `${money(total(p))} <small>for the pair (${money(p.price)} each)</small>` : money(p.price);
-    $("#d-qty").textContent = p.pair ? "A matching pair: 2 sconces, each with its own cord" : "1 sconce";
+    $("#d-qty-row").hidden = $("#d-qty").hidden = !p.pair;
+    $("#d-qty").textContent = "A matching pair: 2 sconces";
     $("#d-note").textContent = p.note || "";
     $("#d-glaze").textContent = p.glazeName;
     $("#d-clay").textContent = p.clayName;
-    $("#d-size").textContent = `${inch(p.h)} tall × ${inch(p.w)} wide${p.pair ? ", each" : ""}`;
-    $("#d-ship").textContent = drop.shipping.map(s => `${s.country} ${money(s.price)}`).join(" · ");
+    $("#d-size").textContent = `${inch(p.h)} tall × ${inch(p.w)} wide × ${inch(p.d)} deep${p.pair ? ", each" : ""}`;
     const btn = $("#d-buy"), note = $("#d-state");
     btn.disabled = st !== "available";
     btn.innerHTML = st === "available" ? `Hold ${p.pair ? "the pair" : "it"} &amp; check out <span>→</span>` : st === "sold" ? "Sold" : "Held right now";
@@ -146,13 +145,13 @@
   /* ---------- Checkout (demo hold) ---------- */
   const co = $("#checkout");
   function startHold(no) {
-    if (myHold && myHold !== no) { alert("You're already holding No. " + myHold + ". Finish or release that one first."); return; }
+    if (myHold && myHold !== no) { alert("You're already holding " + pieces.find(x => x.no === myHold).name + ". Finish or release that one first."); return; }
     const p = pieces.find(x => x.no === no);
     if (status(p) !== "available" && !(holds[no] && holds[no].mine)) return;
     if (!holds[no]) holds[no] = { until: Date.now() + HOLD * 1000, mine: true };
     myHold = no;
     if (detail.open) detail.close();
-    $("#c-title").textContent = `No. ${p.no} is held for you`;
+    $("#c-title").textContent = `${p.name} ${p.pair ? "are" : "is"} held for you`;
     $("#c-name").textContent = p.pair ? `${p.name}, pair of 2` : p.name;
     $("#c-thumb").innerHTML = art(p, true);
     $("#c-price").textContent = money(total(p));
@@ -173,7 +172,7 @@
   function release(expired) {
     if (!myHold) return;
     const no = myHold; delete holds[no]; myHold = null;
-    if (expired) { co.classList.add("is-expired"); $("#c-title").textContent = `Time's up. No. ${no} is back in the shop.`; }
+    if (expired) { co.classList.add("is-expired"); $("#c-title").textContent = `Time's up. ${pieces.find(x => x.no === no).name} went back in the shop.`; }
     else co.close();
     render();
   }
@@ -186,7 +185,7 @@
     delete holds[no]; myHold = null;
     pieces.find(x => x.no === no).status = "sold";
     co.classList.add("is-done");
-    $("#c-title").textContent = `No. ${no} is yours. Thank you!`;
+    $("#c-title").textContent = `${pieces.find(x => x.no === no).name} ${pieces.find(x => x.no === no).pair ? "are" : "is"} yours. Thank you!`;
     render();
   });
   co.addEventListener("cancel", e => { if (myHold) e.preventDefault(); }); // keep it open with Esc while holding
