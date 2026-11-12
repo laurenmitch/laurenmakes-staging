@@ -17,8 +17,11 @@ window.SHOP = {
     holdMinutes: 10,
     // Waitlist: a Google Form with one email question. Paste its
     // "formResponse" URL and the email field's entry id here.
-    // Until then the form shows the thank-you message but saves nothing.
-    waitlist: { action: "", emailField: "" },
+    // Responses land in the "Pottery Newsletter" Google Form.
+    waitlist: {
+      action: "https://docs.google.com/forms/d/e/1FAIpQLSfXKsP1FjyLLlP9UUgOzVQZYDHDGxlCwZIH2jyqzG4zLoTdxw/formResponse",
+      emailField: "entry.942875737"
+    },
     shipping: [
       { country: "United States", code: "US", price: 18 },
       { country: "Canada", code: "CA", price: 38 }
