@@ -36,8 +36,8 @@
   const CX = 100, CY = 125, R = 82;
   const STAR = starPath(CX, CY, R, 0.66);
   let uid = 0;
-  function sconce(p, lit) {
-    const r = rng(parseInt(p.no, 10) * 7 + 3), id = "s" + (uid++);
+  function sconce(p, lit, twin) {
+    const r = rng(parseInt(p.no, 10) * 7 + 3 + (twin ? 101 : 0)), id = "s" + (uid++);
     let specks = "";
     for (let i = 0; i < 55; i++) specks += `<circle cx="${(25 + r() * 150).toFixed(1)}" cy="${(45 + r() * 160).toFixed(1)}" r="${(0.5 + r() * 1.3).toFixed(2)}" fill="${p.drip}" opacity="${(0.25 + r() * 0.4).toFixed(2)}"/>`;
     // Light escaping through the scooped notches, fanning out on the wall.
@@ -67,6 +67,11 @@
     </svg>`;
   }
 
+  // Pairs: two matching sconces sold together at twice the single price.
+  const total = p => (p.pair ? p.price * 2 : p.price);
+  const art = (p, lit) => (p.pair ? `<span class="duo">${sconce(p, lit)}${sconce(p, lit, true)}</span>` : sconce(p, lit));
+  const priceLine = p => (p.pair ? `${money(total(p))} <small>for the pair</small>` : money(p.price));
+
   /* ---------- Grid ---------- */
   const grid = $("#grid");
   function badge(p) {
@@ -79,17 +84,18 @@
     const st = status(p);
     return `<article class="piece is-${st}" data-no="${p.no}">
       <button class="piece__media" type="button" data-open="${p.no}" aria-label="See No. ${p.no}, ${p.name}">
-        <span class="piece__img piece__img--off">${sconce(p, false)}</span>
-        <span class="piece__img piece__img--on">${sconce(p, true)}</span>
+        <span class="piece__img piece__img--off">${art(p, false)}</span>
+        <span class="piece__img piece__img--on">${art(p, true)}</span>
         ${badge(p)}
+        ${p.pair ? `<span class="badge badge--pair">Pair of 2</span>` : ""}
         ${st === "reserved" ? `<span class="piece__hold">${holds[p.no].mine ? "you're checking out" : "someone's checking out"}<span>held for the next <b data-timer="${p.no}">${fmt(left(p.no))}</b></span></span>` : ""}
         <span class="piece__hint" aria-hidden="true">hover to light it</span>
       </button>
       <div class="piece__body">
         <p class="piece__no">No. ${p.no}</p>
         <h3 class="piece__name">${p.name}</h3>
-        <p class="piece__spec">${p.glazeName} · ${inch(p.h)} × ${inch(p.w)}</p>
-        <p class="piece__price">${st === "sold" ? "<s>" + money(p.price) + "</s>" : money(p.price)}</p>
+        <p class="piece__spec">${p.pair ? "Matching pair · " : ""}${p.glazeName} · ${inch(p.h)} × ${inch(p.w)}${p.pair ? " each" : ""}</p>
+        <p class="piece__price">${st === "sold" ? "<s>" + money(total(p)) + "</s>" : priceLine(p)}</p>
       </div>
     </article>`;
   }
@@ -105,21 +111,23 @@
   function openDetail(no) {
     const p = pieces.find(x => x.no === no); current = p;
     const st = status(p);
-    $("#d-off").innerHTML = sconce(p, false);
-    $("#d-on").innerHTML = sconce(p, true);
+    $("#d-off").innerHTML = art(p, false);
+    $("#d-on").innerHTML = art(p, true);
+    $("#d-pair").hidden = !p.pair;
     detail.classList.remove("is-lit");
     $("#d-toggle").setAttribute("aria-pressed", "false");
     $("#d-no").textContent = "No. " + p.no;
     $("#d-name").textContent = p.name;
-    $("#d-price").textContent = money(p.price);
+    $("#d-price").innerHTML = p.pair ? `${money(total(p))} <small>for the pair (${money(p.price)} each)</small>` : money(p.price);
+    $("#d-qty").textContent = p.pair ? "A matching pair: 2 sconces, each with its own cord" : "1 sconce";
     $("#d-note").textContent = p.note || "";
     $("#d-glaze").textContent = p.glazeName;
     $("#d-clay").textContent = p.clayName;
-    $("#d-size").textContent = `${inch(p.h)} tall × ${inch(p.w)} wide`;
+    $("#d-size").textContent = `${inch(p.h)} tall × ${inch(p.w)} wide${p.pair ? ", each" : ""}`;
     $("#d-ship").textContent = drop.shipping.map(s => `${s.country} ${money(s.price)}`).join(" · ");
     const btn = $("#d-buy"), note = $("#d-state");
     btn.disabled = st !== "available";
-    btn.innerHTML = st === "available" ? `Hold it &amp; check out <span>→</span>` : st === "sold" ? "Sold" : "Held right now";
+    btn.innerHTML = st === "available" ? `Hold ${p.pair ? "the pair" : "it"} &amp; check out <span>→</span>` : st === "sold" ? "Sold" : "Held right now";
     note.textContent = st === "available"
       ? `Clicking holds it for you for ${drop.holdMinutes} minutes while you check out.`
       : st === "sold" ? "This one's sold. It stays here so you can see what the drop held."
@@ -142,9 +150,9 @@
     myHold = no;
     if (detail.open) detail.close();
     $("#c-title").textContent = `No. ${p.no} is held for you`;
-    $("#c-name").textContent = p.name;
-    $("#c-thumb").innerHTML = sconce(p, true);
-    $("#c-price").textContent = money(p.price);
+    $("#c-name").textContent = p.pair ? `${p.name}, pair of 2` : p.name;
+    $("#c-thumb").innerHTML = art(p, true);
+    $("#c-price").textContent = money(total(p));
     co.classList.remove("is-expired", "is-done");
     updateTotal();
     render();
@@ -156,7 +164,7 @@
     const p = pieces.find(x => x.no === myHold);
     const s = drop.shipping.find(x => x.code === $("#c-country").value);
     $("#c-shipping").textContent = money(s.price);
-    $("#c-total").textContent = money(p.price + s.price);
+    $("#c-total").textContent = money(total(p) + s.price);
   }
   $("#c-country").addEventListener("change", updateTotal);
   function release(expired) {

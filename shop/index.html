@@ -114,6 +114,13 @@
     .badge--open::before{ content:""; display:inline-block; width:.5rem; height:.5rem; border-radius:50%; background:#3f9b5d; margin-right:.4rem; vertical-align:0; }
     .badge--held{ background:var(--held); }
     .badge--sold{ background:var(--ink); color:#fff; }
+    .badge--pair{ left:auto; right:.7rem; background:var(--blue); }
+    .badge[hidden]{ display:none; }
+    .duo{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; gap:6%; }
+    .piece__img .duo svg{ width:44%; height:auto; }
+    .piece__price small, .detail__price small{ font-family:var(--font-body); font-weight:500; font-size:.72em; color:var(--ink-soft); }
+    .co__thumb .duo{ position:static; height:100%; gap:2px; }
+    .co__thumb .duo svg{ width:50%; height:auto; }
 
     /* Held: hatched veil + live countdown */
     .is-reserved .piece__media::after{
@@ -259,7 +266,7 @@
     <section class="hero">
       <div class="hero__title">
         <p class="hero__eyebrow mono"><img class="icon-star" src="../assets/img/star.svg" alt="" />laurenmakes pottery shop</p>
-        <h1>star-shaped plug-in wall <span class="hl">sconce</span></h1>
+        <h1>star-shaped plug-in wall <span class="hl">sconces</span></h1>
       </div>
       <figure class="hero__photo">
         <img src="../assets/img/shop/hero-bedroom.jpg" alt="A lit blue star sconce on a bedroom wall beside the bed, casting rays of light" onerror="this.parentNode.classList.add('is-missing')" />
@@ -312,6 +319,7 @@
       <div class="detail__media">
         <span class="piece__img piece__img--off" id="d-off"></span>
         <span class="piece__img piece__img--on" id="d-on"></span>
+        <span class="badge badge--pair" id="d-pair" hidden>Pair of 2</span>
         <button class="toggle" id="d-toggle" type="button" aria-pressed="false">Turn it on</button>
       </div>
       <div class="detail__info">
@@ -320,6 +328,7 @@
         <p class="detail__price" id="d-price"></p>
         <p class="detail__note" id="d-note"></p>
         <dl class="specs">
+          <dt>You get</dt><dd id="d-qty"></dd>
           <dt>Glaze</dt><dd id="d-glaze"></dd>
           <dt>Clay</dt><dd id="d-clay"></dd>
           <dt>Size</dt><dd id="d-size"></dd>
