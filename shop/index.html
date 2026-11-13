@@ -57,19 +57,17 @@
     @keyframes slide{ to{ transform:translateX(-50%); } }
 
     /* ---- Hero ---- */
-    .hero{ padding:clamp(2rem,6vh,4rem) 0 clamp(1.5rem,4vh,2.5rem); display:grid; grid-template-columns:1fr clamp(220px,28vw,340px); grid-template-areas:"title photo" "lead lead" "guide guide"; column-gap:clamp(1.5rem,4vw,3.5rem); align-items:center; }
-    .hero__title{ grid-area:title; padding-bottom:.5rem; }
-    .hero__lead{ grid-area:lead; }
-    .guide-link{ grid-area:guide; justify-self:start; }
-    .hero__photo{ grid-area:photo; margin:0; aspect-ratio:1; border-radius:22px; overflow:hidden; border:1.5px solid var(--ink); box-shadow:6px 6px 0 var(--blue); background:#d8d1c5; position:relative; }
+    .hero{ padding:clamp(2rem,6vh,4rem) 0 clamp(1.5rem,4vh,2.5rem); display:grid; grid-template-columns:minmax(0,1fr) clamp(260px,38vw,480px); column-gap:clamp(1.5rem,4vw,3.5rem); align-items:center; }
+    .hero__text{ display:flex; flex-direction:column; align-items:flex-start; gap:1.5rem; }
+    .hero__photo{ margin:0; aspect-ratio:4/5; border-radius:22px; overflow:hidden; border:1.5px solid var(--ink); box-shadow:6px 6px 0 var(--blue); background:#d8d1c5; position:relative; }
     .hero__photo img{ width:100%; height:100%; object-fit:cover; object-position:50% 38%; display:block; }
     .hero__photo .ph{ display:none; position:absolute; inset:0; place-items:center; text-align:center; }
     .hero__photo.is-missing img{ display:none; }
     .hero__photo.is-missing .ph{ display:grid; }
     .hero__photo .ph svg{ width:70%; overflow:visible; }
     .hero__photo .ph small{ position:absolute; bottom:.8rem; left:0; right:0; font-family:var(--font-mono); font-size:.6rem; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft); }
-    @media (max-width:640px){ .hero{ grid-template-columns:1fr; grid-template-areas:"title" "photo" "lead" "guide"; } .hero__photo{ margin-top:1.4rem; width:min(100%,360px); } }
-    .guide-link{ margin-top:1.4rem; display:inline-flex; align-items:center; gap:.85rem; padding:.75rem 1.1rem .75rem .85rem; background:#fff; border:1.5px solid var(--ink); border-radius:14px; box-shadow:4px 4px 0 var(--blue); transition:transform .3s var(--ease), box-shadow .3s var(--ease); }
+    @media (max-width:760px){ .hero{ grid-template-columns:1fr; row-gap:1.6rem; } .hero__photo{ order:-1; width:min(100%,420px); aspect-ratio:1; } }
+    .guide-link{ margin-top:0; display:inline-flex; align-items:center; gap:.85rem; padding:.75rem 1.1rem .75rem .85rem; background:#fff; border:1.5px solid var(--ink); border-radius:14px; box-shadow:4px 4px 0 var(--blue); transition:transform .3s var(--ease), box-shadow .3s var(--ease); }
     .guide-link:hover{ transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--blue); }
     .guide-link .icon-star{ width:2rem; height:2rem; transition:transform .6s var(--ease); }
     .guide-link:hover .icon-star{ transform:rotate(45deg); }
@@ -77,13 +75,13 @@
     .guide-link b{ font-family:var(--font-display); font-size:1.05rem; color:var(--ink); }
     .guide-link i{ font-style:normal; font-family:var(--font-mono); transition:transform .3s var(--ease); }
     .guide-link:hover i{ transform:translateX(4px); }
-    .hero__eyebrow{ color:var(--blue-ink); margin:0 0 1rem; display:flex; align-items:center; gap:.6em; }
+    .hero__eyebrow{ color:var(--blue-ink); margin:0 0 1.1rem; display:flex; align-items:center; gap:.6em; }
     .icon-star{ width:1.4em; height:1.4em; display:inline-block; vertical-align:-.3em; }
     .hero h1{ font-family:var(--font-display); font-weight:500; font-size:clamp(2.4rem,6vw,4.8rem); line-height:.98; letter-spacing:-.035em; margin:0; }
     .hero h1 em{ font-family:var(--font-accent); font-style:italic; font-weight:600; letter-spacing:-.02em; }
     .hl{ position:relative; display:inline-block; z-index:0; }
     .hl::before{ content:""; position:absolute; left:-4%; right:-4%; top:30%; bottom:6%; background:var(--blue); transform:rotate(-1.6deg) skewX(-4deg); z-index:-1; border-radius:3px; }
-    .hero__lead{ margin:1.6rem 0 0; font-family:var(--font-mono); font-size:clamp(.78rem,1.15vw,.95rem); letter-spacing:.14em; text-transform:uppercase; line-height:1.7; color:var(--ink); }
+    .hero__lead{ margin:0; font-family:var(--font-mono); font-size:clamp(.78rem,1.15vw,.95rem); letter-spacing:.14em; text-transform:uppercase; line-height:1.7; color:var(--ink); }
 
 
     /* ---- Legend ---- */
@@ -309,9 +307,13 @@
 
   <main class="wrap">
     <section class="hero">
-      <div class="hero__title">
-        <p class="hero__eyebrow mono"><img class="icon-star" src="../assets/img/star.svg" alt="" />laurenmakes pottery shop</p>
-        <h1>star-shaped plug-in wall <span class="hl">sconces</span></h1>
+      <div class="hero__text">
+        <div class="hero__title">
+          <p class="hero__eyebrow mono"><img class="icon-star" src="../assets/img/star.svg" alt="" />laurenmakes pottery shop</p>
+          <h1>star-shaped plug-in wall <span class="hl">sconces</span></h1>
+        </div>
+        <p class="hero__lead">Every sconce here is one-of-one, hand-built, glazed, and fired in California by me, Lauren.</p>
+        <a class="guide-link" href="guide/"><img class="icon-star" src="../assets/img/star.svg" alt="" /><span><b>How to hang &amp; light your star</b>What's in the box, how it works, and getting it on your wall</span><i aria-hidden="true">→</i></a>
       </div>
       <figure class="hero__photo">
         <img src="../assets/img/shop/hero-bedroom.jpg" alt="A lit blue star sconce on a bedroom wall beside the bed, casting rays of light" onerror="this.parentNode.classList.add('is-missing')" />
@@ -320,8 +322,6 @@
           <small>bedroom photo goes here</small>
         </div>
       </figure>
-      <p class="hero__lead">Every sconce here is one-of-one, hand-built, glazed, and fired in California by me, Lauren.</p>
-      <a class="guide-link" href="guide/"><img class="icon-star" src="../assets/img/star.svg" alt="" /><span><b>How to hang &amp; light your star</b>What's in the box, how it works, and getting it on your wall</span><i aria-hidden="true">→</i></a>
     </section>
 
     <div class="legend mono">
@@ -465,7 +465,7 @@
     </div>
   </dialog>
 
-  <script src="pieces.js"></script>
-  <script src="shop.js"></script>
+  <script src="pieces.js?v=24"></script>
+  <script src="shop.js?v=24"></script>
 </body>
 </html>
