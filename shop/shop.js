@@ -171,11 +171,8 @@
   function updateTotal() {
     if (!myHold) return;
     const p = pieces.find(x => x.no === myHold);
-    const s = drop.shipping.find(x => x.code === $("#c-country").value);
-    $("#c-shipping").textContent = money(s.price);
-    $("#c-total").textContent = money(total(p) + s.price);
+    $("#c-total").textContent = money(total(p)); // shipping is added by Stripe at checkout
   }
-  $("#c-country").addEventListener("change", updateTotal);
   function release(expired) {
     if (!myHold) return;
     const no = myHold; delete holds[no]; myHold = null;

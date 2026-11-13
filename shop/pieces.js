@@ -13,8 +13,9 @@ window.SHOP = {
     number: "01",
     name: "Star-shaped sconce drop",
     note: "Ten plug-in star sconces.",
-    shipsTo: "US, Canada and international",
+    shipsTo: "US only (first drop)",
     holdMinutes: 10,
+    // Shipping is calculated at checkout (US only for the first drop).
     // Waitlist: a Google Form with one email question. Paste its
     // "formResponse" URL and the email field's entry id here.
     // Responses land in the "Pottery Newsletter" Google Form.
@@ -22,11 +23,6 @@ window.SHOP = {
       action: "https://docs.google.com/forms/d/e/1FAIpQLSfXKsP1FjyLLlP9UUgOzVQZYDHDGxlCwZIH2jyqzG4zLoTdxw/formResponse",
       emailField: "entry.942875737"
     },
-    shipping: [
-      { country: "United States", code: "US", price: 25 },
-      { country: "Canada", code: "CA", price: 40 },
-      { country: "Another country", code: "INTL", price: 60 }
-    ]
   },
 
   pieces: [
