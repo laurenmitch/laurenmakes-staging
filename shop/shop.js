@@ -223,6 +223,18 @@
   $("#d-close").addEventListener("click", () => detail.close());
   [detail, co].forEach(d => d.addEventListener("click", e => { if (e.target === d && !(d === co && myHold)) d.close(); }));
 
+  /* ---------- Newsletter pop-up ---------- */
+  const nl = $("#newsletter");
+  document.addEventListener("click", e => {
+    const link = e.target.closest("[data-newsletter]");
+    if (!link) return;
+    e.preventDefault();
+    nl.showModal();
+    const input = nl.querySelector("input"); if (input && !nl.querySelector(".wl-form").hidden) input.focus();
+  });
+  $("#nl-close").addEventListener("click", () => nl.close());
+  nl.addEventListener("click", e => { if (e.target === nl) nl.close(); });
+
   /* ---------- Waitlist forms ---------- */
   document.querySelectorAll(".wl-form").forEach(form => {
     form.addEventListener("submit", e => {
