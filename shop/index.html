@@ -86,7 +86,12 @@
 
     /* ---- Legend ---- */
     .legend{ display:flex; flex-wrap:wrap; gap:.6rem 1.4rem; align-items:center; padding:.9rem 0 1.4rem; border-top:1.5px solid var(--ink); margin-top:1rem; }
-    .legend__count{ color:var(--ink); font-weight:700; }
+    .legend__count{ color:var(--ink); font-weight:700; margin-left:auto; }
+    .filter{ display:inline-flex; gap:.4rem; }
+    .filter button{ font-family:var(--font-mono); font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; padding:.5em 1.1em; border:1px solid var(--ink); border-radius:999px; background:#fff; color:var(--ink); cursor:pointer; transition:background .25s var(--ease), color .25s var(--ease); }
+    .filter button:hover{ background:#efe9df; }
+    .filter button[aria-pressed="true"]{ background:var(--ink); color:#fff; }
+    .grid .empty{ grid-column:1/-1; color:var(--ink-soft); margin:0 0 2rem; }
     .legend i{ display:inline-block; width:.7rem; height:.7rem; border-radius:50%; margin-right:.45rem; vertical-align:-1px; }
 
     /* ---- Grid ---- */
@@ -325,6 +330,11 @@
     </section>
 
     <div class="legend mono">
+      <div class="filter" role="group" aria-label="Show">
+        <button type="button" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" data-filter="single" aria-pressed="false">Singles</button>
+        <button type="button" data-filter="pair" aria-pressed="false">Pairs</button>
+      </div>
       <span class="legend__count" id="count" aria-live="polite"></span>
     </div>
 
@@ -465,7 +475,7 @@
     </div>
   </dialog>
 
-  <script src="pieces.js?v=24"></script>
-  <script src="shop.js?v=24"></script>
+  <script src="pieces.js?v=27"></script>
+  <script src="shop.js?v=27"></script>
 </body>
 </html>

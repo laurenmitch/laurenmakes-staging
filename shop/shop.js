@@ -105,15 +105,26 @@
     // Available first, then held, then sold; keep piece-number order within each group.
     const rank = { available: 0, reserved: 1, sold: 2 };
     const sorted = pieces.slice().sort((a, b) => rank[status(a)] - rank[status(b)] || a.no.localeCompare(b.no));
-    grid.innerHTML = sorted.map(card).join("");
-    const open = pieces.filter(p => status(p) === "available").length;
     // Sold-out state: every piece sold (none available or held).
     const soldOut = pieces.every(p => status(p) === "sold");
+    // All / Singles / Pairs filter (ignored once the drop is sold out).
+    const shown = soldOut || filter === "all" ? sorted : sorted.filter(p => (filter === "pair") === !!p.pair);
+    grid.innerHTML = shown.length ? shown.map(card).join("") : `<p class="empty">No ${filter === "pair" ? "pairs" : "singles"} in this drop.</p>`;
+    const open = shown.filter(p => status(p) === "available").length;
     document.body.classList.toggle("is-soldout", soldOut);
     $("#soldout").hidden = !soldOut;
     $("#archive-title").hidden = !soldOut;
-    $("#count").textContent = open === 0 ? "Sold out · thank you!" : `${open} of ${pieces.length} still available`;
+    const label = filter === "pair" ? "pairs" : filter === "single" ? "singles" : "";
+    $("#count").textContent = open === 0
+      ? (filter === "all" ? "Sold out · thank you!" : `All ${label} sold`)
+      : `${open} of ${shown.length}${label ? " " + label : ""} still available`;
   }
+  let filter = "all";
+  document.querySelectorAll("[data-filter]").forEach(btn => btn.addEventListener("click", () => {
+    filter = btn.dataset.filter;
+    document.querySelectorAll("[data-filter]").forEach(b => b.setAttribute("aria-pressed", String(b === btn)));
+    render();
+  }));
 
   /* ---------- Piece detail ---------- */
   const detail = $("#detail");
